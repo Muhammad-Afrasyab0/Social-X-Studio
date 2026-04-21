@@ -6,7 +6,6 @@ export default function Hero() {
     <>
       <style>
         {`
-        /* CIRCLE ROTATE */
         .circle-spin{
           animation: spinCircle 10s linear infinite;
           transform-origin:center;
@@ -17,7 +16,6 @@ export default function Hero() {
           to{transform:rotate(360deg);}
         }
 
-        /* MARQUEE */
         .ticker-wrap{
           width:100%;
           overflow:hidden;
@@ -47,14 +45,15 @@ export default function Hero() {
 
       <section className="relative overflow-hidden bg-[#eef3f7]">
 
-        {/* PATTERN TOP ONLY */}
+        {/* ONLY PATTERN FIXED */}
         <div
-          className="absolute top-0 left-0 w-full h-[320px] opacity-[0.08]"
+          className="absolute inset-0"
           style={{
             backgroundImage: `url(${pattern})`,
-            backgroundRepeat: "repeat-x",
-            backgroundSize: "560px auto",
+            backgroundRepeat: "repeat",
+            backgroundSize: "180px auto",
             backgroundPosition: "top left",
+            opacity: 1,
           }}
         ></div>
 
@@ -70,10 +69,13 @@ export default function Hero() {
                 Build Your
               </h1>
 
-              <h2 className="relative inline-block text-black font-black leading-[0.92] tracking-[-2px] text-[44px] md:text-[66px] mt-1">
-                Brand Beyond Limits
-                <span className="absolute left-0 bottom-[4px] w-full h-[11px] bg-[#0a8fff] -z-10"></span>
-              </h2>
+              {/* ONLY LINE ADDED */}
+       <h2 className="relative inline-block text-black font-black leading-[0.92] tracking-[-2px] text-[44px] md:text-[66px] mt-1 z-10">
+  <span className="relative z-10">Brand Beyond Limits</span>
+
+  {/* LOWER MORE */}
+  <span className="absolute left-0 right-0 bottom-[2px] h-[10px] bg-[#0a8fff] z-0"></span>
+</h2>
 
               <p className="mt-7 text-[#555] text-[18px] leading-[1.8] max-w-[620px]">
                 Transforming ideas into powerful brand identities, engaging
@@ -91,13 +93,16 @@ export default function Hero() {
                   Explore Our Work
                 </a>
 
-                <a
-                  href="#"
-                  className="h-[56px] px-8 rounded-full border border-black text-black text-[17px] font-medium inline-flex items-center gap-2"
-                >
-                  Start Your Project ↗
-                </a>
+               <a
+  href="#"
+  className="h-[56px] px-8 rounded-full border border-black text-black text-[17px] font-medium inline-flex items-center gap-2"
+>
+  Start Your Project
 
+  <span className="text-[18px] leading-none font-normal bg-transparent">
+    ↗
+  </span>
+</a>
               </div>
 
               {/* STATS */}
@@ -146,7 +151,6 @@ export default function Hero() {
             {/* RIGHT */}
             <div className="relative flex justify-center lg:justify-end">
 
-              {/* ROTATING TEXT CIRCLE */}
               <div className="absolute left-[7%] top-[53%] z-20">
 
                 <div className="relative w-[175px] h-[175px]">
@@ -180,14 +184,12 @@ export default function Hero() {
 
               </div>
 
-              {/* PERSON */}
               <img
                 src={person}
                 alt="Hero Person"
                 className="relative z-10 w-full max-w-[760px] object-contain"
               />
 
-              {/* GRID */}
               <div className="absolute bottom-[6%] right-[4%] w-[220px] h-[220px] opacity-20 bg-[linear-gradient(to_right,#999_1px,transparent_1px),linear-gradient(to_bottom,#999_1px,transparent_1px)] bg-[size:28px_28px]"></div>
 
             </div>

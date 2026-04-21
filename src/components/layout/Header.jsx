@@ -7,21 +7,18 @@ import {
   FaTimes,
   FaChevronDown,
 } from "react-icons/fa";
-
 import logo from "../../assets/logo-icon.png";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="absolute top-0 left-0 w-full z-50 bg-transparent">
+    <header className="absolute top-0 left-0 w-full z-50 bg-transparent shadow-[0_-8px_40px_rgba(10,143,255,0.04)]">
       <div className="max-w-[1900px] mx-auto px-[3px] pt-[3px]">
-
         {/* MAIN HEADER BAR */}
         <div className="h-[92px] px-[42px] bg-transparent border border-white/20 flex items-center justify-between">
-
           {/* LEFT LOGO */}
-          <a href="#" className="shrink-0">
+          <a href="#" className="shrink-0 mt-[45px]">
             <img
               src={logo}
               alt="Social X Studio"
@@ -30,8 +27,7 @@ export default function Header() {
           </a>
 
           {/* CENTER NAV */}
-          <nav className="hidden lg:flex items-center gap-[40px] text-[14px] font-medium text-black leading-none">
-
+          <nav className="hidden lg:flex items-center gap-[40px] text-[14px] font-medium text-black leading-none translate-y-[25px]">
             <a href="#" className="text-[#0a8fff]">
               Home
             </a>
@@ -48,28 +44,21 @@ export default function Header() {
             </a>
 
             <a href="#">Portfolio</a>
-
             <a href="#">Blogs</a>
-
             <a href="#">Contact</a>
-
           </nav>
 
           {/* RIGHT SIDE */}
           <div className="hidden lg:flex flex-col items-end justify-center gap-[11px]">
-
             {/* TOP MINI ROW */}
             <div className="flex items-center gap-[20px]">
-
               {/* TOGGLE */}
               <div className="flex items-center gap-[9px]">
                 <div className="w-[28px] h-[15px] bg-[#0a8fff] rounded-full relative">
                   <span className="absolute top-[2px] left-[15px] w-[11px] h-[11px] rounded-full bg-white"></span>
                 </div>
 
-                <span className="text-[14px] text-black">
-                  Light
-                </span>
+                <span className="text-[14px] text-black">Light</span>
               </div>
 
               {/* LANGUAGE */}
@@ -83,22 +72,29 @@ export default function Header() {
 
               {/* SOCIAL */}
               <div className="flex items-center gap-[16px] text-[15px] text-black">
-                <a href="#"><FaFacebookF /></a>
-                <a href="#"><FaInstagram /></a>
-                <a href="#"><FaLinkedinIn /></a>
+                <a href="#">
+                  <FaFacebookF />
+                </a>
+                <a href="#">
+                  <FaInstagram />
+                </a>
+                <a href="#">
+                  <FaLinkedinIn />
+                </a>
               </div>
-
             </div>
 
             {/* CTA BUTTON */}
             <a
-              href="#"
-              className="h-[40px] px-[26px] rounded-full bg-black text-white text-[14px] font-medium inline-flex items-center justify-center gap-2"
-            >
-              Lets Connect
-              <span className="text-[14px]">↗</span>
-            </a>
+  href="#"
+  className="h-[48px] px-[30px] rounded-full bg-black text-white text-[15px] font-medium inline-flex items-center justify-center gap-3"
+>
+  Lets Connect
 
+  <span className="text-[18px] leading-none font-normal">
+    ↗
+  </span>
+</a>
           </div>
 
           {/* MOBILE MENU ICON */}
@@ -108,7 +104,6 @@ export default function Header() {
           >
             <FaBars />
           </button>
-
         </div>
       </div>
 
@@ -116,7 +111,6 @@ export default function Header() {
       {open && (
         <div className="fixed inset-0 bg-black/60 z-50 lg:hidden">
           <div className="w-[300px] h-full bg-white ml-auto p-6">
-
             {/* CLOSE */}
             <div className="flex justify-end mb-8">
               <button
@@ -129,7 +123,6 @@ export default function Header() {
 
             {/* LINKS */}
             <div className="flex flex-col gap-6 text-[17px] font-medium">
-
               <a href="#">Home</a>
               <a href="#">About Us</a>
               <a href="#">Services</a>
@@ -143,9 +136,7 @@ export default function Header() {
               >
                 Lets Connect
               </a>
-
             </div>
-
           </div>
         </div>
       )}
