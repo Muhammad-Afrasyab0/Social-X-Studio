@@ -4,15 +4,14 @@ import Header from "../components/layout/Header";
 import Hero from "../components/sections/Hero";
 import StartHere from "../components/sections/StartHere";
 import WhoWeAre from "../components/sections/WhoWeAre";
-import Services from "../components/sections/Services";
-import TrustUs from "../components/sections/TrustUs";
-import SelectedWork from "../components/sections/SelectedWork";
-import Testimonial from "../components/sections/Testimonial";
-import WhyUs from "../components/sections/WhyUs";
+import Services from "../components/sections/services";
+import TrustUs from "../components/sections/trustus";
+import SelectedWork from "../components/sections/selectedwork";
+import Testimonial from "../components/sections/testimonial";
+import WhyUs from "../components/sections/whyus";
 import BlogsSection from "../components/sections/BlogsSection";
 import Contact from "../components/sections/Contact";
 import Footer from "../components/layout/Footer";
-
 
 export default function Home() {
   return (
