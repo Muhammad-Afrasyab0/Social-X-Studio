@@ -32,16 +32,18 @@ export default function Services() {
   ];
 
   return (
-    <section className="bg-[#0f1218] rounded-t-[26px] overflow-hidden mt-[12px]">
-      <div className="container"></div>
-      <div className="max-w-[1900px] mx-auto pt-[72px] pb-[40px]">
+    <section className="bg-[#0f1218] rounded-t-[26px] overflow-hidden -mt-[8px]">
+      {/* Header Alignment */}
+      <div className="max-w-[1900px] mx-auto px-[42px] pt-[72px] pb-[40px]">
 
         {/* TOP */}
-        <div className="px-[90px] flex items-start justify-between">
+        <div className="flex items-start justify-between">
           <div>
-            <p className="text-white text-[16px]">Our Services</p>
+            <p className="text-white text-[16px]">
+              Our Services
+            </p>
 
-            <h2 className="mt-[6px] text-white text-[56px] font-medium leading-none">
+            <h2 className="mt-[6px] text-white text-[56px] font-medium leading-none tracking-[-1px]">
               What We Do Best
             </h2>
           </div>
@@ -51,7 +53,10 @@ export default function Services() {
             className="mt-[18px] h-[46px] px-[28px] rounded-full border border-white/50 text-white text-[14px] inline-flex items-center gap-2"
           >
             Explore More
-            <span>↗</span>
+
+            <span className="text-[18px] leading-none font-light relative top-[-1px]">
+              ↗
+            </span>
           </a>
         </div>
 
@@ -64,7 +69,7 @@ export default function Services() {
               <div
                 key={index}
                 onMouseEnter={() => setActive(index)}
-                className="min-h-[155px] py-[22px] px-[90px] grid grid-cols-[70px_1fr_220px] items-center border-b border-white/10 cursor-pointer transition-all duration-300"
+                className="min-h-[155px] py-[22px] grid grid-cols-[70px_1fr_220px] items-center border-b border-white/10 cursor-pointer transition-all duration-300"
               >
                 {/* NUMBER */}
                 <span
@@ -78,7 +83,7 @@ export default function Services() {
                 {/* TITLE */}
                 <div>
                   <h3
-                    className={`text-[66px] leading-none font-light transition-all duration-300 ${
+                    className={`text-[66px] leading-none font-light tracking-[-1.5px] transition-all duration-300 ${
                       isActive ? "text-white" : "text-[#5e636b]"
                     }`}
                   >
@@ -95,7 +100,10 @@ export default function Services() {
                     }`}
                   >
                     See Details
-                    <span>↗</span>
+
+                    <span className="text-[15px] leading-none font-light relative top-[-1px]">
+                      ↗
+                    </span>
                   </a>
 
                   {/* ACTIVE BLUE UNDERLINE */}

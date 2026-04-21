@@ -20,7 +20,9 @@ export default function TrustUs() {
 
   return (
     <section className="w-full bg-[#efefef] overflow-hidden py-[58px]">
-      <div className="max-w-[1900px] mx-auto px-[25px]">
+      {/* Header Alignment */}
+      <div className="max-w-[1900px] mx-auto px-[42px]">
+
         {/* Heading */}
         <div className="text-center">
           <h2 className="text-black text-[38px] font-semibold leading-none tracking-[-1px]">
@@ -40,7 +42,9 @@ export default function TrustUs() {
                 key={index}
                 className="flex items-center gap-3 shrink-0 text-[#8f8f8f]"
               >
-                <span className="text-[24px]">{item.icon}</span>
+                <span className="text-[24px]">
+                  {item.icon}
+                </span>
 
                 <span className="text-[18px] font-medium">
                   {item.name}
@@ -52,6 +56,7 @@ export default function TrustUs() {
 
         {/* Bottom Border */}
         <div className="mt-[32px] border-t border-black/10"></div>
+
       </div>
 
       <style jsx>{`

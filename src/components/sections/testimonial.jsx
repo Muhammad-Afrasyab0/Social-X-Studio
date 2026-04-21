@@ -50,72 +50,75 @@ export default function Testimonial() {
   ];
 
   return (
-    <section className="w-full min-w-[1180px] bg-[#efefef] pt-[66px] pb-[72px]">
-      <div className="max-w-[1280px] mx-auto">
+    <section className="w-full bg-[#efefef] pt-[72px] pb-[78px]">
+      {/* Header Alignment */}
+      <div className="max-w-[1900px] mx-auto px-[42px]">
+
         {/* Header */}
         <div className="flex items-start justify-between mb-[56px]">
           <div>
-            <p className="text-[12px] font-semibold text-black mb-[8px]">
+            <p className="text-[16px] font-medium text-black mb-[10px]">
               Testimonials
             </p>
 
-            <h2 className="text-[43px] leading-[1] tracking-[-1.6px] font-medium text-black">
+            <h2 className="text-[56px] leading-none tracking-[-1.8px] font-medium text-black">
               What Our Client Say
             </h2>
           </div>
 
           {/* Navigation */}
-          <div className="flex gap-[10px] mt-[4px]">
+          <div className="flex gap-[12px] mt-[8px]">
             <button
               onClick={prevSlide}
-              className="w-[39px] h-[39px] rounded-full bg-[#d9d9d9] flex items-center justify-center"
+              className="w-[46px] h-[46px] rounded-full bg-[#d9d9d9] flex items-center justify-center"
             >
-              <ArrowLeft size={15} strokeWidth={2.1} />
+              <ArrowLeft size={18} strokeWidth={2.1} />
             </button>
 
             <button
               onClick={nextSlide}
-              className="w-[39px] h-[39px] rounded-full bg-[#d9d9d9] flex items-center justify-center"
+              className="w-[46px] h-[46px] rounded-full bg-[#d9d9d9] flex items-center justify-center"
             >
-              <ArrowRight size={15} strokeWidth={2.1} />
+              <ArrowRight size={18} strokeWidth={2.1} />
             </button>
           </div>
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-2 gap-[42px]">
+        <div className="grid grid-cols-2 gap-[36px]">
           {visibleCards.map((item) => (
             <div
               key={item.id}
-              className="bg-[#e7e7e7] rounded-[8px] h-[250px] px-[42px] pt-[30px] pb-[28px] flex flex-col justify-between"
+              className="bg-[#e7e7e7] rounded-[10px] min-h-[290px] px-[42px] pt-[34px] pb-[30px] flex flex-col justify-between"
             >
               {/* Review */}
               <div>
-                <div className="text-[42px] leading-none font-bold text-black mb-[10px]">
+                <div className="text-[48px] leading-none font-bold text-black mb-[12px]">
                   ❝
                 </div>
 
-                <p className="text-[15px] leading-[1.65] text-black/80 max-w-[360px]">
+                <p className="text-[18px] leading-[1.75] text-black/80 max-w-[520px]">
                   {item.review}
                 </p>
               </div>
 
               {/* Footer */}
-              <div className="flex items-end justify-between">
+              <div className="flex items-end justify-between mt-[28px]">
+
                 {/* Client */}
-                <div className="flex items-center gap-[11px]">
+                <div className="flex items-center gap-[12px]">
                   <img
                     src={item.image}
                     alt={item.name}
-                    className="w-[47px] h-[47px] rounded-[4px] object-cover"
+                    className="w-[52px] h-[52px] rounded-[6px] object-cover"
                   />
 
                   <div>
-                    <h4 className="text-[14px] font-semibold leading-none text-black">
+                    <h4 className="text-[16px] font-semibold leading-none text-black">
                       {item.name}
                     </h4>
 
-                    <p className="text-[12px] text-black/45 mt-[5px]">
+                    <p className="text-[13px] text-black/45 mt-[6px]">
                       {item.role}
                     </p>
                   </div>
@@ -123,18 +126,20 @@ export default function Testimonial() {
 
                 {/* Rating */}
                 <div className="text-right">
-                  <div className="text-[#f2c300] text-[14px] leading-none tracking-[1px]">
+                  <div className="text-[#f2c300] text-[16px] leading-none tracking-[1px]">
                     ★★★★★
                   </div>
 
-                  <p className="text-[11px] text-black/45 mt-[5px]">
-                    5 Star Raiting
+                  <p className="text-[12px] text-black/45 mt-[6px]">
+                    5 Star Rating
                   </p>
                 </div>
+
               </div>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
