@@ -35,45 +35,44 @@ const projects = [
 export default function SelectedWork() {
   return (
     <section className="w-full bg-[#efefef] py-[90px]">
-      {/* Header Alignment */}
       <div className="max-w-[1900px] mx-auto px-[42px]">
 
-        {/* Heading */}
+        {/* TOP */}
         <div className="flex items-start justify-between mb-[70px]">
           <div>
-            <p className="text-[16px] font-medium text-black/70 mb-[10px]">
+            <p className="text-[16px] text-black/70 mb-[10px] font-medium">
               Our Portfolio
             </p>
 
-            <h2 className="text-[58px] font-semibold leading-none tracking-[-1.6px]">
+            <h2 className="text-[58px] font-semibold leading-none tracking-[-1.8px]">
               Selected Work
             </h2>
           </div>
 
-          <button className="mt-[10px] h-[48px] px-[28px] rounded-full border border-black/20 text-[15px] font-medium inline-flex items-center gap-[8px]">
-            <span>See All Work</span>
+          <button className="h-[48px] px-[30px] rounded-full bg-black text-white text-[15px] font-medium inline-flex items-center justify-center gap-3">
+            See All Work
 
-            <span className="text-[18px] leading-none font-light relative top-[-1px]">
+            <span className="text-[18px] leading-none font-normal">
               ↗
             </span>
           </button>
         </div>
 
-        {/* Projects */}
-        <div className="space-y-[90px]">
+        {/* PROJECTS */}
+        <div className="space-y-[70px]">
           {projects.map((item, index) => {
             const reverse = index % 2 !== 0;
 
             return (
               <div
                 key={item.id}
-                className="grid grid-cols-1 lg:grid-cols-2 gap-[80px] items-center"
+                className="grid grid-cols-2 gap-[70px] items-center"
               >
                 {reverse ? (
                   <>
-                    {/* Text Left */}
+                    {/* TEXT */}
                     <div>
-                      <h3 className="text-[90px] font-semibold text-black/10 leading-none tracking-[-3px]">
+                      <h3 className="text-[86px] font-semibold text-black/10 leading-none">
                         {item.id},
                       </h3>
 
@@ -85,38 +84,38 @@ export default function SelectedWork() {
                         {item.desc}
                       </p>
 
-                      <button className="mt-[28px] h-[48px] px-[26px] rounded-full border border-black/20 text-[15px] font-medium inline-flex items-center gap-[8px]">
-                        <span>View Full Project</span>
+                      <button className="mt-[28px] h-[48px] px-[30px] rounded-full bg-black text-white text-[15px] font-medium inline-flex items-center justify-center gap-3">
+                        View Full Project
 
-                        <span className="text-[18px] leading-none font-light relative top-[-1px]">
+                        <span className="text-[18px] leading-none font-normal">
                           ↗
                         </span>
                       </button>
                     </div>
 
-                    {/* Image Right */}
+                    {/* IMAGE */}
                     <div>
                       <img
                         src={item.image}
                         alt={item.title}
-                        className="w-full h-[430px] object-cover rounded-[8px]"
+                        className="w-full h-[480px] object-contain rounded-[12px]"
                       />
                     </div>
                   </>
                 ) : (
                   <>
-                    {/* Image Left */}
+                    {/* IMAGE */}
                     <div>
                       <img
                         src={item.image}
                         alt={item.title}
-                        className="w-full h-[430px] object-cover rounded-[8px]"
+                        className="w-full h-[480px] object-contain rounded-[12px]"
                       />
                     </div>
 
-                    {/* Text Right */}
+                    {/* TEXT */}
                     <div>
-                      <h3 className="text-[90px] font-semibold text-black/10 leading-none tracking-[-3px]">
+                      <h3 className="text-[86px] font-semibold text-black/10 leading-none">
                         {item.id},
                       </h3>
 
@@ -128,10 +127,10 @@ export default function SelectedWork() {
                         {item.desc}
                       </p>
 
-                      <button className="mt-[28px] h-[48px] px-[26px] rounded-full border border-black/20 text-[15px] font-medium inline-flex items-center gap-[8px]">
-                        <span>View Full Project</span>
+                      <button className="mt-[28px] h-[48px] px-[30px] rounded-full bg-black text-white text-[15px] font-medium inline-flex items-center justify-center gap-3">
+                        View Full Project
 
-                        <span className="text-[18px] leading-none font-light relative top-[-1px]">
+                        <span className="text-[18px] leading-none font-normal">
                           ↗
                         </span>
                       </button>
