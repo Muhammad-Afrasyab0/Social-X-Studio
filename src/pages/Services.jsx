@@ -1,7 +1,7 @@
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 
-import Services from "../components/sections/ServicesSection";
+import ServicesSection from "../components/sections/ServicesSection";
 import ServicesShowcase from "../components/sections/ServicesShowcase";
 
 export default function ServicesPage() {
@@ -9,12 +9,8 @@ export default function ServicesPage() {
     <>
       <Header />
 
-      {/* ===================================== */}
-      {/* BREADCRUMB */}
-      {/* ===================================== */}
-      <section className="bg-[#efefef] pt-[150px] pb-[85px] border-b-[6px] border-[#0a8fff] relative z-20">
+      <section className="bg-[#efefef] pt-[150px] pb-[85px] border-b-[6px] border-[#0a8fff]">
         <div className="max-w-[1900px] mx-auto px-[42px] flex items-end justify-between">
-
           <h1 className="text-[72px] font-semibold leading-none">
             Our Services
           </h1>
@@ -24,28 +20,10 @@ export default function ServicesPage() {
             <span>/</span>
             <span className="underline">Services</span>
           </div>
-
         </div>
       </section>
 
-      {/* ===================================== */}
-      {/* GAP SO BLUE LINE FULLY SHOWS */}
-      {/* ===================================== */}
-      <div className="h-[28px] bg-[#efefef]"></div>
-
-      {/* ===================================== */}
-      {/* SERVICES */}
-      {/* ===================================== */}
       <ServicesSection />
-
-      {/* ===================================== */}
-      {/* GAP */}
-      {/* ===================================== */}
-      <div className="h-[34px] bg-[#efefef]"></div>
-
-      {/* ===================================== */}
-      {/* SERVICES SHOWCASE */}
-      {/* ===================================== */}
       <ServicesShowcase />
 
       <Footer />
