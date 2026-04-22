@@ -48,87 +48,92 @@ export default function BlogsSection() {
   ];
 
   return (
-    <>
-      <section className="w-full bg-[#f3f3f3] py-[90px]">
-        <div className="max-w-[1900px] mx-auto px-[42px] grid grid-cols-[420px_1fr] gap-[60px]">
+    <section className="w-full bg-[#f3f3f3] dark:bg-[#111111] py-[90px] transition-all duration-500">
+      <div className="max-w-[1900px] mx-auto px-[42px] grid grid-cols-[420px_1fr] gap-[60px]">
 
-          {/* LEFT */}
-          <div className="pt-[6px]">
-            <p className="text-[16px] text-black mb-[14px] font-medium">
-              Blogs
-            </p>
+        {/* LEFT */}
+        <div className="pt-[6px]">
 
-            <h2 className="text-[58px] leading-[1.02] font-semibold tracking-[-1.8px] text-black mb-[42px]">
-              Insights That Drive Growth
-            </h2>
+          <p className="text-[16px] text-black dark:text-white mb-[14px] font-medium transition-all duration-500">
+            Blogs
+          </p>
 
-            <a
-              href="#"
-              className="h-[48px] px-[30px] rounded-full bg-black text-white text-[15px] font-medium inline-flex items-center justify-center gap-3"
+          <h2 className="text-[58px] leading-[1.02] font-semibold tracking-[-1.8px] text-black dark:text-white mb-[42px] transition-all duration-500">
+            Insights That Drive Growth
+          </h2>
+
+          <a
+            href="#"
+            className="h-[48px] px-[30px] rounded-full bg-black text-white dark:bg-white dark:text-black text-[15px] font-medium inline-flex items-center justify-center gap-3 transition-all duration-500"
+          >
+            View All Blogs
+
+            <span className="text-[18px] leading-none font-normal">
+              ↗
+            </span>
+          </a>
+
+          <div className="mt-[90px] flex gap-[14px]">
+
+            <button
+              onClick={prevSlide}
+              className="w-[46px] h-[46px] rounded-full bg-[#d9d9d9] dark:bg-[#1f1f1f] text-black dark:text-white flex items-center justify-center transition-all duration-500"
             >
-              View All Blogs
+              <ArrowLeft size={18} strokeWidth={2.1} />
+            </button>
 
-              <span className="text-[18px] leading-none font-normal">
-                ↗
-              </span>
-            </a>
+            <button
+              onClick={nextSlide}
+              className="w-[46px] h-[46px] rounded-full bg-[#d9d9d9] dark:bg-[#1f1f1f] text-black dark:text-white flex items-center justify-center transition-all duration-500"
+            >
+              <ArrowRight size={18} strokeWidth={2.1} />
+            </button>
 
-            <div className="mt-[90px] flex gap-[14px]">
-              <button
-                onClick={prevSlide}
-                className="w-[46px] h-[46px] rounded-full bg-[#d9d9d9] flex items-center justify-center"
-              >
-                <ArrowLeft size={18} strokeWidth={2.1} />
-              </button>
-
-              <button
-                onClick={nextSlide}
-                className="w-[46px] h-[46px] rounded-full bg-[#d9d9d9] flex items-center justify-center"
-              >
-                <ArrowRight size={18} strokeWidth={2.1} />
-              </button>
-            </div>
           </div>
+        </div>
 
-          {/* RIGHT */}
-          <div className="grid grid-cols-2 gap-[28px]">
-            {visibleBlogs.map((item) => (
-              <div key={item.id}>
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-[300px] rounded-[12px] object-cover"
-                />
+        {/* RIGHT */}
+        <div className="grid grid-cols-2 gap-[28px]">
 
-                <div className="mt-[16px] flex items-center gap-[10px] text-[16px] text-black">
-                  <span className="w-[8px] h-[8px] bg-black rounded-full"></span>
-                  <span>{item.date}</span>
-                </div>
+          {visibleBlogs.map((item) => (
+            <div key={item.id}>
 
-                <h3 className="mt-[14px] text-[42px] leading-[1.05] font-semibold tracking-[-1px] text-black">
-                  {item.title}
-                </h3>
+              <img
+                src={item.image}
+                alt={item.title}
+                className="w-full h-[300px] rounded-[12px] object-cover"
+              />
 
-                <p className="mt-[16px] text-[17px] leading-[1.7] text-black/70">
-                  {item.desc}
-                </p>
-
-                <a
-                  href="#"
-                  className="mt-[22px] h-[48px] px-[30px] rounded-full bg-black text-white text-[15px] font-medium inline-flex items-center justify-center gap-3"
-                >
-                  Read More
-
-                  <span className="text-[18px] leading-none font-normal">
-                    ↗
-                  </span>
-                </a>
+              <div className="mt-[16px] flex items-center gap-[10px] text-[16px] text-black dark:text-white transition-all duration-500">
+                <span className="w-[8px] h-[8px] bg-black dark:bg-white rounded-full transition-all duration-500"></span>
+                <span>{item.date}</span>
               </div>
-            ))}
-          </div>
+
+              <h3 className="mt-[14px] text-[42px] leading-[1.05] font-semibold tracking-[-1px] text-black dark:text-white transition-all duration-500">
+                {item.title}
+              </h3>
+
+              <p className="mt-[16px] text-[17px] leading-[1.7] text-black/70 dark:text-white/70 transition-all duration-500">
+                {item.desc}
+              </p>
+
+              <a
+                href="#"
+                className="mt-[22px] h-[48px] px-[30px] rounded-full bg-black text-white dark:bg-white dark:text-black text-[15px] font-medium inline-flex items-center justify-center gap-3 transition-all duration-500"
+              >
+                Read More
+
+                <span className="text-[18px] leading-none font-normal">
+                  ↗
+                </span>
+              </a>
+
+            </div>
+          ))}
 
         </div>
-      </section>
-    </>
+
+      </div>
+    </section>
   );
 }

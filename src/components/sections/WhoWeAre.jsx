@@ -2,7 +2,8 @@ import logo from "../../assets/x.png";
 
 export default function WhoWeAre() {
   return (
-    <section className="bg-[#efefef] min-h-[640px] max-h-[640px] pt-[58px] overflow-hidden">
+    <section className="bg-[#efefef] dark:bg-[#111111] min-h-[640px] max-h-[640px] pt-[58px] overflow-hidden transition-all duration-500">
+
       {/* Header Exact Alignment */}
       <div className="max-w-[1900px] mx-auto px-[42px] h-full flex flex-col justify-between">
 
@@ -11,14 +12,14 @@ export default function WhoWeAre() {
 
           {/* LEFT */}
           <div>
-            <h3 className="text-black text-[18px] font-semibold leading-none mt-[8px] tracking-[-0.2px]">
+            <h3 className="text-black dark:text-white text-[18px] font-semibold leading-none mt-[8px] tracking-[-0.2px] transition-all duration-500">
               Who We Are
             </h3>
           </div>
 
           {/* RIGHT */}
           <div>
-            <h2 className="text-black text-[52px] leading-[1.08] font-semibold max-w-[900px] tracking-[-2px]">
+            <h2 className="text-black dark:text-white text-[52px] leading-[1.08] font-semibold max-w-[900px] tracking-[-2px] transition-all duration-500">
               We create strategic designs and innovative solutions that help
               brands stand out.
             </h2>
@@ -41,24 +42,26 @@ export default function WhoWeAre() {
           {/* CENTER */}
           <div>
             <div className="flex items-start leading-none">
-              <span className="text-black text-[138px] font-bold tracking-[-7px]">
+
+              <span className="text-black dark:text-white text-[138px] font-bold tracking-[-7px] transition-all duration-500">
                 15
               </span>
 
-              <span className="text-black text-[46px] font-semibold mt-[10px] ml-[3px]">
+              <span className="text-black dark:text-white text-[46px] font-semibold mt-[10px] ml-[3px] transition-all duration-500">
                 M
               </span>
+
             </div>
 
-            <p className="text-[#4f4f4f] text-[18px] leading-[1.55] max-w-[300px] -mt-[2px] tracking-[-0.2px]">
+            <p className="text-[#4f4f4f] dark:text-white/70 text-[18px] leading-[1.55] max-w-[300px] -mt-[2px] tracking-[-0.2px] transition-all duration-500">
               We help brands scale like companies valued at 15M+
             </p>
           </div>
 
           {/* RIGHT CONTENT */}
-          <div className="border-l border-[#d5d5d5] pl-[55px] pb-[6px]">
+          <div className="border-l border-[#d5d5d5] dark:border-white/10 pl-[55px] pb-[6px] transition-all duration-500">
 
-            <p className="text-[#4f4f4f] text-[18px] leading-[1.9] max-w-[470px] tracking-[-0.15px]">
+            <p className="text-[#4f4f4f] dark:text-white/70 text-[18px] leading-[1.9] max-w-[470px] tracking-[-0.15px] transition-all duration-500">
               We are a forward-thinking digital agency focused on delivering
               strategic design, innovative solutions, and measurable results.
               Our team blends creativity with technology to build brands that
@@ -67,7 +70,7 @@ export default function WhoWeAre() {
 
             <a
               href="#"
-              className="mt-[34px] h-[56px] px-[32px] rounded-full bg-black text-white text-[16px] font-medium inline-flex items-center justify-center gap-[10px]"
+              className="mt-[34px] h-[56px] px-[32px] rounded-full bg-black text-white dark:bg-white dark:text-black text-[16px] font-medium inline-flex items-center justify-center gap-[10px] transition-all duration-500"
             >
               <span>Explore More</span>
 

@@ -5,6 +5,8 @@ import {
   FaArrowUp,
 } from "react-icons/fa";
 
+import { Link } from "react-router-dom";
+
 import logo from "../../assets/logo.png";
 import watermark from "../../assets/logo-watermark.png";
 
@@ -17,8 +19,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="w-full bg-[#efefef] pt-[16px] pb-0">
-
+    <footer className="w-full bg-[#efefef] pt-0 pb-0 -mt-[1px]">
       {/* WRAPPER */}
       <div className="max-w-[1900px] mx-auto">
 
@@ -37,21 +38,20 @@ export default function Footer() {
               />
 
               <h3 className="mt-[34px] text-white text-[26px] font-semibold leading-[1.2] tracking-[-0.5px]">
-                Do You Like What Your See?
+                Do You Like What You See?
               </h3>
 
               <p className="mt-[14px] text-white/70 text-[15px] leading-[1.7] max-w-[360px]">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                sed do eiusmod tempor incididunt
+                sed do eiusmod tempor incididunt.
               </p>
 
               <a
                 href="#"
-                className="mt-[28px] h-[42px] px-[20px] rounded-full border border-white/70 text-white text-[14px] font-medium inline-flex items-center gap-3"
+                className="mt-[28px] h-[48px] px-[30px] rounded-full border border-white/70 text-white text-[15px] font-medium inline-flex items-center justify-center gap-3 hover:bg-white hover:text-black duration-300"
               >
                 Book Your Free Consultation Call
-
-                <span className="text-[16px] leading-none">
+                <span className="text-[18px] leading-none font-normal">
                   ↗
                 </span>
               </a>
@@ -64,12 +64,12 @@ export default function Footer() {
               </h4>
 
               <ul className="space-y-[14px] text-white/90 text-[15px]">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Portfolio</a></li>
-                <li><a href="#">Blogs</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/about">About Us</Link></li>
+                <li><Link to="/services">Services</Link></li>
+                <li><Link to="/portfolio">Portfolio</Link></li>
+                <li><Link to="/blogs">Blogs</Link></li>
+                <li><Link to="/contact">Contact</Link></li>
               </ul>
             </div>
 
@@ -80,12 +80,12 @@ export default function Footer() {
               </h4>
 
               <ul className="space-y-[14px] text-white/90 text-[15px]">
-                <li><a href="#">Lorem Ipsum</a></li>
-                <li><a href="#">Lorem Ipsum</a></li>
-                <li><a href="#">Lorem Ipsum</a></li>
-                <li><a href="#">Lorem Ipsum</a></li>
-                <li><a href="#">Lorem Ipsum</a></li>
-                <li><a href="#">Lorem Ipsum</a></li>
+                <li><Link to="/web-development">Web Development</Link></li>
+                <li><a href="#">SEO</a></li>
+                <li><a href="#">UI UX Design</a></li>
+                <li><a href="#">Branding</a></li>
+                <li><a href="#">Marketing</a></li>
+                <li><a href="#">Support</a></li>
               </ul>
             </div>
 
@@ -96,15 +96,13 @@ export default function Footer() {
               </h4>
 
               <p className="text-white/75 text-[13px] leading-[1.6] mb-[18px]">
-                Contact with us Via Out Social
+                Contact with us via our social channels
               </p>
 
               <div className="flex gap-[10px] mb-[22px]">
-
                 <Social icon={<FaFacebookF />} />
                 <Social icon={<FaInstagram />} />
                 <Social icon={<FaLinkedinIn />} />
-
               </div>
 
               <p className="text-white/85 text-[14px] leading-[1.55]">
@@ -121,7 +119,7 @@ export default function Footer() {
             <img
               src={watermark}
               alt="Watermark"
-              className="w-full max-w-[760px] object-contain opacity-35"
+              className="w-full max-w-[980px] object-contain opacity-35"
             />
           </div>
 
@@ -134,7 +132,7 @@ export default function Footer() {
 
             <button
               onClick={scrollTop}
-              className="absolute right-[32px] w-[42px] h-[42px] rounded-full border border-white/70 text-white flex items-center justify-center text-[14px]"
+              className="absolute right-[32px] w-[42px] h-[42px] rounded-full border border-white/70 text-white flex items-center justify-center text-[14px] hover:bg-white hover:text-black duration-300"
             >
               <FaArrowUp />
             </button>
@@ -142,7 +140,6 @@ export default function Footer() {
           </div>
 
         </div>
-
       </div>
     </footer>
   );
@@ -152,7 +149,7 @@ function Social({ icon }) {
   return (
     <a
       href="#"
-      className="w-[38px] h-[38px] rounded-full bg-[#2c2c2c] text-white text-[15px] flex items-center justify-center"
+      className="w-[38px] h-[38px] rounded-full bg-[#2c2c2c] text-white text-[15px] flex items-center justify-center hover:bg-white hover:text-black duration-300"
     >
       {icon}
     </a>

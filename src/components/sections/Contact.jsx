@@ -9,8 +9,7 @@ import {
 export default function Contact() {
   return (
     <section
-      className="w-full min-h-screen py-[70px]"
-      style={{ backgroundColor: "#008CF4" }}
+      className="w-full min-h-screen py-[70px] bg-[#008CF4] dark:bg-[#0b0b0b] transition-all duration-500"
     >
       <div className="max-w-[1900px] mx-auto px-[42px] grid grid-cols-2 gap-[90px] items-center">
 
@@ -77,7 +76,7 @@ export default function Contact() {
         {/* RIGHT SIDE */}
         <div className="max-w-[760px] ml-auto w-full">
 
-          <div className="rounded-[38px] border border-white/20 bg-white/10 backdrop-blur-md px-[48px] pt-[52px] pb-[42px]">
+          <div className="rounded-[38px] border border-white/20 bg-white/10 dark:bg-white/[0.04] backdrop-blur-md px-[48px] pt-[52px] pb-[42px] transition-all duration-500">
 
             {/* ROW 1 */}
             <div className="grid grid-cols-2 gap-[34px]">
@@ -106,7 +105,7 @@ export default function Contact() {
             </label>
 
             {/* BUTTON */}
-            <button className="mt-[90px] h-[58px] px-[34px] rounded-full border border-white/60 text-white text-[22px] font-medium inline-flex items-center gap-3 hover:bg-white hover:text-[#008CF4] transition-all duration-300">
+            <button className="mt-[90px] h-[58px] px-[34px] rounded-full border border-white/60 text-white dark:bg-white dark:text-black dark:border-white text-[22px] font-medium inline-flex items-center gap-3 hover:bg-white hover:text-[#008CF4] dark:hover:bg-[#008CF4] dark:hover:text-white transition-all duration-300">
               Send Now
               <span className="text-[24px] leading-none">↗</span>
             </button>
@@ -145,6 +144,7 @@ function SocialIcon({ icon }) {
 function Info({ icon, title, text }) {
   return (
     <div className="flex items-start gap-[18px]">
+
       <div className="mt-[3px] text-white">
         {icon}
       </div>
@@ -158,6 +158,7 @@ function Info({ icon, title, text }) {
           {text}
         </p>
       </div>
+
     </div>
   );
 }

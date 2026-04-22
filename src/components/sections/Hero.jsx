@@ -43,17 +43,16 @@ export default function Hero() {
         `}
       </style>
 
-      <section className="relative overflow-hidden bg-[#eef3f7]">
+      <section className="relative overflow-hidden bg-[#eef3f7] dark:bg-[#111111] transition-all duration-500">
 
-        {/* ONLY PATTERN FIXED */}
+        {/* PATTERN */}
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 opacity-100 dark:opacity-10"
           style={{
             backgroundImage: `url(${pattern})`,
             backgroundRepeat: "repeat",
             backgroundSize: "180px auto",
             backgroundPosition: "top left",
-            opacity: 1,
           }}
         ></div>
 
@@ -65,22 +64,22 @@ export default function Hero() {
             {/* LEFT */}
             <div className="max-w-[760px]">
 
-              <h1 className="text-black font-black leading-[0.88] tracking-[-3px] text-[72px] md:text-[98px]">
+              <h1 className="text-black dark:text-white font-black leading-[0.88] tracking-[-3px] text-[72px] md:text-[98px] transition-all duration-500">
                 Build Your
               </h1>
 
-              {/* ONLY LINE ADDED */}
-       <h2 className="relative inline-block text-black font-black leading-[0.92] tracking-[-2px] text-[44px] md:text-[66px] mt-1 z-10">
-  <span className="relative z-10">Brand Beyond Limits</span>
+              <h2 className="relative inline-block text-black dark:text-white font-black leading-[0.92] tracking-[-2px] text-[44px] md:text-[66px] mt-1 z-10 transition-all duration-500">
+                <span className="relative z-10">
+                  Brand Beyond Limits
+                </span>
 
-  {/* LOWER MORE */}
-  <span className="absolute left-0 right-0 bottom-[2px] h-[10px] bg-[#0a8fff] z-0"></span>
-</h2>
+                <span className="absolute left-0 right-0 bottom-[2px] h-[10px] bg-[#0a8fff] z-0"></span>
+              </h2>
 
-              <p className="mt-7 text-[#555] text-[18px] leading-[1.8] max-w-[620px]">
-                Transforming ideas into powerful brand identities, engaging
-                websites, and meaningful digital interactions that drive real
-                growth.
+              <p className="mt-7 text-[#555] dark:text-white/70 text-[18px] leading-[1.8] max-w-[620px] transition-all duration-500">
+                Transforming ideas into powerful brand identities,
+                engaging websites, and meaningful digital interactions
+                that drive real growth.
               </p>
 
               {/* BUTTONS */}
@@ -93,38 +92,45 @@ export default function Hero() {
                   Explore Our Work
                 </a>
 
-               <a
-  href="#"
-  className="h-[56px] px-8 rounded-full border border-black text-black text-[17px] font-medium inline-flex items-center gap-2"
->
-  Start Your Project
+                <a
+                  href="#"
+                  className="h-[56px] px-8 rounded-full border border-black dark:border-white text-black dark:text-white text-[17px] font-medium inline-flex items-center gap-2 transition-all duration-500"
+                >
+                  Start Your Project
 
-  <span className="text-[18px] leading-none font-normal bg-transparent">
-    ↗
-  </span>
-</a>
+                  <span className="text-[18px] leading-none font-normal">
+                    ↗
+                  </span>
+                </a>
+
               </div>
 
               {/* STATS */}
               <div className="mt-14 grid grid-cols-3 gap-8 max-w-[650px]">
 
                 <div>
-                  <h3 className="text-[58px] font-bold leading-none">120+</h3>
-                  <p className="mt-2 text-[17px] text-[#555]">
+                  <h3 className="text-[58px] font-bold leading-none text-black dark:text-white">
+                    120+
+                  </h3>
+                  <p className="mt-2 text-[17px] text-[#555] dark:text-white/70">
                     Project Delivered
                   </p>
                 </div>
 
                 <div>
-                  <h3 className="text-[58px] font-bold leading-none">98%</h3>
-                  <p className="mt-2 text-[17px] text-[#555]">
+                  <h3 className="text-[58px] font-bold leading-none text-black dark:text-white">
+                    98%
+                  </h3>
+                  <p className="mt-2 text-[17px] text-[#555] dark:text-white/70">
                     Client Satisfaction Rate
                   </p>
                 </div>
 
                 <div>
-                  <h3 className="text-[58px] font-bold leading-none">15+</h3>
-                  <p className="mt-2 text-[17px] text-[#555]">
+                  <h3 className="text-[58px] font-bold leading-none text-black dark:text-white">
+                    15+
+                  </h3>
+                  <p className="mt-2 text-[17px] text-[#555] dark:text-white/70">
                     Years Of Experience
                   </p>
                 </div>
@@ -140,7 +146,7 @@ export default function Hero() {
                   <img src="https://i.pravatar.cc/100?img=15" className="w-11 h-11 rounded-full border-2 border-white object-cover" />
                 </div>
 
-                <p className="text-[16px]">
+                <p className="text-[16px] text-black dark:text-white">
                   <span className="font-semibold">1k+</span> Positive feedback
                 </p>
 
@@ -167,7 +173,8 @@ export default function Hero() {
                     </defs>
 
                     <text
-                      fill="#111"
+                      fill="currentColor"
+                      className="text-black dark:text-white"
                       fontSize="14"
                       fontWeight="700"
                       letterSpacing="1.5"
@@ -197,7 +204,7 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* MOVING BLUE STRIP */}
+        {/* BLUE STRIP */}
         <div className="bg-[#0a8fff] h-[72px] flex items-center">
 
           <div className="ticker-wrap">
