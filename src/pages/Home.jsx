@@ -4,7 +4,7 @@ import Header from "../components/layout/Header";
 import Hero from "../components/sections/Hero";
 import StartHere from "../components/sections/StartHere";
 import WhoWeAre from "../components/sections/WhoWeAre";
-import Services from "../components/sections/services";
+import Services from "../components/sections/ServicesSection";
 import TrustUs from "../components/sections/trustus";
 import SelectedWork from "../components/sections/selectedwork";
 import Testimonial from "../components/sections/testimonial";

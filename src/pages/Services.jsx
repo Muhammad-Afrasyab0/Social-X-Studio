@@ -1,7 +1,7 @@
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 
-import Services from "../components/sections/Services";
+import Services from "../components/sections/ServicesSection";
 import ServicesShowcase from "../components/sections/ServicesShowcase";
 
 export default function ServicesPage() {
@@ -36,7 +36,7 @@ export default function ServicesPage() {
       {/* ===================================== */}
       {/* SERVICES */}
       {/* ===================================== */}
-      <Services />
+      <ServicesSection />
 
       {/* ===================================== */}
       {/* GAP */}
