@@ -4,7 +4,7 @@ import Footer from "../components/layout/Footer";
 import AboutIntro from "../components/sections/AboutIntro";
 import VisionMission from "../components/sections/VisionMission";
 import StatsCounter from "../components/sections/StatsCounter";
-import Testimonial from "../components/sections/Testimonial";
+import Testimonial from "../components/sections/testimonial";
 
 export default function About() {
   return (
