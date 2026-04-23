@@ -1,104 +1,144 @@
-import React from "react";
-import buildingImg from "../../assets/about-image.png"; // same image use yours
+import logo from "../../assets/x.png";
 
-export default function AboutIntro() {
+export default function WhoWeAre() {
   return (
-    <section className="w-full bg-[#efefef] py-[92px] overflow-hidden">
-      {/* HEADER ALIGNMENT */}
-      <div className="max-w-[1900px] mx-auto px-[42px]">
+    <>
+      <style>
+        {`
+        .fade-up{
+          opacity:0;
+          transform:translateY(24px);
+          animation:fadeUp .8s ease forwards;
+        }
 
-        <div className="grid grid-cols-2 gap-[70px] items-start">
+        @keyframes fadeUp{
+          to{
+            opacity:1;
+            transform:translateY(0);
+          }
+        }
 
-          {/* LEFT SIDE */}
-          <div className="pt-[8px]">
+        .img-hover img{
+          transition:transform .7s ease;
+        }
 
-            <p className="text-black text-[18px] font-medium mb-[24px]">
-              Who We Are
-            </p>
+        .img-hover:hover img{
+          transform:scale(1.03);
+        }
 
-            <h2 className="text-[64px] leading-[1.05] font-semibold tracking-[-2px] text-black max-w-[760px]">
-              We create strategic designs and innovative solutions that help brands stand out.
-            </h2>
+        .float-logo{
+          animation:floatLogo 6s ease-in-out infinite;
+        }
 
-            <p className="mt-[28px] text-[20px] leading-[1.9] text-black/70 max-w-[690px]">
-              We are a forward-thinking digital agency focused on delivering strategic
-              design, innovative solutions, and measurable results. Our team blends
-              creativity with technology to build brands that stand out in a
-              competitive world.
-            </p>
+        @keyframes floatLogo{
+          0%,100%{transform:translateY(0);}
+          50%{transform:translateY(-7px);}
+        }
+        `}
+      </style>
 
-            <a
-              href="#"
-              className="mt-[38px] h-[54px] px-[28px] rounded-full bg-black text-white text-[16px] font-medium inline-flex items-center gap-3"
+      <section className="w-full bg-[#efefef] dark:bg-[#111111] py-[70px] sm:py-[85px] lg:py-[95px] transition-all duration-500 overflow-hidden">
+        {/* Header aligned container */}
+        <div className="w-full max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
+
+          {/* TOP GRID */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-[36px] lg:gap-[52px] items-start">
+
+            {/* LEFT */}
+            <div className="fade-up">
+
+              <p className="text-[15px] sm:text-[18px] font-semibold text-black dark:text-white mb-[20px] sm:mb-[26px]">
+                Who We Are
+              </p>
+
+              <h2 className="text-black dark:text-white text-[34px] sm:text-[48px] lg:text-[58px] leading-[1.06] font-semibold tracking-[-1.8px] max-w-[620px]">
+                We create strategic designs and innovative solutions that help brands stand out.
+              </h2>
+
+              <p className="mt-[26px] text-black/75 dark:text-white/70 text-[15px] sm:text-[17px] lg:text-[18px] leading-[1.85] max-w-[620px]">
+                We are a forward-thinking digital agency focused on delivering strategic
+                design, innovative solutions, and measurable results. Our team blends
+                creativity with technology to build brands that stand out in a competitive
+                world.We are a forward-thinking digital agency focused on delivering
+                strategic design, innovative solutions, and measurable results. Our team
+                blends creativity with technology to build brands that stand out in a
+                competitive world.
+              </p>
+
+            </div>
+
+            {/* RIGHT IMAGE */}
+            <div
+              className="fade-up relative"
+              style={{ animationDelay: "140ms" }}
             >
-              Contact Us
-              <span className="text-[18px] leading-none">↗</span>
-            </a>
+              {/* circle logo */}
+              <div className="absolute z-20 left-[-18px] top-[-34px] sm:left-[-28px] sm:top-[-38px]">
+                <img
+                  src={logo}
+                  alt="Logo"
+                  className="float-logo w-[95px] sm:w-[120px] lg:w-[150px] object-contain"
+                />
+              </div>
 
-          </div>
-
-          {/* RIGHT SIDE */}
-          <div className="relative">
-
-            {/* IMAGE */}
-            <img
-              src={buildingImg}
-              alt="About"
-              className="w-full h-[560px] object-cover rounded-[10px]"
-            />
-
-            {/* BLUE CIRCLE */}
-            <div className="absolute left-[-28px] bottom-[-36px] w-[122px] h-[122px] rounded-full bg-[#118df0] z-20"></div>
-
-            {/* ROTATING TEXT */}
-            <div className="absolute left-[-57px] bottom-[-66px] w-[180px] h-[180px] animate-spin-slow z-10">
-
-              <svg viewBox="0 0 200 200" className="w-full h-full">
-                <defs>
-                  <path
-                    id="circlePath"
-                    d="M100,100
-                       m-72,0
-                       a72,72 0 1,1 144,0
-                       a72,72 0 1,1 -144,0"
-                  />
-                </defs>
-
-                <text
-                  fill="#111"
-                  fontSize="14"
-                  fontWeight="500"
-                  letterSpacing="1.2"
-                >
-                  <textPath href="#circlePath">
-                    Lorem Ipsum Dollar Lorem Ipsum Lorem Ipsum Dollar Lorem Ipsum
-                  </textPath>
-                </text>
-              </svg>
-
+              {/* image */}
+              <div className="img-hover rounded-[18px] overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&q=80"
+                  alt="Marketing Building"
+                  className="w-full h-[260px] sm:h-[360px] lg:h-[430px] object-cover"
+                />
+              </div>
             </div>
 
           </div>
 
+          {/* BOTTOM TEXT BLOCKS */}
+          <div className="mt-[44px] sm:mt-[58px] lg:mt-[70px] space-y-[26px] sm:space-y-[34px]">
+
+            <p
+              className="fade-up text-black/70 dark:text-white/70 text-[15px] sm:text-[17px] lg:text-[18px] leading-[1.9]"
+              style={{ animationDelay: "220ms" }}
+            >
+              We are a forward-thinking digital agency focused on delivering strategic design,
+              innovative solutions, and measurable results. Our team blends creativity with
+              technology to build brands that stand out in a competitive world.We are a
+              forward-thinking digital agency focused on delivering strategic design,
+              innovative solutions, and measurable results. Our team blends creativity with
+              technology to build brands that stand out in a competitive world.
+            </p>
+
+            <p
+              className="fade-up text-black/70 dark:text-white/70 text-[15px] sm:text-[17px] lg:text-[18px] leading-[1.9]"
+              style={{ animationDelay: "300ms" }}
+            >
+              We are a forward-thinking digital agency focused on delivering strategic design,
+              innovative solutions, and measurable results. Our team blends creativity with
+              technology to build brands that stand out in a competitive world.We are a
+              forward-thinking digital agency focused on delivering strategic design,
+              innovative solutions, and measurable results. Our team blends creativity with
+              technology to build brands that stand out in a competitive world.We are a
+              forward-thinking digital agency focused on delivering strategic design,
+              innovative solutions, and measurable results. Our team blends creativity with
+              technology to build brands that stand out in a competitive world.
+            </p>
+
+            <p
+              className="fade-up text-black/70 dark:text-white/70 text-[15px] sm:text-[17px] lg:text-[18px] leading-[1.9]"
+              style={{ animationDelay: "380ms" }}
+            >
+              We are a forward-thinking digital agency focused on delivering strategic design,
+              innovative solutions, and measurable results. Our team blends creativity with
+              technology to build brands that stand out in a competitive world.We are a
+              forward-thinking digital agency focused on delivering strategic design,
+              innovative solutions, and measurable results. Our team blends creativity with
+              technology to build brands that stand out in a competitive world.
+            </p>
+
+          </div>
+
         </div>
-
-      </div>
-
-      <style jsx>{`
-        .animate-spin-slow {
-          animation: spinSlow 14s linear infinite;
-        }
-
-        @keyframes spinSlow {
-          from {
-            transform: rotate(0deg);
-          }
-
-          to {
-            transform: rotate(360deg);
-          }
-        }
-      `}</style>
-    </section>
+      </section>
+    </>
   );
 }

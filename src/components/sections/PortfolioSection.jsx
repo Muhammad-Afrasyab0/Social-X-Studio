@@ -46,92 +46,128 @@ const projects = [
 
 export default function PortfolioSection() {
   return (
-    <section className="w-full bg-[#efefef] py-[90px]">
-      <div className="max-w-[1900px] mx-auto px-[42px]">
+    <>
+      <style>
+        {`
+        .fade-up{
+          opacity:0;
+          transform:translateY(24px);
+          animation:fadeUp .8s ease forwards;
+        }
 
-        {/* PROJECTS ONLY */}
-        <div className="space-y-[70px]">
-          {projects.map((item, index) => {
-            const reverse = index % 2 !== 0;
+        @keyframes fadeUp{
+          to{
+            opacity:1;
+            transform:translateY(0);
+          }
+        }
 
-            return (
-              <div
-                key={item.id}
-                className="grid grid-cols-2 gap-[70px] items-center"
-              >
-                {reverse ? (
-                  <>
-                    {/* TEXT */}
-                    <div>
-                      <h3 className="text-[86px] font-semibold text-black/10 leading-none">
-                        {item.id},
-                      </h3>
+        .img-wrap{
+          overflow:hidden;
+          transition:all .4s ease;
+        }
 
-                      <h4 className="mt-[12px] text-[42px] leading-[1.08] font-medium max-w-[620px] tracking-[-1px]">
-                        {item.title}
-                      </h4>
+        .img-wrap img{
+          transition:transform .8s ease;
+        }
 
-                      <p className="mt-[18px] text-[17px] leading-[1.8] text-black/60 max-w-[430px]">
-                        {item.desc}
-                      </p>
+        .img-wrap:hover{
+          transform:translateY(-4px);
+        }
 
-                      <button className="mt-[28px] h-[48px] px-[30px] rounded-full bg-black text-white text-[15px] font-medium inline-flex items-center gap-3">
-                        View Full Project
-                        <span className="text-[18px] leading-none">
-                          ↗
-                        </span>
-                      </button>
-                    </div>
+        .img-wrap:hover img{
+          transform:scale(1.03);
+        }
 
-                    {/* IMAGE */}
-                    <div>
+        .btn-hover{
+          transition:all .3s ease;
+        }
+
+        .btn-hover:hover{
+          transform:translateY(-2px);
+        }
+
+        .arrow-move{
+          transition:transform .3s ease;
+        }
+
+        .btn-hover:hover .arrow-move{
+          transform:translate(4px,-4px);
+        }
+        `}
+      </style>
+
+      <section className="w-full bg-[#efefef] dark:bg-[#111111] py-[clamp(54px,8vw,90px)] transition-all duration-500">
+        <div className="max-w-[1900px] mx-auto px-[clamp(16px,4vw,42px)]">
+
+          {/* PROJECTS ONLY */}
+          <div className="space-y-[clamp(44px,7vw,70px)]">
+
+            {projects.map((item, index) => {
+              const reverse = index % 2 !== 0;
+
+              return (
+                <div
+                  key={item.id}
+                  className="grid grid-cols-1 xl:grid-cols-2 gap-[clamp(26px,5vw,70px)] items-center"
+                >
+                  {/* ===================================== */}
+                  {/* IMAGE FIRST ON MOBILE */}
+                  {/* ===================================== */}
+                  <div
+                    className={`fade-up ${
+                      reverse ? "xl:order-2" : "xl:order-1"
+                    }`}
+                  >
+                    <div className="img-wrap rounded-[16px] bg-white/40 dark:bg-white/[0.03]">
                       <img
                         src={item.image}
                         alt={item.title}
-                        className="w-full h-[480px] object-contain rounded-[12px]"
+                        className="w-full h-[clamp(240px,48vw,480px)] object-contain rounded-[16px]"
                       />
                     </div>
-                  </>
-                ) : (
-                  <>
-                    {/* IMAGE */}
-                    <div>
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        className="w-full h-[480px] object-contain rounded-[12px]"
-                      />
-                    </div>
+                  </div>
 
-                    {/* TEXT */}
-                    <div>
-                      <h3 className="text-[86px] font-semibold text-black/10 leading-none">
-                        {item.id},
-                      </h3>
+                  {/* ===================================== */}
+                  {/* TEXT */}
+                  {/* ===================================== */}
+                  <div
+                    className={`fade-up ${
+                      reverse ? "xl:order-1" : "xl:order-2"
+                    }`}
+                    style={{
+                      animationDelay: "120ms",
+                    }}
+                  >
+                    <h3 className="text-[clamp(56px,10vw,86px)] font-semibold text-black/10 dark:text-white/10 leading-none tracking-[-0.04em] transition-all duration-500">
+                      {item.id},
+                    </h3>
 
-                      <h4 className="mt-[12px] text-[42px] leading-[1.08] font-medium max-w-[620px] tracking-[-1px]">
-                        {item.title}
-                      </h4>
+                    <h4 className="mt-[clamp(8px,2vw,12px)] text-[clamp(28px,6vw,42px)] leading-[1.08] font-medium max-w-[620px] tracking-[-0.03em] text-black dark:text-white transition-all duration-500">
+                      {item.title}
+                    </h4>
 
-                      <p className="mt-[18px] text-[17px] leading-[1.8] text-black/60 max-w-[430px]">
-                        {item.desc}
-                      </p>
+                    <p className="mt-[clamp(14px,2vw,18px)] text-[clamp(14px,2vw,17px)] leading-[1.8] text-black/60 dark:text-white/60 max-w-[430px] transition-all duration-500">
+                      {item.desc}
+                    </p>
 
-                      <button className="mt-[28px] h-[48px] px-[30px] rounded-full bg-black text-white text-[15px] font-medium inline-flex items-center gap-3">
-                        View Full Project
-                        <span className="text-[18px] leading-none">
-                          ↗
-                        </span>
-                      </button>
-                    </div>
-                  </>
-                )}
-              </div>
-            );
-          })}
+                    <button className="btn-hover mt-[clamp(22px,4vw,28px)] h-[clamp(46px,6vw,48px)] px-[clamp(24px,4vw,30px)] rounded-full bg-black text-white dark:bg-white dark:text-black text-[clamp(14px,2vw,15px)] font-medium inline-flex items-center gap-3 transition-all duration-300">
+                      View Full Project
+
+                      <span className="arrow-move text-[clamp(16px,2vw,18px)] leading-none">
+                        ↗
+                      </span>
+                    </button>
+                  </div>
+
+                </div>
+              );
+            })}
+
+          </div>
+
         </div>
-
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

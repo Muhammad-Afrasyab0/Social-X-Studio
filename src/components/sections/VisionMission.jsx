@@ -3,104 +3,117 @@ import personImg from "../../assets/vision-person.png";
 
 export default function VisionMission() {
   return (
-    <section className="w-full bg-[#efefef] py-[26px]">
-      {/* HEADER ALIGNMENT */}
-      <div className="max-w-[1900px] mx-auto px-[42px]">
+    <>
+      <style>
+        {`
+        .fade-up{
+          opacity:0;
+          transform:translateY(24px);
+          animation:fadeUp .8s ease forwards;
+        }
 
-        {/* SAME 2x2 ORIENTATION */}
-        <div className="grid grid-cols-2 rounded-[22px] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.06)]">
+        @keyframes fadeUp{
+          to{
+            opacity:1;
+            transform:translateY(0);
+          }
+        }
 
-          {/* ================================================= */}
-          {/* TOP LEFT IMAGE */}
-          {/* ================================================= */}
-          <div className="relative h-[430px] bg-[#e7e7e7] overflow-hidden">
+        .card-hover{
+          transition:transform .45s ease;
+        }
 
-            <img
-              src={personImg}
-              alt="Portrait"
-              className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[108%] w-auto object-contain"
-            />
+        .card-hover:hover{
+          transform:translateY(-4px);
+        }
+        `}
+      </style>
 
-            {/* subtle overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent"></div>
+      <section className="w-full bg-[#efefef] dark:bg-[#111111] py-[22px] sm:py-[26px] transition-all duration-500">
+        {/* Header aligned */}
+        <div className="max-w-[1900px] mx-auto px-[16px] sm:px-[24px] lg:px-[42px]">
 
-          </div>
+          {/* EXACT STYLE GRID */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-[18px] sm:gap-[22px]">
 
-          {/* ================================================= */}
-          {/* TOP RIGHT VISION */}
-          {/* ================================================= */}
-          <div className="relative h-[430px] bg-black p-[42px] flex flex-col justify-between">
+            {/* ================================================= */}
+            {/* TOP LEFT IMAGE */}
+            {/* ================================================= */}
+            <div className="fade-up card-hover relative bg-[#e7e7e7] dark:bg-[#1a1a1a] rounded-[18px] overflow-hidden min-h-[320px] sm:min-h-[420px] lg:h-[430px]">
+              
+              {/* PNG FACE FIX */}
+              <img
+                src={personImg}
+                alt="Portrait"
+                className="
+                  absolute
+                  bottom-0
+                  left-1/2
+                  -translate-x-1/2
+                  h-[112%]
+                  sm:h-[118%]
+                  lg:h-[122%]
+                  w-auto
+                  max-w-none
+                  object-contain
+                  object-bottom
+                "
+              />
 
-            <div>
-              <p className="text-[#0a8fff] text-[14px] font-medium tracking-[2px] uppercase">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/8 to-transparent pointer-events-none"></div>
+            </div>
+
+            {/* ================================================= */}
+            {/* TOP RIGHT VISION */}
+            {/* ================================================= */}
+            <div className="fade-up card-hover rounded-[18px] bg-transparent min-h-[320px] sm:min-h-[420px] lg:h-[430px] p-[22px] sm:p-[34px] lg:p-[42px] flex flex-col justify-center">
+              
+              <h2 className="text-black dark:text-white text-[46px] sm:text-[62px] lg:text-[74px] leading-[0.96] font-semibold tracking-[-0.04em]">
                 Our Vision
-              </p>
-
-              <h2 className="mt-[16px] text-white text-[68px] leading-[0.94] font-semibold tracking-[-2px]">
-                Create Bold
-                <br />
-                Identities
               </h2>
-            </div>
 
-            <p className="text-white/72 text-[15px] leading-[1.95] max-w-[560px]">
-              We build premium brands, memorable visuals and strategic digital
-              experiences that help companies stand out in a crowded market.
-            </p>
-
-          </div>
-
-          {/* ================================================= */}
-          {/* BOTTOM LEFT MISSION */}
-          {/* ================================================= */}
-          <div className="relative h-[430px] bg-[#111111] p-[42px] flex flex-col justify-between">
-
-            <div>
-              <p className="text-[#0a8fff] text-[14px] font-medium tracking-[2px] uppercase">
-                Our Mission
+              <p className="mt-[18px] text-black/75 dark:text-white/70 text-[15px] sm:text-[16px] lg:text-[17px] leading-[1.9] max-w-[620px]">
+                Lorem Ipsum Sollicitudin aliquet justo odio facilisis aliquam
+                vitae quam commodo aliquam nisi. Malesuada non dui tellus netus
+                turpis libero nisl donec sagittis pretium nam. Sed sit sagittis
+                dictumst leo enim enim. Lorem a aliquet massa condimentum
+                fermentum eleifend penatibus vehicula ipsum sed a lobortis.
+                Laoreet fermentum sed erat varius condimentum, tortor massa
+                magna duis blandit.
               </p>
 
-              <h2 className="mt-[16px] text-white text-[68px] leading-[0.94] font-semibold tracking-[-2px]">
-                Design With
-                <br />
-                Purpose
+            </div>
+
+            {/* ================================================= */}
+            {/* BOTTOM LEFT MISSION */}
+            {/* ================================================= */}
+            <div className="fade-up card-hover rounded-[18px] bg-transparent min-h-[320px] sm:min-h-[420px] lg:h-[430px] p-[22px] sm:p-[34px] lg:p-[42px] flex flex-col justify-center order-4 md:order-3">
+              
+              <h2 className="text-black dark:text-white text-[44px] sm:text-[60px] lg:text-[72px] leading-[0.96] font-semibold tracking-[-0.04em]">
+                Our Misson
               </h2>
-            </div>
 
-            <p className="text-white/72 text-[15px] leading-[1.95] max-w-[560px]">
-              Every project is designed to generate trust, improve perception,
-              and deliver measurable growth for ambitious businesses.
-            </p>
-
-          </div>
-
-          {/* ================================================= */}
-          {/* BOTTOM RIGHT EMPTY / PREMIUM PANEL */}
-          {/* ================================================= */}
-          <div className="relative h-[430px] bg-[#e7e7e7] p-[42px] flex flex-col justify-between">
-
-            <div>
-              <p className="text-black/50 text-[14px] uppercase tracking-[2px]">
-                Why Us
+              <p className="mt-[18px] text-black/75 dark:text-white/70 text-[15px] sm:text-[16px] lg:text-[17px] leading-[1.9] max-w-[620px]">
+                Lorem Ipsum Sollicitudin aliquet justo odio facilisis aliquam
+                vitae quam commodo aliquam nisi. Malesuada non dui tellus netus
+                turpis libero nisl donec sagittis pretium nam. Sed sit sagittis
+                dictumst leo enim enim. Lorem a aliquet massa condimentum
+                fermentum eleifend penatibus vehicula ipsum sed a lobortis.
+                Laoreet fermentum sed erat varius condimentum, tortor massa
+                magna duis blandit.
               </p>
 
-              <h3 className="mt-[16px] text-black text-[62px] leading-[0.96] font-semibold tracking-[-2px]">
-                Smart
-                <br />
-                Solutions
-              </h3>
             </div>
 
-            <button className="h-[50px] px-[28px] rounded-full bg-black text-white text-[15px] font-medium inline-flex items-center gap-3 w-fit">
-              Explore More
-              <span className="text-[18px] leading-none">↗</span>
-            </button>
+            {/* ================================================= */}
+            {/* BOTTOM RIGHT PANEL */}
+            {/* ================================================= */}
+            <div className="fade-up card-hover rounded-[18px] bg-[#e7e7e7] dark:bg-[#1a1a1a] min-h-[320px] sm:min-h-[420px] lg:h-[430px] order-3 md:order-4"></div>
 
           </div>
 
         </div>
-
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

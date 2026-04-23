@@ -50,18 +50,18 @@ export default function Header() {
       <div className="max-w-[1900px] mx-auto px-[3px]">
 
         {/* MAIN BAR */}
-        <div className="h-[92px] px-[42px] border border-white/20 flex items-center justify-between backdrop-blur-md transition-all duration-500">
+        <div className="h-[92px] px-4 sm:px-6 md:px-8 lg:px-[42px] border border-white/20 flex items-center justify-between backdrop-blur-md transition-all duration-500">
 
           {/* LOGO */}
-          <Link to="/" className="translate-y-[22px]">
+          <Link to="/" className="translate-y-[22px] shrink-0">
             <img
               src={darkMode ? darkLogo : logo}
               alt="Social X Studio"
-              className="w-[205px] object-contain"
+              className="w-[145px] sm:w-[165px] lg:w-[205px] object-contain"
             />
           </Link>
 
-          {/* DESKTOP NAV */}
+          {/* DESKTOP NAV (UNCHANGED DESIGN) */}
           <nav className="hidden lg:flex items-center gap-[42px] text-[14px] font-medium translate-y-[24px]">
 
             <Link to="/" className={navLink("/")}>
@@ -91,41 +91,14 @@ export default function Header() {
                 <FaChevronDown className="text-[10px]" />
               </button>
 
-              {/* DROPDOWN */}
               {serviceDrop && (
                 <div className="absolute top-[28px] left-0 w-[250px] bg-white dark:bg-[#1a1a1a] rounded-[12px] shadow-2xl py-[12px] z-50">
 
-                  <Link
-                    to="/services"
-                    className="block px-[18px] py-[10px] hover:bg-black/5 dark:hover:bg-white/5"
-                  >
-                    All Services
-                  </Link>
-
-                  <Link
-                    to="/web-development"
-                    className="block px-[18px] py-[10px] hover:bg-black/5 dark:hover:bg-white/5"
-                  >
-                    Web Development
-                  </Link>
-
-                  <Link
-                    to="/brand-identity"
-                    className="block px-[18px] py-[10px] hover:bg-black/5 dark:hover:bg-white/5"
-                  >
-                    Brand Identity
-                  </Link>
-
-                  
-
-                  <Link
-                    to="/blog-details"
-                    className="block px-[18px] py-[10px] hover:bg-black/5 dark:hover:bg-white/5"
-                  >
-                    Blog Details
-                  </Link>
-
-                
+                  <DropLink to="/services" text="All Services" />
+                  <DropLink to="/web-development" text="Web Development" />
+                  <DropLink to="/brand-identity" text="Brand Identity" />
+                  <DropLink to="/blog-details" text="Blog Details" />
+                  <DropLink to="/contact" text="Contact Page" />
 
                 </div>
               )}
@@ -145,7 +118,7 @@ export default function Header() {
 
           </nav>
 
-          {/* RIGHT SIDE */}
+          {/* RIGHT SIDE (UNCHANGED DESIGN) */}
           <div className="hidden lg:flex flex-col items-end gap-[11px]">
 
             <div className="flex items-center gap-[18px]">
@@ -178,7 +151,8 @@ export default function Header() {
                   darkMode ? "text-white" : "text-black"
                 }`}
               >
-                English <FaChevronDown className="text-[10px]" />
+                <span>English</span>
+                <FaChevronDown className="text-[10px]" />
               </button>
 
               {/* SOCIAL */}
@@ -194,22 +168,25 @@ export default function Header() {
 
             </div>
 
-            {/* CTA */}
+            {/* CTA (UNCHANGED) */}
             <a
               href="#"
-              className={`h-[48px] px-[30px] rounded-full text-[15px] font-medium inline-flex items-center gap-3 ${
+              className={`h-[48px] px-[30px] rounded-full text-[15px] font-medium inline-flex items-center justify-center gap-3 ${
                 darkMode
                   ? "bg-white text-black"
                   : "bg-black text-white"
               }`}
             >
               Lets Connect
-              <span>↗</span>
+
+              <span className="text-[18px] leading-none font-normal">
+                ↗
+              </span>
             </a>
 
           </div>
 
-          {/* MOBILE MENU BTN */}
+          {/* MOBILE BTN */}
           <button
             onClick={() => setOpen(true)}
             className={`lg:hidden text-[24px] ${
@@ -226,7 +203,7 @@ export default function Header() {
       {open && (
         <div className="fixed inset-0 bg-black/60 z-50 lg:hidden">
 
-          <div className="w-[300px] h-full ml-auto bg-white dark:bg-[#111] p-6">
+          <div className={`w-[86%] max-w-[340px] h-full ml-auto p-6 ${darkMode ? "bg-[#111]" : "bg-white"}`}>
 
             <div className="flex justify-end mb-8">
               <button
@@ -237,21 +214,43 @@ export default function Header() {
               </button>
             </div>
 
-            <div className="flex flex-col gap-6 text-[17px]">
+            <div className={`flex flex-col gap-6 text-[17px] font-medium ${darkMode ? "text-white" : "text-black"}`}>
 
-              <Link to="/" onClick={() => setOpen(false)}>Home</Link>
-              <Link to="/about" onClick={() => setOpen(false)}>About</Link>
-              <Link to="/services" onClick={() => setOpen(false)}>Services</Link>
-              <Link to="/web-development" onClick={() => setOpen(false)}>Web Development</Link>
-              <Link to="/brand-identity" onClick={() => setOpen(false)}>Brand Identity</Link>
-              <Link to="/portfolio" onClick={() => setOpen(false)}>Portfolio</Link>
-              <Link to="/blog-details" onClick={() => setOpen(false)}>Blog Details</Link>
+              <MobileLink to="/" close={setOpen}>Home</MobileLink>
+              <MobileLink to="/about" close={setOpen}>About</MobileLink>
+              <MobileLink to="/services" close={setOpen}>Services</MobileLink>
+              <MobileLink to="/web-development" close={setOpen}>Web Development</MobileLink>
+              <MobileLink to="/brand-identity" close={setOpen}>Brand Identity</MobileLink>
+              <MobileLink to="/portfolio" close={setOpen}>Portfolio</MobileLink>
+              <MobileLink to="/blog" close={setOpen}>Blogs</MobileLink>
+              <MobileLink to="/blog-details" close={setOpen}>Blog Details</MobileLink>
+              <MobileLink to="/contact" close={setOpen}>Contact</MobileLink>
 
             </div>
 
           </div>
+
         </div>
       )}
     </header>
+  );
+}
+
+function DropLink({ to, text }) {
+  return (
+    <Link
+      to={to}
+      className="block px-[18px] py-[10px] hover:bg-black/5 dark:hover:bg-white/5"
+    >
+      {text}
+    </Link>
+  );
+}
+
+function MobileLink({ to, close, children }) {
+  return (
+    <Link to={to} onClick={() => close(false)}>
+      {children}
+    </Link>
   );
 }

@@ -54,36 +54,69 @@ export default function StatsCounter() {
   }, []);
 
   return (
-    <section className="w-full bg-[#efefef] py-[46px]">
-      {/* Header aligned */}
-      <div className="max-w-[1900px] mx-auto px-[42px]">
+    <>
+      <style>
+        {`
+        .fade-up{
+          opacity:0;
+          transform:translateY(22px);
+          animation:fadeUp .8s ease forwards;
+        }
 
-        {/* top border */}
-        <div className="border-t border-black/10 pt-[34px]">
+        @keyframes fadeUp{
+          to{
+            opacity:1;
+            transform:translateY(0);
+          }
+        }
 
-          {/* grid */}
-          <div className="grid grid-cols-4 gap-[20px]">
+        .stat-card{
+          transition:all .35s ease;
+        }
 
-            {stats.map((item, index) => (
-              <div key={index} className="text-center">
+        .stat-card:hover{
+          transform:translateY(-4px);
+        }
+        `}
+      </style>
 
-                <h2 className="text-black text-[74px] leading-none font-medium tracking-[-2px]">
-                  {counts[index]}
-                  {item.suffix}
-                </h2>
+      <section className="w-full bg-[#efefef] dark:bg-[#111111] py-[clamp(34px,5vw,46px)] transition-all duration-500">
+        {/* header aligned */}
+        <div className="max-w-[1900px] mx-auto px-[clamp(16px,4vw,42px)]">
 
-                <p className="mt-[14px] text-black/80 text-[18px] leading-none">
-                  {item.label}
-                </p>
+          {/* border top */}
+          <div className="border-t border-black/10 dark:border-white/10 pt-[clamp(24px,4vw,34px)]">
 
-              </div>
-            ))}
+            {/* fluid responsive grid */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-[clamp(18px,3vw,26px)] gap-y-[clamp(28px,4vw,36px)]">
+
+              {stats.map((item, index) => (
+                <div
+                  key={index}
+                  className="fade-up stat-card text-center"
+                  style={{
+                    animationDelay: `${index * 100}ms`,
+                  }}
+                >
+                  {/* value */}
+                  <h2 className="text-black dark:text-white text-[clamp(42px,8vw,74px)] leading-none font-medium tracking-[-0.04em] transition-all duration-500">
+                    {counts[index]}
+                    {item.suffix}
+                  </h2>
+
+                  {/* label */}
+                  <p className="mt-[clamp(10px,2vw,14px)] text-black/80 dark:text-white/70 text-[clamp(13px,2vw,18px)] leading-[1.25] max-w-[220px] mx-auto transition-all duration-500">
+                    {item.label}
+                  </p>
+                </div>
+              ))}
+
+            </div>
 
           </div>
 
         </div>
-
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

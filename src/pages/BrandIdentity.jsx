@@ -13,26 +13,33 @@ export default function BrandIdentity() {
       <Header />
 
       {/* HERO SECTION */}
-      <section className="bg-[#efefef] dark:bg-[#111111] pt-[150px] pb-[70px] border-b-[6px] border-[#0a8fff] transition-all duration-500">
+      <section className="bg-[#efefef] dark:bg-[#111111] pt-[clamp(118px,14vw,150px)] pb-[clamp(40px,7vw,70px)] border-b-[4px] sm:border-b-[6px] border-[#0a8fff] transition-all duration-500">
 
-        <div className="max-w-[1900px] mx-auto px-[42px] flex items-end justify-between">
+        <div className="max-w-[1900px] mx-auto px-[clamp(16px,4vw,42px)]">
 
-          {/* LEFT TITLE */}
-          <div>
-            <h1 className="text-black dark:text-white text-[72px] font-semibold leading-[0.95] tracking-[-2px] transition-all duration-500">
-              Brand Identity
-              <br />
-              Lorem
-            </h1>
-          </div>
+          {/* fluid responsive layout */}
+          <div className="flex flex-col gap-[18px] sm:gap-[24px] lg:flex-row lg:items-end lg:justify-between">
 
-          {/* RIGHT BREADCRUMB */}
-          <div className="pb-[8px] text-[18px] text-black/45 dark:text-white/50 transition-all duration-500">
-            <span>Home</span>
-            <span className="mx-2">/</span>
-            <span className="text-black dark:text-white underline underline-offset-4">
-              Brand Identity Lorem
-            </span>
+            {/* LEFT TITLE */}
+            <div>
+              <h1 className="text-black dark:text-white text-[clamp(34px,8vw,72px)] font-semibold leading-[0.95] tracking-[-0.04em] transition-all duration-500">
+                Brand Identity
+                <br />
+                Lorem
+              </h1>
+            </div>
+
+            {/* RIGHT BREADCRUMB */}
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-2 lg:pb-[8px] text-[clamp(14px,2vw,18px)] text-black/45 dark:text-white/50 transition-all duration-500">
+              <span>Home</span>
+
+              <span>/</span>
+
+              <span className="text-black dark:text-white underline underline-offset-4">
+                Brand Identity Lorem
+              </span>
+            </div>
+
           </div>
 
         </div>
@@ -44,11 +51,13 @@ export default function BrandIdentity() {
 
       {/* MOCKUP */}
       <Mockup />
-       {/* ProblemsSection */}
-      <ProblemsSection/>
 
-      <PackagingMockups/>
+      {/* ProblemsSection */}
+      <ProblemsSection />
+
+      <PackagingMockups />
       <SolutionsProjectsSection />
+
       <Footer />
     </>
   );
