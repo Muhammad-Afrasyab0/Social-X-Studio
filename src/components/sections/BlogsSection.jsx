@@ -109,7 +109,8 @@ export default function BlogsSection() {
                 <span>{item.date}</span>
               </div>
 
-              <h3 className="mt-[14px] text-[42px] leading-[1.05] font-semibold tracking-[-1px] text-black dark:text-white transition-all duration-500">
+              {/* UPDATED HEADING FONT SAME AS FOOTER */}
+              <h3 className="mt-[14px] text-[26px] leading-[1.2] font-semibold tracking-[-0.5px] text-black dark:text-white transition-all duration-500">
                 {item.title}
               </h3>
 

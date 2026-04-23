@@ -10,7 +10,7 @@ import SelectedWork from "../components/sections/selectedwork";
 import Testimonial from "../components/sections/testimonial";
 import WhyUs from "../components/sections/whyus";
 import BlogsSection from "../components/sections/BlogsSection";
-import Contact from "../components/sections/Contact";
+import Contact from "../components/sections/ContactUs";
 import Footer from "../components/layout/Footer";
 
 export default function Home() {

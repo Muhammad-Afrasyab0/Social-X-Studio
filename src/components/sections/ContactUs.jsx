@@ -154,7 +154,8 @@ function Info({ icon, title, text }) {
           {title}
         </p>
 
-        <p className="text-[31px] leading-[1.25] font-medium tracking-[-1px] text-white">
+        {/* UPDATED FONT SAME AS FOOTER */}
+        <p className="text-[26px] leading-[1.2] font-semibold tracking-[-0.5px] text-white">
           {text}
         </p>
       </div>

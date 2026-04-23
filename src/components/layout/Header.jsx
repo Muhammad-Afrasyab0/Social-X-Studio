@@ -7,14 +7,17 @@ import {
   FaTimes,
   FaChevronDown,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import logo from "../../assets/logo-icon.png";
-import darkLogo from "../../assets/logo-dark.png"; // replace with your dark logo
+import darkLogo from "../../assets/logo-dark.png";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
+  const [serviceDrop, setServiceDrop] = useState(false);
+
+  const location = useLocation();
 
   useEffect(() => {
     if (darkMode) {
@@ -28,101 +31,165 @@ export default function Header() {
     }
   }, [darkMode]);
 
+  const isServicePage =
+    location.pathname === "/services" ||
+    location.pathname === "/web-development" ||
+    location.pathname === "/brand-identity";
+
+  const navLink = (path) =>
+    location.pathname === path
+      ? "text-[#0a8fff]"
+      : darkMode
+      ? "text-white hover:text-[#0a8fff]"
+      : "text-black hover:text-[#0a8fff]";
+
   return (
-    <header className="absolute top-0 left-0 w-full z-50 bg-transparent shadow-[0_-8px_40px_rgba(10,143,255,0.04)]">
-      <div className="max-w-[1900px] mx-auto px-[3px] pt-[3px]">
+    <header className="absolute top-0 left-0 w-full z-50">
+
+      {/* WRAPPER */}
+      <div className="max-w-[1900px] mx-auto px-[3px]">
 
         {/* MAIN BAR */}
-        <div className="h-[92px] px-[42px] bg-transparent border border-white/20 flex items-center justify-between">
+        <div className="h-[92px] px-[42px] border border-white/20 flex items-center justify-between backdrop-blur-md transition-all duration-500">
 
           {/* LOGO */}
-          <Link to="/" className="shrink-0 mt-[45px]">
+          <Link to="/" className="translate-y-[22px]">
             <img
               src={darkMode ? darkLogo : logo}
               alt="Social X Studio"
-              className="w-[205px] h-auto object-contain block"
+              className="w-[205px] object-contain"
             />
           </Link>
 
-          {/* NAV */}
-          <nav
-            className={`hidden lg:flex items-center gap-[40px] text-[14px] font-medium leading-none translate-y-[25px] ${
-              darkMode ? "text-white" : "text-black"
-            }`}
-          >
-            <Link to="/" className="text-[#0a8fff]">
+          {/* DESKTOP NAV */}
+          <nav className="hidden lg:flex items-center gap-[42px] text-[14px] font-medium translate-y-[24px]">
+
+            <Link to="/" className={navLink("/")}>
               Home
             </Link>
 
-            <Link to="/about">About Us</Link>
-
-            <Link
-              to="/services"
-              className="inline-flex items-center gap-[6px]"
-            >
-              <span>Services</span>
-              <FaChevronDown className="text-[10px]" />
+            <Link to="/about" className={navLink("/about")}>
+              About Us
             </Link>
 
-            <Link to="/portfolio">Portfolio</Link>
-            <a href="#">Blogs</a>
-            <a href="#">Contact</a>
+            {/* SERVICES DROPDOWN */}
+            <div
+              className="relative"
+              onMouseEnter={() => setServiceDrop(true)}
+              onMouseLeave={() => setServiceDrop(false)}
+            >
+              <button
+                className={`inline-flex items-center gap-[6px] ${
+                  isServicePage
+                    ? "text-[#0a8fff]"
+                    : darkMode
+                    ? "text-white"
+                    : "text-black"
+                }`}
+              >
+                <span>Services</span>
+                <FaChevronDown className="text-[10px]" />
+              </button>
+
+              {/* DROPDOWN */}
+              {serviceDrop && (
+                <div className="absolute top-[28px] left-0 w-[250px] bg-white dark:bg-[#1a1a1a] rounded-[12px] shadow-2xl py-[12px] z-50">
+
+                  <Link
+                    to="/services"
+                    className="block px-[18px] py-[10px] hover:bg-black/5 dark:hover:bg-white/5"
+                  >
+                    All Services
+                  </Link>
+
+                  <Link
+                    to="/web-development"
+                    className="block px-[18px] py-[10px] hover:bg-black/5 dark:hover:bg-white/5"
+                  >
+                    Web Development
+                  </Link>
+
+                  <Link
+                    to="/brand-identity"
+                    className="block px-[18px] py-[10px] hover:bg-black/5 dark:hover:bg-white/5"
+                  >
+                    Brand Identity
+                  </Link>
+
+                  
+
+                  <Link
+                    to="/blog-details"
+                    className="block px-[18px] py-[10px] hover:bg-black/5 dark:hover:bg-white/5"
+                  >
+                    Blog Details
+                  </Link>
+
+                
+
+                </div>
+              )}
+            </div>
+
+            <Link to="/portfolio" className={navLink("/portfolio")}>
+              Portfolio
+            </Link>
+
+            <Link to="/blog" className={navLink("/blog")}>
+              Blogs
+            </Link>
+
+            <Link to="/contact" className={navLink("/contact")}>
+              Contact
+            </Link>
+
           </nav>
 
           {/* RIGHT SIDE */}
-          <div className="hidden lg:flex flex-col items-end justify-center gap-[11px]">
+          <div className="hidden lg:flex flex-col items-end gap-[11px]">
 
-            {/* TOP ROW */}
-            <div className="flex items-center gap-[20px]">
+            <div className="flex items-center gap-[18px]">
 
               {/* TOGGLE */}
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 className="flex items-center gap-[9px]"
               >
-                {/* BAR */}
-                <div className="w-[28px] h-[15px] bg-black rounded-full relative">
+                <div className="w-[28px] h-[15px] bg-black dark:bg-white rounded-full relative">
 
                   <span
                     className={`absolute top-[2px] w-[11px] h-[11px] rounded-full duration-300 ${
                       darkMode
-                        ? "left-[2px] bg-white"
+                        ? "left-[2px] bg-black"
                         : "left-[15px] bg-white"
                     }`}
                   ></span>
 
                 </div>
 
-                {/* TEXT */}
-                <span
-                  className={`text-[14px] ${
-                    darkMode ? "text-white" : "text-black"
-                  }`}
-                >
+                <span className={darkMode ? "text-white" : "text-black"}>
                   {darkMode ? "Dark" : "Light"}
                 </span>
               </button>
 
               {/* LANGUAGE */}
-              <a
-                href="#"
-                className={`inline-flex items-center gap-[5px] text-[14px] ${
+              <button
+                className={`inline-flex items-center gap-[5px] ${
                   darkMode ? "text-white" : "text-black"
                 }`}
               >
-                <span>English</span>
-                <FaChevronDown className="text-[10px]" />
-              </a>
+                English <FaChevronDown className="text-[10px]" />
+              </button>
 
               {/* SOCIAL */}
               <div
-                className={`flex items-center gap-[16px] text-[15px] ${
+                className={`flex items-center gap-[16px] ${
                   darkMode ? "text-white" : "text-black"
                 }`}
               >
-                <a href="#"><FaFacebookF /></a>
-                <a href="#"><FaInstagram /></a>
-                <a href="#"><FaLinkedinIn /></a>
+                <FaFacebookF />
+                <FaInstagram />
+                <FaLinkedinIn />
               </div>
 
             </div>
@@ -130,22 +197,19 @@ export default function Header() {
             {/* CTA */}
             <a
               href="#"
-              className={`h-[48px] px-[30px] rounded-full text-[15px] font-medium inline-flex items-center justify-center gap-3 ${
+              className={`h-[48px] px-[30px] rounded-full text-[15px] font-medium inline-flex items-center gap-3 ${
                 darkMode
                   ? "bg-white text-black"
                   : "bg-black text-white"
               }`}
             >
               Lets Connect
-
-              <span className="text-[18px] leading-none font-normal">
-                ↗
-              </span>
+              <span>↗</span>
             </a>
 
           </div>
 
-          {/* MOBILE MENU ICON */}
+          {/* MOBILE MENU BTN */}
           <button
             onClick={() => setOpen(true)}
             className={`lg:hidden text-[24px] ${
@@ -162,48 +226,27 @@ export default function Header() {
       {open && (
         <div className="fixed inset-0 bg-black/60 z-50 lg:hidden">
 
-          <div
-            className={`w-[300px] h-full ml-auto p-6 ${
-              darkMode ? "bg-[#111]" : "bg-white"
-            }`}
-          >
+          <div className="w-[300px] h-full ml-auto bg-white dark:bg-[#111] p-6">
 
-            {/* CLOSE */}
             <div className="flex justify-end mb-8">
               <button
                 onClick={() => setOpen(false)}
-                className={`text-[24px] ${
-                  darkMode ? "text-white" : "text-black"
-                }`}
+                className={darkMode ? "text-white" : "text-black"}
               >
-                <FaTimes />
+                <FaTimes size={24} />
               </button>
             </div>
 
-            {/* LINKS */}
-            <div
-              className={`flex flex-col gap-6 text-[17px] font-medium ${
-                darkMode ? "text-white" : "text-black"
-              }`}
-            >
+            <div className="flex flex-col gap-6 text-[17px]">
+
               <Link to="/" onClick={() => setOpen(false)}>Home</Link>
-              <Link to="/about" onClick={() => setOpen(false)}>About Us</Link>
+              <Link to="/about" onClick={() => setOpen(false)}>About</Link>
               <Link to="/services" onClick={() => setOpen(false)}>Services</Link>
+              <Link to="/web-development" onClick={() => setOpen(false)}>Web Development</Link>
+              <Link to="/brand-identity" onClick={() => setOpen(false)}>Brand Identity</Link>
               <Link to="/portfolio" onClick={() => setOpen(false)}>Portfolio</Link>
+              <Link to="/blog-details" onClick={() => setOpen(false)}>Blog Details</Link>
 
-              <a href="#">Blogs</a>
-              <a href="#">Contact</a>
-
-              <a
-                href="#"
-                className={`mt-3 h-[48px] rounded-full flex items-center justify-center ${
-                  darkMode
-                    ? "bg-white text-black"
-                    : "bg-black text-white"
-                }`}
-              >
-                Lets Connect
-              </a>
             </div>
 
           </div>

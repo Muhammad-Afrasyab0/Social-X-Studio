@@ -5,6 +5,10 @@ import About from "./pages/About";
 import ServicesPage from "./pages/Services";
 import WebDevelopment from "./pages/WebDevelopment";
 import Portfolio from "./pages/Portfolio";
+import BrandIdentity from "./pages/BrandIdentity";
+import Blog from "./pages/Blog";
+import BlogDetails from "./pages/BlogDetails";
+import Contact from "./pages/Contact";
 
 export default function App() {
   return (
@@ -26,8 +30,35 @@ export default function App() {
           element={<WebDevelopment />}
         />
 
+        {/* BRAND IDENTITY */}
+        <Route
+          path="/brand-identity"
+          element={<BrandIdentity />}
+        />
+
+        {/* BLOG */}
+        <Route
+          path="/blog"
+          element={<Blog />}
+        />
+
+        {/* BLOG DETAILS */}
+        <Route
+          path="/blog-details"
+          element={<BlogDetails />}
+        />
+
+        {/* CONTACT */}
+        <Route
+          path="/contact"
+          element={<Contact />}
+        />
+
         {/* PORTFOLIO */}
-        <Route path="/portfolio" element={<Portfolio />} />
+        <Route
+          path="/portfolio"
+          element={<Portfolio />}
+        />
 
       </Routes>
     </BrowserRouter>
