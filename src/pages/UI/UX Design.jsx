@@ -19,7 +19,7 @@ export default function BlogDetails() {
 
             {/* LEFT TITLE */}
             <h1 className="text-[clamp(34px,8vw,72px)] font-semibold leading-[0.96] tracking-[-0.04em] text-black dark:text-white transition-all duration-500">
-              Web Development
+              UI/UX Design
             </h1>
 
             {/* RIGHT BREADCRUMB */}
@@ -28,8 +28,12 @@ export default function BlogDetails() {
 
               <span>/</span>
 
+              <span>Services</span>
+
+              <span>/</span>
+
               <span className="text-black dark:text-white underline underline-offset-4">
-                Services
+                UI/UX Design
               </span>
             </div>
 

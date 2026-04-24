@@ -4,7 +4,7 @@ import Footer from "../components/layout/Footer";
 import BlogDetailsHero from "../components/sections/BlogDetailsHero";
 import BlogDetailsContent from "../components/sections/BlogDetailsContent";
 
-export default function BlogDetails() {
+export default function ShopifyDevelopment() {
   return (
     <>
       <Header />
@@ -19,7 +19,7 @@ export default function BlogDetails() {
 
             {/* LEFT TITLE */}
             <h1 className="text-[clamp(34px,8vw,72px)] font-semibold leading-[0.96] tracking-[-0.04em] text-black dark:text-white transition-all duration-500">
-              Web Development
+              Shopify Development
             </h1>
 
             {/* RIGHT BREADCRUMB */}
@@ -28,8 +28,12 @@ export default function BlogDetails() {
 
               <span>/</span>
 
+              <span>Services</span>
+
+              <span>/</span>
+
               <span className="text-black dark:text-white underline underline-offset-4">
-                Services
+                Shopify Development
               </span>
             </div>
 
@@ -39,10 +43,8 @@ export default function BlogDetails() {
 
       </section>
 
-      {/* BLOG DETAILS HERO */}
+      {/* PAGE CONTENT */}
       <BlogDetailsHero />
-
-      {/* BLOG DETAILS CONTENT */}
       <BlogDetailsContent />
 
       <Footer />

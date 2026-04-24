@@ -1,8 +1,9 @@
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 
-import BlogDetailsHero from "../components/sections/BlogDetailsHero";
-import BlogDetailsContent from "../components/sections/BlogDetailsContent";
+import UiUxDetails from "../components/sections/UiUxDetails";
+import UiUxBenefits from "../components/sections/UiUxBenefits";
+
 
 export default function BlogDetails() {
   return (
@@ -19,7 +20,7 @@ export default function BlogDetails() {
 
             {/* LEFT TITLE */}
             <h1 className="text-[clamp(34px,8vw,72px)] font-semibold leading-[0.96] tracking-[-0.04em] text-black dark:text-white transition-all duration-500">
-              Web Development
+              UI/UX Design
             </h1>
 
             {/* RIGHT BREADCRUMB */}
@@ -28,8 +29,12 @@ export default function BlogDetails() {
 
               <span>/</span>
 
+              <span>Services</span>
+
+              <span>/</span>
+
               <span className="text-black dark:text-white underline underline-offset-4">
-                Services
+                UI/UX Design
               </span>
             </div>
 
@@ -40,10 +45,12 @@ export default function BlogDetails() {
       </section>
 
       {/* BLOG DETAILS HERO */}
-      <BlogDetailsHero />
+      <UiUxDetails />
+      <UiUxBenefits />
 
-      {/* BLOG DETAILS CONTENT */}
-      <BlogDetailsContent />
+       
+
+     
 
       <Footer />
     </>

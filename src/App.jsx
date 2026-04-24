@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import ServicesPage from "./pages/Services";
 import WebDevelopment from "./pages/WebDevelopment";
+import UiUxDesign from "./pages/UiUxDesign";
 import Portfolio from "./pages/Portfolio";
 import BrandIdentity from "./pages/BrandIdentity";
 import Blog from "./pages/Blog";
@@ -28,6 +29,12 @@ export default function App() {
         <Route
           path="/web-development"
           element={<WebDevelopment />}
+        />
+
+        {/* UI/UX DESIGN */}
+        <Route
+          path="/ui-ux-design"
+          element={<UiUxDesign />}
         />
 
         {/* BRAND IDENTITY */}

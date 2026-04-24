@@ -1,24 +1,24 @@
 import React from "react";
 
-export default function WebDevDetails() {
+export default function UiUxDetails() {
   const services = [
     {
       no: "1.",
-      title: "WordPress Website Development",
+      title: "Website UI Design",
       desc:
-        "Custom WordPress websites built for speed, SEO performance, mobile responsiveness, and easy content management for growing businesses.",
+        "Modern website interfaces designed to improve usability, visual appeal, and user engagement across all devices.",
     },
     {
       no: "2.",
-      title: "Custom Plugin Development",
+      title: "Mobile App UX Design",
       desc:
-        "Powerful custom plugins and feature integrations tailored to your business needs, workflows, and website functionality goals.",
+        "Smooth mobile app experiences focused on navigation, retention, and intuitive user interactions.",
     },
     {
       no: "3.",
-      title: "Shopify Ecommerce Development",
+      title: "Wireframing & Prototyping",
       desc:
-        "High-converting Shopify stores designed for better user experience, secure checkout, product growth, and increased online sales.",
+        "Strategic wireframes and clickable prototypes that validate ideas before final development begins.",
     },
   ];
 
@@ -50,41 +50,35 @@ export default function WebDevDetails() {
       </style>
 
       <section className="w-full bg-[#efefef] dark:bg-[#111111] pt-[clamp(34px,6vw,58px)] pb-[clamp(54px,8vw,80px)] transition-all duration-500">
-        {/* Header aligned */}
         <div className="max-w-[1900px] mx-auto px-[clamp(16px,4vw,42px)]">
 
-          {/* ===================================== */}
           {/* Top Banner */}
-          {/* ===================================== */}
           <div className="fade-up w-full h-[clamp(220px,42vw,430px)] rounded-[10px] bg-black dark:bg-[#1a1a1a] transition-all duration-500"></div>
 
-          {/* ===================================== */}
           {/* Content */}
-          {/* ===================================== */}
           <div className="pt-[clamp(28px,5vw,54px)]">
 
             <h2 className="fade-up text-black dark:text-white text-[clamp(34px,7vw,58px)] font-semibold leading-[0.96] tracking-[-0.04em] transition-all duration-500">
-              Web Development
+              UI/UX Design
             </h2>
 
             <p className="fade-up mt-[clamp(18px,4vw,30px)] text-black/70 dark:text-white/70 text-[clamp(15px,2vw,17px)] leading-[1.95] max-w-[1750px] transition-all duration-500">
-              We provide professional web development services for businesses
-              that want to build a strong online presence, attract more customers,
-              and generate consistent leads. Our websites are modern, responsive,
-              fast-loading, and built to perform across all devices.
+              We provide professional UI/UX design services that help brands
+              create modern, intuitive, and engaging digital experiences. Our
+              design process focuses on usability, user behavior, and visual
+              impact that drives results.
             </p>
 
             <p className="fade-up mt-[clamp(16px,3vw,28px)] text-black/70 dark:text-white/70 text-[clamp(15px,2vw,17px)] leading-[1.95] max-w-[1750px] transition-all duration-500">
-              Whether you need a corporate website, ecommerce store, landing
-              page, or custom business platform, our team develops scalable web
-              solutions tailored to your goals, brand identity, and future growth.
+              Whether you need website design, mobile app interfaces, landing
+              pages, dashboards, or complete product design systems, we create
+              experiences that increase trust, improve conversions, and build
+              stronger customer relationships.
             </p>
 
           </div>
 
-          {/* ===================================== */}
           {/* Services List */}
-          {/* ===================================== */}
           <div className="mt-[clamp(36px,6vw,70px)] border-t border-black/10 dark:border-white/10 transition-all duration-500">
 
             {services.map((item, index) => (

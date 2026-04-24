@@ -255,15 +255,15 @@ export default function Hero() {
 
         {/* BLUE STRIP */}
         <div className="bg-[#0a8fff] h-[56px] sm:h-[64px] md:h-[72px] flex items-center overflow-hidden">
-          <div className="marquee-single">
-            <span>
-              TYPOGRAPHY ✦ DESIGN ✦ INTERACTION ✦ DIGITAL SOLUTION ✦ STRATEGY ✦
-              BRANDING ✦ AGENCY ✦ TYPOGRAPHY ✦ DESIGN ✦ INTERACTION ✦ DIGITAL
-              SOLUTION ✦ STRATEGY ✦ BRANDING ✦ AGENCY ✦ TYPOGRAPHY ✦ DESIGN ✦
-              INTERACTION ✦ DIGITAL SOLUTION ✦ STRATEGY ✦ BRANDING ✦ AGENCY ✦
-            </span>
-          </div>
-        </div>
+  <div className="marquee-single">
+    <span className="tracking-wide whitespace-nowrap">
+      TYPOGRAPHY &nbsp;&nbsp;✦&nbsp;&nbsp; DESIGN &nbsp;&nbsp;✦&nbsp;&nbsp; INTERACTION &nbsp;&nbsp;✦&nbsp;&nbsp; DIGITAL SOLUTION &nbsp;&nbsp;✦&nbsp;&nbsp; STRATEGY &nbsp;&nbsp;✦&nbsp;&nbsp;
+      BRANDING &nbsp;&nbsp;✦&nbsp;&nbsp; AGENCY &nbsp;&nbsp;✦&nbsp;&nbsp; TYPOGRAPHY &nbsp;&nbsp;✦&nbsp;&nbsp; DESIGN &nbsp;&nbsp;✦&nbsp;&nbsp;
+      INTERACTION &nbsp;&nbsp;✦&nbsp;&nbsp; DIGITAL SOLUTION &nbsp;&nbsp;✦&nbsp;&nbsp; STRATEGY &nbsp;&nbsp;✦&nbsp;&nbsp; BRANDING &nbsp;&nbsp;✦&nbsp;&nbsp;
+      AGENCY &nbsp;&nbsp;✦&nbsp;&nbsp; TYPOGRAPHY &nbsp;&nbsp;✦&nbsp;&nbsp; DESIGN &nbsp;&nbsp;✦&nbsp;&nbsp; INTERACTION &nbsp;&nbsp;✦&nbsp;&nbsp;
+    </span>
+  </div>
+</div>
       </section>
     </>
   );

@@ -1,38 +1,38 @@
 import React from "react";
 
-export default function WebDevBenefits() {
+export default function UiUxBene() {
   const cards = [
     {
-      title: "Industry Expert",
+      title: "User-Centered Design",
       desc:
-        "Our experienced web development team builds high-performing websites tailored to different industries and business goals.",
+        "We create intuitive UI/UX experiences focused on user behavior, engagement, and smooth digital interactions.",
       points: [
-        "Industry-focused website strategies",
-        "Modern UI and user experience standards",
-        "Solutions built for your target audience",
-        "Professional guidance at every stage",
+        "Easy and clear user journeys",
+        "Designs built around user needs",
+        "Higher engagement and retention",
+        "Improved satisfaction across devices",
       ],
     },
     {
-      title: "Data-driven Approach",
+      title: "Conversion Focused",
       desc:
-        "We use analytics, performance insights, and user behavior to create websites that deliver measurable business results.",
+        "Every layout, section, and interaction is strategically designed to increase leads, clicks, and sales.",
       points: [
-        "Conversion-focused page structures",
-        "SEO-friendly technical setup",
-        "Speed and engagement optimization",
-        "Decisions based on real performance data",
+        "Better call-to-action placement",
+        "Optimized landing page flow",
+        "Reduced bounce rates",
+        "Higher conversion opportunities",
       ],
     },
     {
-      title: "In-time Result",
+      title: "Modern Visual Impact",
       desc:
-        "We follow efficient workflows and clear milestones to deliver quality web projects on time without compromising standards.",
+        "We build modern interfaces that strengthen brand identity and create a premium first impression.",
       points: [
-        "Transparent project timelines",
-        "Fast revisions and communication",
-        "Reliable launch process",
-        "Ongoing support after delivery",
+        "Clean and professional aesthetics",
+        "Consistent brand visuals",
+        "Responsive mobile-first design",
+        "Memorable customer experience",
       ],
     },
   ];
@@ -69,22 +69,20 @@ export default function WebDevBenefits() {
 
           {/* Heading */}
           <h2 className="fade-up text-black dark:text-white text-[clamp(34px,7vw,56px)] font-semibold leading-[1] tracking-[-0.04em] max-w-[980px] transition-all duration-500">
-            Benefits of Our Development Services
+            Benefits of Our UI/UX Design Services
           </h2>
 
           {/* Paragraphs */}
           <p className="fade-up mt-[clamp(18px,4vw,28px)] text-black/70 dark:text-white/70 text-[clamp(15px,2vw,17px)] leading-[1.95] max-w-[1780px] transition-all duration-500">
-            A professionally developed website helps your business build trust,
-            attract qualified traffic, and convert visitors into real customers.
-            We create websites that combine clean design, strong functionality,
-            and long-term scalability for growing brands.
+            Great design is more than appearance. Our UI/UX design services help
+            businesses create smooth digital experiences that attract users,
+            build trust, and guide visitors toward action.
           </p>
 
           <p className="fade-up mt-[clamp(16px,3vw,24px)] text-black/70 dark:text-white/70 text-[clamp(15px,2vw,17px)] leading-[1.95] max-w-[1780px] transition-all duration-500">
-            Our web development process focuses on speed, mobile responsiveness,
-            SEO structure, and user experience so your website not only looks
-            professional but also performs as a valuable business asset that
-            supports sales, marketing, and future expansion.
+            We combine usability, visual strategy, and modern design systems to
+            craft websites and applications that are intuitive, engaging, and
+            optimized for long-term growth.
           </p>
 
           {/* Cards */}
