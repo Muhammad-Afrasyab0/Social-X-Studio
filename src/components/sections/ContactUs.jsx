@@ -61,54 +61,48 @@ export default function Contact() {
         `}
       </style>
 
-      <section className="w-full min-h-screen py-[60px] sm:py-[70px] md:py-[80px] bg-[#008CF4] dark:bg-[#0b0b0b] transition-all duration-500 overflow-hidden">
-        <div className="w-full max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 grid grid-cols-1 lg:grid-cols-2 gap-[55px] xl:gap-[90px] items-center">
-          
-          {/* LEFT SIDE */}
-          <div className="text-white lg:pl-[70px] fade-up">
-            <p className="text-[15px] sm:text-[18px] font-medium mb-[16px] sm:mb-[18px] text-white/90 uppercase tracking-wide">
+      <section className="w-full min-h-screen 
+        py-[clamp(60px,8vw,90px)] 
+        bg-[#008CF4] dark:bg-[#0b0b0b] 
+        transition-all duration-500 overflow-hidden">
+
+        <div className="w-full max-w-[1440px] 2xl:max-w-[1600px] mx-auto 
+          px-[clamp(16px,4vw,40px)] 
+          grid grid-cols-1 lg:grid-cols-2 
+          gap-[clamp(40px,6vw,90px)] items-center">
+
+          {/* LEFT */}
+          <div className="text-white lg:pl-[clamp(0px,4vw,70px)] fade-up">
+
+            <p className="text-[clamp(14px,2vw,18px)] font-medium 
+              mb-[clamp(14px,2vw,18px)] text-white/90 uppercase tracking-wide">
               Contact Us
             </p>
 
-            <h2 className="text-[38px] sm:text-[56px] md:text-[74px] leading-[0.98] font-semibold tracking-[-2px]">
+            <h2 className="text-[clamp(38px,6vw,74px)] 
+              leading-[0.98] font-semibold tracking-[-2px]">
               Get In Touch
             </h2>
 
-            <p className="mt-[22px] sm:mt-[26px] text-[16px] sm:text-[18px] md:text-[20px] leading-[1.7] text-white/90 max-w-[520px]">
-              Have a question or project in mind? We'd love to hear
-              from you.
+            <p className="mt-[clamp(18px,3vw,26px)] 
+              text-[clamp(16px,2vw,20px)] leading-[1.7] text-white/90 max-w-[520px]">
+              Have a question or project in mind? We'd love to hear from you.
             </p>
 
             {/* INFO */}
-            <div className="mt-[40px] sm:mt-[60px] flex flex-col gap-[28px] sm:gap-[34px]">
-              <Info
-                icon={<Phone size={26} strokeWidth={2.2} />}
-                title="Call Now:"
-                text="0123 456 7890"
-              />
+            <div className="mt-[clamp(30px,6vw,60px)] flex flex-col gap-[clamp(22px,3vw,34px)]">
 
-              <Info
-                icon={<Mail size={26} strokeWidth={2.2} />}
-                title="Email:"
-                text="info@domain.com"
-              />
-
-              <Info
-                icon={<MapPin size={26} strokeWidth={2.2} />}
-                title="Address:"
-                text={
-                  <>
-                    Address Line Dummy Here
-                    <br />
-                    Lorem Ipsum dollar
-                  </>
-                }
-              />
+              <Info icon={<Phone size={26} strokeWidth={2.2} />} title="Call Now:" text="0123 456 7890" />
+              <Info icon={<Mail size={26} strokeWidth={2.2} />} title="Email:" text="info@domain.com" />
+              <Info icon={<MapPin size={26} strokeWidth={2.2} />} title="Address:" text={
+                <>Address Line Dummy Here<br />Lorem Ipsum dollar</>
+              } />
             </div>
 
             {/* SOCIAL */}
-            <div className="mt-[42px] sm:mt-[58px] flex flex-wrap items-center gap-[12px] sm:gap-[14px]">
-              <p className="text-[16px] sm:text-[20px] text-white/90 mr-[6px] sm:mr-[10px]">
+            <div className="mt-[clamp(30px,5vw,58px)] flex flex-wrap items-center gap-[clamp(10px,2vw,14px)]">
+
+              <p className="text-[clamp(16px,2vw,20px)] text-white/90 mr-[8px]">
                 Follow Us on
               </p>
 
@@ -118,47 +112,63 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* RIGHT SIDE */}
+          {/* RIGHT */}
           <div className="max-w-[760px] ml-auto w-full fade-up">
-            <div className="float-card rounded-[24px] sm:rounded-[30px] md:rounded-[38px] border border-white/20 bg-white/10 dark:bg-white/[0.04] backdrop-blur-md px-5 sm:px-8 md:px-[48px] pt-7 sm:pt-10 md:pt-[52px] pb-7 sm:pb-8 md:pb-[42px] transition-all duration-500">
-              
+
+            <div className="float-card 
+              rounded-[clamp(20px,3vw,38px)] 
+              border border-white/20 
+              bg-white/10 dark:bg-white/[0.04] 
+              backdrop-blur-md 
+              px-[clamp(20px,4vw,48px)] 
+              pt-[clamp(28px,4vw,52px)] 
+              pb-[clamp(28px,4vw,42px)]">
+
               {/* ROW 1 */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-7 sm:gap-[34px]">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-[clamp(20px,3vw,34px)]">
                 <Field placeholder="First Name*" />
                 <Field placeholder="Last Name*" />
               </div>
 
               {/* ROW 2 */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-7 sm:gap-[34px] mt-7 sm:mt-[42px]">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-[clamp(20px,3vw,34px)] mt-[clamp(20px,3vw,42px)]">
                 <Field placeholder="Phone*" />
                 <Field placeholder="Email*" />
               </div>
 
               {/* MESSAGE */}
-              <div className="mt-7 sm:mt-[42px]">
+              <div className="mt-[clamp(20px,3vw,42px)]">
                 <Field placeholder="Message.." />
               </div>
 
               {/* CHECKBOX */}
-              <label className="mt-6 sm:mt-[26px] flex items-start sm:items-center gap-[12px] text-white/80 text-[15px] sm:text-[18px]">
-                <input
-                  type="checkbox"
-                  className="w-[18px] h-[18px] accent-white mt-1 sm:mt-0"
-                />
+              <label className="mt-[clamp(18px,2vw,26px)] flex items-start sm:items-center gap-[12px] text-white/80 text-[clamp(14px,2vw,18px)]">
+                <input type="checkbox" className="w-[18px] h-[18px] accent-white mt-1 sm:mt-0" />
                 I agree to the privacy policy
               </label>
 
               {/* BUTTON */}
-              <button className="btn-hover mt-[42px] sm:mt-[70px] md:mt-[90px] h-[54px] sm:h-[58px] px-[28px] sm:px-[34px] rounded-full border border-white/60 text-white dark:bg-white dark:text-black dark:border-white text-[18px] sm:text-[22px] font-medium inline-flex items-center gap-3 hover:bg-white hover:text-[#008CF4] dark:hover:bg-[#008CF4] dark:hover:text-white transition-all duration-300">
+              <button className="btn-hover 
+                mt-[clamp(40px,6vw,90px)] 
+                h-[clamp(50px,6vw,58px)] 
+                px-[clamp(24px,3vw,34px)] 
+                rounded-full border border-white/60 
+                text-white dark:bg-white dark:text-black 
+                dark:border-white 
+                text-[clamp(16px,2vw,22px)] 
+                font-medium inline-flex items-center gap-3 
+                hover:bg-white hover:text-[#008CF4] 
+                dark:hover:bg-[#008CF4] dark:hover:text-white">
+
                 Send Now
-                <span className="btn-arrow text-[22px] sm:text-[24px] leading-none">
-                  ↗
-                </span>
+                <span className="btn-arrow text-[clamp(18px,2vw,24px)]">↗</span>
               </button>
 
-              <p className="mt-[18px] sm:mt-[20px] text-[14px] sm:text-[18px] text-white/70 leading-[1.6]">
+              <p className="mt-[clamp(14px,2vw,20px)] 
+                text-[clamp(14px,2vw,18px)] text-white/70 leading-[1.6]">
                 You will get a response from us within 5 minutes.
               </p>
+
             </div>
           </div>
 
@@ -173,14 +183,22 @@ function Field({ placeholder }) {
     <input
       type="text"
       placeholder={placeholder}
-      className="w-full bg-transparent border-0 border-b border-white/40 pb-[14px] text-white text-[16px] sm:text-[18px] placeholder:text-white/70 outline-none focus:border-white transition-all duration-300"
+      className="w-full bg-transparent border-0 border-b border-white/40 
+      pb-[12px] text-white text-[clamp(14px,2vw,18px)] 
+      placeholder:text-white/70 outline-none focus:border-white transition-all"
     />
   );
 }
 
 function SocialIcon({ icon }) {
   return (
-    <button className="social-hover w-[48px] h-[48px] sm:w-[58px] sm:h-[58px] rounded-full border border-white/45 flex items-center justify-center text-white text-[18px] sm:text-[20px] hover:bg-white hover:text-[#008CF4] transition-all duration-300">
+    <button className="social-hover 
+      w-[clamp(44px,5vw,58px)] 
+      h-[clamp(44px,5vw,58px)] 
+      rounded-full border border-white/45 
+      flex items-center justify-center 
+      text-white text-[clamp(16px,2vw,20px)] 
+      hover:bg-white hover:text-[#008CF4] transition-all">
       {icon}
     </button>
   );
@@ -188,17 +206,15 @@ function SocialIcon({ icon }) {
 
 function Info({ icon, title, text }) {
   return (
-    <div className="flex items-start gap-[16px] sm:gap-[18px]">
-      <div className="mt-[3px] text-white">
-        {icon}
-      </div>
+    <div className="flex items-start gap-[clamp(14px,2vw,18px)]">
+      <div className="mt-[3px] text-white">{icon}</div>
 
       <div>
-        <p className="text-[15px] sm:text-[18px] text-white/70 mb-[3px]">
+        <p className="text-[clamp(14px,2vw,18px)] text-white/70 mb-[3px]">
           {title}
         </p>
 
-        <p className="text-[20px] sm:text-[24px] md:text-[26px] leading-[1.25] font-semibold tracking-[-0.5px] text-white">
+        <p className="text-[clamp(18px,2.5vw,26px)] leading-[1.25] font-semibold tracking-[-0.5px] text-white">
           {text}
         </p>
       </div>

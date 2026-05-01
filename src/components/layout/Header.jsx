@@ -105,7 +105,7 @@ export default function Header() {
             </div>
 
             <Link to="/portfolio" className={navLink("/portfolio")}>
-              Portfolio
+              Our Portfolio
             </Link>
 
             <Link to="/blog" className={navLink("/blog")}>
@@ -201,37 +201,76 @@ export default function Header() {
 
       {/* MOBILE MENU */}
       {open && (
-        <div className="fixed inset-0 bg-black/60 z-50 lg:hidden">
+  <div className="fixed inset-0 bg-black/60 z-50 lg:hidden">
 
-          <div className={`w-[86%] max-w-[340px] h-full ml-auto p-6 ${darkMode ? "bg-[#111]" : "bg-white"}`}>
+    <div className={`w-[86%] max-w-[340px] h-full ml-auto p-6 ${darkMode ? "bg-[#111]" : "bg-white"}`}>
 
-            <div className="flex justify-end mb-8">
-              <button
-                onClick={() => setOpen(false)}
-                className={darkMode ? "text-white" : "text-black"}
-              >
-                <FaTimes size={24} />
-              </button>
-            </div>
+      {/* TOP BAR */}
+      <div className="flex items-center justify-between mb-8">
 
-            <div className={`flex flex-col gap-6 text-[17px] font-medium ${darkMode ? "text-white" : "text-black"}`}>
+        {/* LOGO (ADDED) */}
+        <img
+          src={darkMode ? darkLogo : logo}
+          alt="logo"
+          className="w-[120px] object-contain animate-[logoFloat_4s_ease-in-out_infinite]"
+        />
 
-              <MobileLink to="/" close={setOpen}>Home</MobileLink>
-              <MobileLink to="/about" close={setOpen}>About</MobileLink>
-              <MobileLink to="/services" close={setOpen}>Services</MobileLink>
-              <MobileLink to="/web-development" close={setOpen}>Web Development</MobileLink>
-              <MobileLink to="/brand-identity" close={setOpen}>Brand Identity</MobileLink>
-              <MobileLink to="/portfolio" close={setOpen}>Portfolio</MobileLink>
-              <MobileLink to="/blog" close={setOpen}>Blogs</MobileLink>
-              <MobileLink to="/blog-details" close={setOpen}>Blog Details</MobileLink>
-              <MobileLink to="/contact" close={setOpen}>Contact</MobileLink>
+        {/* CLOSE */}
+        <button
+          onClick={() => setOpen(false)}
+          className={darkMode ? "text-white" : "text-black"}
+        >
+          <FaTimes size={24} />
+        </button>
+      </div>
 
-            </div>
+      {/* DARK MODE TOGGLE (SAME AS DESKTOP) */}
+      <div className="flex items-center justify-between mb-8">
+
+        <span className={darkMode ? "text-white" : "text-black"}>
+          Theme Mode
+        </span>
+
+        <button
+          onClick={() => setDarkMode(!darkMode)}
+          className="flex items-center gap-[9px]"
+        >
+          <div className="w-[28px] h-[15px] bg-black dark:bg-white rounded-full relative">
+
+            <span
+              className={`absolute top-[2px] w-[11px] h-[11px] rounded-full duration-300 ${
+                darkMode
+                  ? "left-[2px] bg-black"
+                  : "left-[15px] bg-white"
+              }`}
+            />
 
           </div>
 
-        </div>
-      )}
+          <span className={darkMode ? "text-white" : "text-black"}>
+            {darkMode ? "Dark" : "Light"}
+          </span>
+        </button>
+      </div>
+
+      {/* LINKS (UNCHANGED) */}
+      <div className={`flex flex-col gap-6 text-[17px] font-medium ${darkMode ? "text-white" : "text-black"}`}>
+
+        <MobileLink to="/" close={setOpen}>Home</MobileLink>
+        <MobileLink to="/about" close={setOpen}>About</MobileLink>
+        <MobileLink to="/services" close={setOpen}>Services</MobileLink>
+        <MobileLink to="/web-development" close={setOpen}>Web Development</MobileLink>
+        <MobileLink to="/brand-identity" close={setOpen}>Brand Identity</MobileLink>
+        <MobileLink to="/portfolio" close={setOpen}>Portfolio</MobileLink>
+        <MobileLink to="/blog" close={setOpen}>Blogs</MobileLink>
+        <MobileLink to="/blog-details" close={setOpen}>Blog Details</MobileLink>
+        <MobileLink to="/contact" close={setOpen}>Contact</MobileLink>
+
+      </div>
+
+    </div>
+  </div>
+)}
     </header>
   );
 }

@@ -20,7 +20,7 @@ const projects = [
   },
   {
     id: "03",
-    title: "Social Media Marketing",
+    title: "Creative Marketing",
     desc: "Transforming ideas into powerful brand identities, engaging websites, and meaningful digital interactions.",
     image: image3,
   },

@@ -12,32 +12,41 @@ export default function BrandIdentity() {
     <>
       <Header />
 
-      {/* HERO SECTION */}
-      <section className="bg-[#efefef] dark:bg-[#111111] pt-[clamp(118px,14vw,150px)] pb-[clamp(40px,7vw,70px)] border-b-[4px] sm:border-b-[6px] border-[#0a8fff] transition-all duration-500">
+      {/* HERO / BREADCRUMB */}
+      <section className="bg-[#efefef] dark:bg-[#111111] pt-[clamp(118px,14vw,150px)] pb-[clamp(42px,7vw,70px)] border-b-[4px] sm:border-b-[6px] border-[#0a8fff] transition-all duration-500 overflow-hidden">
 
-        <div className="max-w-[1900px] mx-auto px-[clamp(16px,4vw,42px)]">
+        {/* SAME HEADER CONTAINER */}
+        <div className="container-fluid">
 
-          {/* fluid responsive layout */}
-          <div className="flex flex-col gap-[18px] sm:gap-[24px] lg:flex-row lg:items-end lg:justify-between">
+          {/* PERFECT ALIGNMENT */}
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-y-[22px] lg:items-end">
 
             {/* LEFT TITLE */}
             <div>
-              <h1 className="text-black dark:text-white text-[clamp(34px,8vw,72px)] font-semibold leading-[0.95] tracking-[-0.04em] transition-all duration-500">
+              <h1 className="text-black dark:text-white font-semibold leading-[0.95] tracking-[-0.04em] text-[clamp(34px,7vw,72px)]">
                 Brand Identity
-                <br />
-                Lorem
               </h1>
             </div>
 
             {/* RIGHT BREADCRUMB */}
-            <div className="flex flex-wrap items-center gap-x-2 gap-y-2 lg:pb-[8px] text-[clamp(14px,2vw,18px)] text-black/45 dark:text-white/50 transition-all duration-500">
-              <span>Home</span>
+            <div className="lg:pb-[10px] lg:pr-[24px] justify-self-start lg:justify-self-end">
 
-              <span>/</span>
+              <div className="flex flex-wrap items-center gap-x-2 gap-y-2 text-[clamp(14px,1.4vw,18px)]">
 
-              <span className="text-black dark:text-white underline underline-offset-4">
-                Brand Identity Lorem
-              </span>
+                <span className="text-black/45 dark:text-white/45">
+                  Home
+                </span>
+
+                <span className="text-black dark:text-white">
+                  /
+                </span>
+
+                <span className="text-black dark:text-white underline underline-offset-4">
+                  Brand Identity
+                </span>
+
+              </div>
+
             </div>
 
           </div>

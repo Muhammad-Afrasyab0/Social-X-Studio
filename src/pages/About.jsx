@@ -9,66 +9,49 @@ import Testimonial from "../components/sections/testimonial";
 export default function About() {
   return (
     <>
-      <style>
-        {`
-        .fade-up{
-          animation:fadeUp .8s ease forwards;
-        }
-
-        @keyframes fadeUp{
-          from{
-            opacity:0;
-            transform:translateY(28px);
-          }
-          to{
-            opacity:1;
-            transform:translateY(0);
-          }
-        }
-
-        .crumb-link{
-          transition:all .25s ease;
-        }
-
-        .crumb-link:hover{
-          opacity:1;
-          transform:translateY(-1px);
-        }
-        `}
-      </style>
-
       <Header />
 
-      {/* ===================================== */}
-      {/* BREADCRUMB */}
-      {/* ===================================== */}
-      <section className="bg-[#efefef] dark:bg-[#111111] pt-[118px] sm:pt-[132px] md:pt-[145px] lg:pt-[150px] pb-[55px] sm:pb-[70px] md:pb-[85px] border-b-[6px] border-[#0a8fff] transition-all duration-500 overflow-hidden">
-        {/* aligned with header */}
-        <div className="w-full max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
-          
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5 md:gap-8">
-            
-            <h1 className="fade-up text-[38px] sm:text-[54px] md:text-[64px] xl:text-[72px] font-semibold leading-none tracking-[-1px] text-black dark:text-white transition-all duration-500">
-              About Us
-            </h1>
+      {/* HERO / BREADCRUMB */}
+      <section className="bg-[#efefef] dark:bg-[#111111] pt-[clamp(118px,14vw,150px)] pb-[clamp(42px,7vw,70px)] border-b-[4px] sm:border-b-[6px] border-[#0a8fff] transition-all duration-500 overflow-hidden">
+        
+        {/* SAME HEADER CONTAINER */}
+        <div className="container-fluid">
 
-            <div
-              className="fade-up flex flex-wrap items-center gap-2 sm:gap-3 md:pb-[8px] text-[15px] sm:text-[16px] md:text-[18px] text-black dark:text-white transition-all duration-500"
-              style={{ animationDelay: "120ms" }}
-            >
-              <span className="crumb-link text-black/40 dark:text-white/40">
-                Home
-              </span>
+          {/* PERFECT ALIGNMENT */}
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-y-[22px] lg:items-end">
 
-              <span>/</span>
-
-              <span className="underline underline-offset-4">
+            {/* LEFT TITLE */}
+            <div>
+              <h1 className="text-black dark:text-white font-semibold leading-[0.95] tracking-[-0.04em] text-[clamp(34px,7vw,72px)]">
                 About Us
-              </span>
+              </h1>
+            </div>
+
+            {/* RIGHT BREADCRUMB */}
+            <div className="lg:pb-[10px] lg:pr-[24px] justify-self-start lg:justify-self-end">
+
+              <div className="flex flex-wrap items-center gap-x-2 gap-y-2 text-[clamp(14px,1.4vw,18px)]">
+
+                <span className="text-black/45 dark:text-white/45">
+                  Home
+                </span>
+
+                <span className="text-black dark:text-white">
+                  /
+                </span>
+
+                <span className="text-black dark:text-white underline underline-offset-4">
+                  About Us
+                </span>
+
+              </div>
+
             </div>
 
           </div>
+
         </div>
+
       </section>
 
       {/* ABOUT INTRO */}

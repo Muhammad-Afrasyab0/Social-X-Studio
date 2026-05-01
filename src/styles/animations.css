@@ -1,0 +1,29 @@
+/* TEXT REVEAL */
+.text-reveal {
+  transform: translateY(100%);
+  opacity: 0;
+  animation: textReveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes textReveal {
+  to {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+/* CARD HOVER */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-6px) scale(1.02);
+}
+
+/* MOBILE OPTIMIZATION */
+@media (max-width: 640px) {
+  .card-hover:hover {
+    transform: none; /* disable heavy hover on mobile */
+  }
+}

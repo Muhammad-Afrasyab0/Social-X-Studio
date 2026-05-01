@@ -11,10 +11,7 @@ import watermark from "../../assets/logo-watermark.png";
 
 export default function Footer() {
   const scrollTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -22,10 +19,14 @@ export default function Footer() {
       <div className="w-full">
 
         {/* MAIN BLACK PANEL */}
-        <div className="bg-black rounded-[28px] sm:rounded-[34px] lg:rounded-[38px] min-h-[555px] lg:min-h-[560px] relative px-[34px] sm:px-[48px] lg:px-[64px] pt-[52px] sm:pt-[58px] lg:pt-[62px] pb-[34px]">
+        <div className="bg-black rounded-[28px] sm:rounded-[34px] lg:rounded-[38px] 
+                        relative px-[34px] sm:px-[48px] lg:px-[64px] 
+                        pt-[52px] sm:pt-[58px] lg:pt-[62px] 
+                        pb-[80px] sm:pb-[90px] lg:pb-[100px] 
+                        min-h-[auto] lg:min-h-[560px]">
 
           {/* TOP GRID */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-[1.55fr_.78fr_.78fr_1fr] gap-y-[34px] gap-x-[30px]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-[1.55fr_.78fr_.78fr_1fr] gap-y-[34px] gap-x-[30px] relative z-10">
 
             {/* LEFT */}
             <div>
@@ -106,17 +107,27 @@ export default function Footer() {
             </div>
           </div>
 
-        {/* WATERMARK LOGO FIXED */}
-<div className="absolute left-1/2 -translate-x-1/2 bottom-[98px] w-full flex justify-center pointer-events-none">
+          {/* WATERMARK */}
+         {/* WATERMARK */}
+<div className="
+  relative mt-10 flex justify-center pointer-events-none
+  sm:absolute sm:left-1/2 sm:-translate-x-1/2 
+  sm:bottom-[80px] lg:bottom-[95px] sm:mt-0
+">
   <img
     src={watermark}
     alt="watermark"
-    className="w-[470px] sm:w-[560px] md:w-[640px] lg:w-[710px] xl:w-[760px] h-auto object-contain opacity-100 drop-shadow-[0_18px_22px_rgba(0,0,0,0.45)]"
+    className="
+      w-[85%] sm:w-[60%] md:w-[55%] lg:w-[50%] xl:w-[760px]
+      h-auto object-contain
+      opacity-100
+      drop-shadow-[0_18px_22px_rgba(0,0,0,0.45)]
+    "
   />
 </div>
 
           {/* COPYRIGHT */}
-          <div className="absolute bottom-[38px] left-0 w-full flex justify-center">
+          <div className="absolute bottom-[30px] left-0 w-full flex justify-center z-10">
             <p className="text-white/78 text-[12px] sm:text-[13px]">
               © All Rights Reserved by Social X Studio - 2026
             </p>
@@ -125,7 +136,7 @@ export default function Footer() {
           {/* BUTTON */}
           <button
             onClick={scrollTop}
-            className="absolute right-[18px] bottom-[28px] w-[34px] h-[34px] rounded-full border border-white text-white text-[12px] flex items-center justify-center hover:bg-white hover:text-black duration-300"
+            className="absolute right-[18px] bottom-[24px] w-[34px] h-[34px] rounded-full border border-white text-white text-[12px] flex items-center justify-center hover:bg-white hover:text-black duration-300 z-10"
           >
             <FaArrowUp />
           </button>
