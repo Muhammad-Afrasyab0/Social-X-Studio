@@ -32,7 +32,6 @@ export default function Header() {
     }
   }, [darkMode]);
 
-  // ✅ Sticky scroll detection
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
@@ -44,7 +43,10 @@ export default function Header() {
   const isServicePage =
     location.pathname === "/services" ||
     location.pathname === "/web-development" ||
-    location.pathname === "/brand-identity";
+    location.pathname === "/brand-identity" ||
+    location.pathname === "/social-marketing" ||
+    location.pathname === "/video-production" ||
+    location.pathname === "/ui-ux-design";
 
   const navLink = (path) =>
     location.pathname === path
@@ -62,8 +64,6 @@ export default function Header() {
       }`}
     >
       <div className="max-w-[1900px] mx-auto px-[3px]">
-
-        {/* ✅ LINE REMOVED (border-transparent) */}
         <div className="h-[92px] px-4 sm:px-6 md:px-8 lg:px-[42px] border border-transparent flex items-center justify-between transition-all duration-500">
 
           {/* LOGO */}
@@ -81,7 +81,7 @@ export default function Header() {
             <Link to="/" className={navLink("/")}>Home</Link>
             <Link to="/about" className={navLink("/about")}>About Us</Link>
 
-            {/* ✅ FIXED DROPDOWN */}
+            {/* SERVICES DROPDOWN */}
             <div
               className="relative"
               onMouseEnter={() => setServiceDrop(true)}
@@ -90,7 +90,7 @@ export default function Header() {
               }}
             >
               <button
-                onClick={() => setServiceDrop((prev) => !prev)}
+                onClick={() => (window.location.href = "/services")}
                 className={`inline-flex items-center gap-[6px] ${
                   isServicePage
                     ? "text-[#0a8fff]"
@@ -105,11 +105,10 @@ export default function Header() {
 
               {serviceDrop && (
                 <div className="absolute top-[28px] left-0 w-[250px] bg-white dark:bg-[#1a1a1a] rounded-[12px] shadow-2xl py-[12px] z-50">
-                  <DropLink to="/services" text="All Services" />
+                  <DropLink to="/social-marketing" text="Social Marketing" />
                   <DropLink to="/web-development" text="Web Development" />
-                  <DropLink to="/brand-identity" text="Brand Identity" />
-                  <DropLink to="/blog-details" text="Blog Details" />
-                  <DropLink to="/contact" text="Contact Page" />
+                  <DropLink to="/ui-ux-design" text="UI-UX Solution" />
+                  <DropLink to="/video-production" text="Video Production" />
                 </div>
               )}
             </div>
@@ -128,7 +127,7 @@ export default function Header() {
 
           </nav>
 
-          {/* RIGHT SIDE */}
+          {/* RIGHT */}
           <div className="hidden lg:flex flex-col items-end gap-[11px]">
 
             <div className="flex items-center gap-[18px]">
@@ -152,20 +151,7 @@ export default function Header() {
                 </span>
               </button>
 
-              <button
-                className={`inline-flex items-center gap-[5px] ${
-                  darkMode ? "text-white" : "text-black"
-                }`}
-              >
-                <span>English</span>
-                <FaChevronDown className="text-[10px]" />
-              </button>
-
-              <div
-                className={`flex items-center gap-[16px] ${
-                  darkMode ? "text-white" : "text-black"
-                }`}
-              >
+              <div className={`flex items-center gap-[16px] ${darkMode ? "text-white" : "text-black"}`}>
                 <FaFacebookF />
                 <FaInstagram />
                 <FaLinkedinIn />
@@ -201,72 +187,96 @@ export default function Header() {
       </div>
 
       {/* MOBILE MENU */}
-      {open && (
-        <div className="fixed inset-0 bg-black/60 z-50 lg:hidden">
+    {open && (
+  <div className="fixed inset-0 bg-black/60 z-50 lg:hidden">
 
-          <div className={`w-[86%] max-w-[340px] h-full ml-auto p-6 ${darkMode ? "bg-[#111]" : "bg-white"}`}>
+    <div
+      className={`w-[86%] max-w-[340px] h-full ml-auto p-6 ${
+        darkMode ? "bg-[#111]" : "bg-white"
+      }`}
+    >
 
-            <div className="flex items-center justify-between mb-8">
+      {/* TOP BAR */}
+      <div className="flex items-center justify-between gap-4 mb-8">
 
-              <img
-                src={darkMode ? darkLogo : logo}
-                alt="logo"
-                className="w-[120px] object-contain"
-              />
+        {/* LOGO */}
+        <img
+          src={darkMode ? darkLogo : logo}
+          alt="logo"
+          className="w-[120px] object-contain"
+        />
 
-              <button
-                onClick={() => setOpen(false)}
-                className={darkMode ? "text-white" : "text-black"}
-              >
-                <FaTimes size={24} />
-              </button>
-
-            </div>
-
-            <div className="flex items-center justify-between mb-8">
-
-              <span className={darkMode ? "text-white" : "text-black"}>
-                Theme Mode
-              </span>
-
-              <button
-                onClick={() => setDarkMode(!darkMode)}
-                className="flex items-center gap-[9px]"
-              >
-                <div className="w-[28px] h-[15px] bg-black dark:bg-white rounded-full relative">
-                  <span
-                    className={`absolute top-[2px] w-[11px] h-[11px] rounded-full duration-300 ${
-                      darkMode
-                        ? "left-[2px] bg-black"
-                        : "left-[15px] bg-white"
-                    }`}
-                  />
-                </div>
-
-                <span className={darkMode ? "text-white" : "text-black"}>
-                  {darkMode ? "Dark" : "Light"}
-                </span>
-              </button>
-
-            </div>
-
-            <div className={`flex flex-col gap-6 text-[17px] font-medium ${darkMode ? "text-white" : "text-black"}`}>
-
-              <MobileLink to="/" close={setOpen}>Home</MobileLink>
-              <MobileLink to="/about" close={setOpen}>About</MobileLink>
-              <MobileLink to="/services" close={setOpen}>Services</MobileLink>
-              <MobileLink to="/web-development" close={setOpen}>Web Development</MobileLink>
-              <MobileLink to="/brand-identity" close={setOpen}>Brand Identity</MobileLink>
-              <MobileLink to="/portfolio" close={setOpen}>Portfolio</MobileLink>
-              <MobileLink to="/blog" close={setOpen}>Blogs</MobileLink>
-              <MobileLink to="/blog-details" close={setOpen}>Blog Details</MobileLink>
-              <MobileLink to="/contact" close={setOpen}>Contact</MobileLink>
-
-            </div>
-
+        {/* THEME TOGGLE */}
+        <button
+          onClick={() => setDarkMode(!darkMode)}
+          className="flex items-center gap-[6px]"
+        >
+          <div className="w-[28px] h-[15px] bg-black dark:bg-white rounded-full relative">
+            <span
+              className={`absolute top-[2px] w-[11px] h-[11px] rounded-full duration-300 ${
+                darkMode
+                  ? "left-[2px] bg-black"
+                  : "left-[15px] bg-white"
+              }`}
+            />
           </div>
-        </div>
-      )}
+        </button>
+
+        {/* CLOSE BTN */}
+        <button
+          onClick={() => setOpen(false)}
+          className={darkMode ? "text-white" : "text-black"}
+        >
+          <FaTimes size={24} />
+        </button>
+
+      </div>
+
+      {/* NAV LINKS */}
+      <div
+        className={`flex flex-col gap-6 text-[17px] font-medium ${
+          darkMode ? "text-white" : "text-black"
+        }`}
+      >
+
+        <MobileLink to="/" close={setOpen}>Home</MobileLink>
+        <MobileLink to="/about" close={setOpen}>About</MobileLink>
+        <MobileLink to="/services" close={setOpen}>Services</MobileLink>
+
+        {/* SERVICES */}
+        <MobileLink to="/social-marketing" close={setOpen}>
+          Social Marketing
+        </MobileLink>
+
+        <MobileLink to="/web-development" close={setOpen}>
+          Web Development
+        </MobileLink>
+
+        <MobileLink to="/ui-ux-design" close={setOpen}>
+          UI/UX
+        </MobileLink>
+
+        <MobileLink to="/video-production" close={setOpen}>
+          Video Production
+        </MobileLink>
+
+        <MobileLink to="/portfolio" close={setOpen}>
+          Portfolio
+        </MobileLink>
+
+        <MobileLink to="/blog" close={setOpen}>
+          Blogs
+        </MobileLink>
+
+        <MobileLink to="/contact" close={setOpen}>
+          Contact
+        </MobileLink>
+
+      </div>
+
+    </div>
+  </div>
+)}
     </header>
   );
 }

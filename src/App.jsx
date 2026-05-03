@@ -11,7 +11,8 @@ import UiUxDesign from "./pages/UiUxDesign";
 import Portfolio from "./pages/Portfolio";
 import BrandIdentity from "./pages/BrandIdentity";
 import Blog from "./pages/Blog";
-import VideoProduction from "./pages/Videoproduction"; // ✅ FIXED
+import VideoProduction from "./pages/Videoproduction";
+import SocialMarketing from "./pages/SocialMarketing"; // ✅ ADDED
 import BlogDetails from "./pages/BlogDetails";
 import Contact from "./pages/Contact";
 
@@ -45,8 +46,11 @@ export default function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/portfolio" element={<Portfolio />} />
 
-        {/* ✅ FIXED ROUTE */}
+        {/* EXISTING */}
         <Route path="/video-production" element={<VideoProduction />} />
+
+        {/* ✅ NEW SOCIAL MARKETING ROUTE */}
+        <Route path="/social-marketing" element={<SocialMarketing />} />
 
         {/* 404 */}
         <Route path="*" element={<h1>404 - Page Not Found</h1>} />

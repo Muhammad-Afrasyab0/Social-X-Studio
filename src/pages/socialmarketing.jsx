@@ -1,0 +1,58 @@
+import Header from "../components/layout/Header";
+import Footer from "../components/layout/Footer";
+
+import SocialMarketingDetails from "../components/sections/socialdetails";
+import SocialMarketingBene from "../components/sections/socialbenefits";
+
+export default function SocialMarketing() {
+  return (
+    <>
+      <Header />
+
+      {/* HERO / BREADCRUMB */}
+      <section className="bg-[#efefef] dark:bg-[#111111] pt-[clamp(118px,14vw,150px)] pb-[clamp(42px,7vw,70px)] border-b-[4px] sm:border-b-[6px] border-[#0a8fff] transition-all duration-500 overflow-hidden">
+
+        <div className="container-fluid">
+
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-y-[22px] lg:items-end">
+
+            {/* LEFT */}
+            <div>
+              <h1 className="text-black dark:text-white font-semibold leading-[0.95] tracking-[-0.04em] text-[clamp(34px,7vw,72px)]">
+                Social Marketing
+              </h1>
+            </div>
+
+            {/* RIGHT */}
+            <div className="lg:pb-[10px] lg:pr-[24px] justify-self-start lg:justify-self-end">
+
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-[clamp(14px,1.4vw,18px)]">
+
+                <span className="text-black/40 dark:text-white/40">
+                  Home
+                </span>
+
+                <span className="text-black dark:text-white">
+                  /
+                </span>
+
+                <span className="text-black dark:text-white underline underline-offset-4">
+                  Social Marketing
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <SocialMarketingDetails />
+      <SocialMarketingBene />
+
+      <Footer />
+    </>
+  );
+}

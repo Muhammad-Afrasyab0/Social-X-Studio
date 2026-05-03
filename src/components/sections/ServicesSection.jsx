@@ -10,7 +10,7 @@ export default function Services() {
   const [active, setActive] = useState(0);
 
   const services = [
-    { no: "01", title: "Social Marketing", image: creativeDesigns, link: "#" },
+    { no: "01", title: "Social Marketing", image: creativeDesigns, link: "/social-marketing" },
     { no: "02", title: "Web Development", image: development, link: "/web-development" },
     { no: "03", title: "UI-UX Solution", image: uiUxSolution, link: "/ui-ux-design" },
     { no: "04", title: "Video Production", image: videoproduction, link: "/video-production" },
