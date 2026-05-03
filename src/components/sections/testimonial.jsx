@@ -3,33 +3,34 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 
 import Reveal from "../../components/animations/Reveal";
 
-import client1 from "../../assets/client1.png";
-import client2 from "../../assets/client2.png";
+import client1 from "../../assets/clientcarescan.net.png";
+import client2 from "../../assets/clientecommerce.png";
+import client3 from "../../assets/clientdigital.png";
 
 const testimonials = [
   {
     id: 1,
-    name: "Sarah Wajahat",
-    role: "Assistant Manager",
+    name: "Syed Hassan Abbas",
+    role: "Founder",
     image: client1,
     review:
-      "Lorem Ipsum Dollar consectetur nisi montes eu mauris congue. Eget penatibus cum amet; suscipit blandit felis Commodo ut m.",
+      "They built our website exactly how we wanted. The design is clean, UI is smooth, and the development quality is impressive. Their support team is also very responsive and helpful.",
   },
   {
     id: 2,
-    name: "Hassan Nisar BPO",
-    role: "Ceo Founder",
+    name: "Aneeq Hamdani",
+    role: "CEO & Founder",
     image: client2,
     review:
-      "Lorem Ipsum Dollar consectetur nisi montes eu mauris congue. Eget penatibus cum amet; suscipit blandit felis Commodo ut m.",
+      "Their team delivered a highly scalable digital solution with a strong focus on user experience and conversion-driven design. Everything was handled professionally from start to finish.",
   },
   {
     id: 3,
     name: "Ahmed Khan",
     role: "Marketing Head",
-    image: client1,
+    image: client3,
     review:
-      "Lorem Ipsum Dollar consectetur nisi montes eu mauris congue. Eget penatibus cum amet; suscipit blandit felis Commodo ut m.",
+      "Highly recommended agency for modern web development, branding, and digital growth. They deliver quality work and understand international market standards.",
   },
 ];
 
@@ -79,7 +80,22 @@ export default function Testimonial() {
           transform:scale(1.1);
         }
 
-        /* MAGIC SLIDE */
+        /* 🔥 SMOOTH TEXT REVEAL */
+        .text-reveal span{
+          opacity:0;
+          transform:translateY(10px);
+          display:inline-block;
+          animation:textReveal .5s cubic-bezier(.22,1,.36,1) forwards;
+        }
+
+        @keyframes textReveal{
+          to{
+            opacity:1;
+            transform:translateY(0);
+          }
+        }
+
+        /* CARD ENTRY */
         .card-animate{
           animation:fadeSlide .6s cubic-bezier(.22,1,.36,1);
         }
@@ -95,7 +111,6 @@ export default function Testimonial() {
           }
         }
 
-        /* STAR POP */
         .star-pop{
           animation:starPop .5s ease;
         }
@@ -107,35 +122,46 @@ export default function Testimonial() {
         `}
       </style>
 
-      <section className="w-full bg-[#efefef] dark:bg-[#111111] pt-[60px] sm:pt-[68px] md:pt-[72px] pb-[65px] sm:pb-[74px] md:pb-[78px] transition-all duration-500">
+      <section
+        className="w-full bg-[#efefef] dark:bg-[#111111] pt-[60px] sm:pt-[70px] md:pt-[75px] pb-[65px] sm:pb-[74px] md:pb-[80px] transition-all duration-500"
+        aria-label="Client Testimonials Section"
+      >
 
         <div className="w-full max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
 
           {/* HEADER */}
-          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-[36px] sm:mb-[48px] md:mb-[56px]">
+          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-[40px] sm:mb-[50px] md:mb-[60px]">
 
             <div>
               <Reveal>
-                <p className="text-[15px] sm:text-[16px] font-medium text-black dark:text-white mb-[10px]">
+                <p className="text-[15px] sm:text-[16px] font-medium text-black dark:text-white/80 mb-[10px]">
                   Testimonials
                 </p>
               </Reveal>
 
               <Reveal delay={0.1}>
-                <h2 className="text-[34px] sm:text-[46px] md:text-[56px] leading-none tracking-[-1.8px] font-medium text-black dark:text-white">
-                  What Our Client Say
+                <h2 className="text-[34px] sm:text-[46px] md:text-[56px] leading-none tracking-[-1.5px] font-medium text-black dark:text-white">
+                  What Our Clients Say
                 </h2>
               </Reveal>
             </div>
 
             <Reveal delay={0.2}>
               <div className="flex gap-[12px] md:mt-[8px]">
-                <button onClick={prevSlide} className="nav-btn w-[46px] h-[46px] rounded-full bg-[#d9d9d9] dark:bg-[#222] flex items-center justify-center">
-                  <ArrowLeft className="arrow-icon" size={18} />
+                <button
+                  onClick={prevSlide}
+                  aria-label="Previous testimonial"
+                  className="nav-btn w-[46px] h-[46px] rounded-full bg-[#d9d9d9] dark:bg-[#1e1e1e] flex items-center justify-center"
+                >
+                  <ArrowLeft className="arrow-icon text-black dark:text-white" size={18} />
                 </button>
 
-                <button onClick={nextSlide} className="nav-btn w-[46px] h-[46px] rounded-full bg-[#d9d9d9] dark:bg-[#222] flex items-center justify-center">
-                  <ArrowRight className="arrow-icon" size={18} />
+                <button
+                  onClick={nextSlide}
+                  aria-label="Next testimonial"
+                  className="nav-btn w-[46px] h-[46px] rounded-full bg-[#d9d9d9] dark:bg-[#1e1e1e] flex items-center justify-center"
+                >
+                  <ArrowRight className="arrow-icon text-black dark:text-white" size={18} />
                 </button>
               </div>
             </Reveal>
@@ -143,27 +169,40 @@ export default function Testimonial() {
           </div>
 
           {/* DESKTOP */}
-          <div className="hidden lg:grid grid-cols-2 gap-[36px]">
+          <div className="hidden lg:grid grid-cols-2 gap-[36px] xl:gap-[48px]">
             {visibleCards.map((item, i) => (
               <Reveal key={item.id} delay={i * 0.2}>
-                <div className="testimonial-card card-animate bg-[#e7e7e7] dark:bg-[#1a1a1a] rounded-[10px] min-h-[290px] px-[42px] pt-[34px] pb-[30px] flex flex-col justify-between">
+                <article className="testimonial-card card-animate bg-[#e7e7e7] dark:bg-[#1a1a1a] rounded-[12px] min-h-[300px] px-[40px] pt-[34px] pb-[30px] flex flex-col justify-between">
 
                   <div>
                     <div className="text-[48px] font-bold mb-[12px]">❝</div>
 
-                    <p className="text-[18px] leading-[1.75] text-black/80 dark:text-white/75">
-                      {item.review}
+                    <p className="text-[18px] leading-[1.75] text-black/80 dark:text-white/75 text-reveal">
+                      {item.review.split(" ").map((word, i) => (
+                        <span key={i} style={{ animationDelay: `${i * 0.02}s` }}>
+                          {word}&nbsp;
+                        </span>
+                      ))}
                     </p>
                   </div>
 
                   <div className="flex items-end justify-between mt-[28px]">
 
                     <div className="flex items-center gap-[12px]">
-                      <img src={item.image} className="w-[52px] h-[52px] rounded-[6px]" />
+                      <img
+                        src={item.image}
+                        alt={`${item.name} testimonial`}
+                        loading="lazy"
+                        className="w-[52px] h-[52px] rounded-[6px] object-cover"
+                      />
 
                       <div>
-                        <h4 className="text-[16px] font-semibold">{item.name}</h4>
-                        <p className="text-[13px] opacity-60">{item.role}</p>
+                        <h4 className="text-[16px] font-semibold text-black dark:text-white">
+                          {item.name}
+                        </h4>
+                        <p className="text-[13px] text-black/60 dark:text-white/60">
+                          {item.role}
+                        </p>
                       </div>
                     </div>
 
@@ -171,14 +210,14 @@ export default function Testimonial() {
                       <div className="text-[#f2c300] text-[16px] star-pop">
                         ★★★★★
                       </div>
-                      <p className="text-[12px] opacity-60 mt-[6px]">
+                      <p className="text-[12px] text-black/60 dark:text-white/60 mt-[6px]">
                         5 Star Rating
                       </p>
                     </div>
 
                   </div>
 
-                </div>
+                </article>
               </Reveal>
             ))}
           </div>
@@ -186,30 +225,43 @@ export default function Testimonial() {
           {/* MOBILE */}
           <div className="lg:hidden">
             <Reveal>
-              <div className="testimonial-card card-animate bg-[#e7e7e7] dark:bg-[#1a1a1a] rounded-[10px] min-h-[290px] px-5 py-6 flex flex-col justify-between">
+              <article className="testimonial-card card-animate bg-[#e7e7e7] dark:bg-[#1a1a1a] rounded-[12px] min-h-[300px] px-5 py-6 flex flex-col justify-between">
 
                 <div>
                   <div className="text-[42px] font-bold mb-[12px]">❝</div>
 
-                  <p className="text-[16px] leading-[1.75] text-black/80 dark:text-white/75">
-                    {testimonials[index].review}
+                  <p className="text-[16px] leading-[1.75] text-black/80 dark:text-white/75 text-reveal">
+                    {testimonials[index].review.split(" ").map((word, i) => (
+                      <span key={i} style={{ animationDelay: `${i * 0.02}s` }}>
+                        {word}&nbsp;
+                      </span>
+                    ))}
                   </p>
                 </div>
 
                 <div className="flex items-center justify-between mt-[28px]">
                   <div className="flex items-center gap-[12px]">
-                    <img src={testimonials[index].image} className="w-[52px] h-[52px] rounded-[6px]" />
+                    <img
+                      src={testimonials[index].image}
+                      alt={`${testimonials[index].name} testimonial`}
+                      loading="lazy"
+                      className="w-[52px] h-[52px] rounded-[6px]"
+                    />
 
                     <div>
-                      <h4 className="text-[16px] font-semibold">{testimonials[index].name}</h4>
-                      <p className="text-[13px] opacity-60">{testimonials[index].role}</p>
+                      <h4 className="text-[16px] font-semibold text-black dark:text-white">
+                        {testimonials[index].name}
+                      </h4>
+                      <p className="text-[13px] text-black/60 dark:text-white/60">
+                        {testimonials[index].role}
+                      </p>
                     </div>
                   </div>
 
                   <div className="text-[#f2c300] star-pop">★★★★★</div>
                 </div>
 
-              </div>
+              </article>
             </Reveal>
           </div>
 

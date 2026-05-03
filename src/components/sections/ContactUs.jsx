@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Phone, Mail, MapPin } from "lucide-react";
 import {
   FaFacebookF,
@@ -7,40 +7,43 @@ import {
 } from "react-icons/fa";
 
 export default function Contact() {
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setShow(true), 120);
+    return () => clearTimeout(t);
+  }, []);
+
   return (
     <>
       <style>
         {`
         .fade-up{
-          animation:fadeUp .8s ease forwards;
+          opacity:0;
+          transform:translateY(30px);
+          transition:all .9s cubic-bezier(.22,1,.36,1);
         }
 
-        @keyframes fadeUp{
-          from{
-            opacity:0;
-            transform:translateY(30px);
-          }
-          to{
-            opacity:1;
-            transform:translateY(0);
-          }
+        .fade-up.show{
+          opacity:1;
+          transform:translateY(0);
         }
 
         .float-card{
-          animation:floatCard 5s ease-in-out infinite;
+          animation:floatCard 6s ease-in-out infinite;
         }
 
         @keyframes floatCard{
           0%,100%{transform:translateY(0);}
-          50%{transform:translateY(-8px);}
+          50%{transform:translateY(-6px);}
         }
 
         .btn-hover{
-          transition:all .3s ease;
+          transition:all .35s cubic-bezier(.22,1,.36,1);
         }
 
         .btn-hover:hover{
-          transform:translateY(-2px);
+          transform:translateY(-3px);
         }
 
         .btn-arrow{
@@ -58,11 +61,16 @@ export default function Contact() {
         .social-hover:hover{
           transform:translateY(-4px);
         }
+
+        .section-spacing{
+          padding-top:clamp(70px,8vw,100px);
+          padding-bottom:clamp(70px,8vw,100px);
+        }
         `}
       </style>
 
       <section className="w-full min-h-screen 
-        py-[clamp(60px,8vw,90px)] 
+        section-spacing
         bg-[#008CF4] dark:bg-[#0b0b0b] 
         transition-all duration-500 overflow-hidden">
 
@@ -72,7 +80,7 @@ export default function Contact() {
           gap-[clamp(40px,6vw,90px)] items-center">
 
           {/* LEFT */}
-          <div className="text-white lg:pl-[clamp(0px,4vw,70px)] fade-up">
+          <div className={`text-white lg:pl-[clamp(0px,4vw,70px)] fade-up ${show ? "show" : ""}`}>
 
             <p className="text-[clamp(14px,2vw,18px)] font-medium 
               mb-[clamp(14px,2vw,18px)] text-white/90 uppercase tracking-wide">
@@ -93,9 +101,9 @@ export default function Contact() {
             <div className="mt-[clamp(30px,6vw,60px)] flex flex-col gap-[clamp(22px,3vw,34px)]">
 
               <Info icon={<Phone size={26} strokeWidth={2.2} />} title="Call Now:" text="0123 456 7890" />
-              <Info icon={<Mail size={26} strokeWidth={2.2} />} title="Email:" text="info@domain.com" />
+              <Info icon={<Mail size={26} strokeWidth={2.2} />} title="Email:" text="info@socialxstudio.com" />
               <Info icon={<MapPin size={26} strokeWidth={2.2} />} title="Address:" text={
-                <>Address Line Dummy Here<br />Lorem Ipsum dollar</>
+                <>Plot No, 94 Street 7, I-10/3 I 10/3 sector,<br /> Islamabad, 44800, Pakistan</>
               } />
             </div>
 
@@ -106,14 +114,14 @@ export default function Contact() {
                 Follow Us on
               </p>
 
-              <SocialIcon icon={<FaFacebookF />} />
-              <SocialIcon icon={<FaInstagram />} />
-              <SocialIcon icon={<FaLinkedinIn />} />
+              <SocialIcon href="#" icon={<FaFacebookF />} />
+              <SocialIcon href="https://www.instagram.com/socialxstudio.pk/" icon={<FaInstagram />} />
+              <SocialIcon href="https://www.linkedin.com/company/social-x-studio/?originalSubdomain=pk" icon={<FaLinkedinIn />} />
             </div>
           </div>
 
           {/* RIGHT */}
-          <div className="max-w-[760px] ml-auto w-full fade-up">
+          <div className={`max-w-[760px] ml-auto w-full fade-up ${show ? "show" : ""}`}>
 
             <div className="float-card 
               rounded-[clamp(20px,3vw,38px)] 
@@ -124,30 +132,25 @@ export default function Contact() {
               pt-[clamp(28px,4vw,52px)] 
               pb-[clamp(28px,4vw,42px)]">
 
-              {/* ROW 1 */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-[clamp(20px,3vw,34px)]">
                 <Field placeholder="First Name*" />
                 <Field placeholder="Last Name*" />
               </div>
 
-              {/* ROW 2 */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-[clamp(20px,3vw,34px)] mt-[clamp(20px,3vw,42px)]">
                 <Field placeholder="Phone*" />
                 <Field placeholder="Email*" />
               </div>
 
-              {/* MESSAGE */}
               <div className="mt-[clamp(20px,3vw,42px)]">
                 <Field placeholder="Message.." />
               </div>
 
-              {/* CHECKBOX */}
               <label className="mt-[clamp(18px,2vw,26px)] flex items-start sm:items-center gap-[12px] text-white/80 text-[clamp(14px,2vw,18px)]">
                 <input type="checkbox" className="w-[18px] h-[18px] accent-white mt-1 sm:mt-0" />
                 I agree to the privacy policy
               </label>
 
-              {/* BUTTON */}
               <button className="btn-hover 
                 mt-[clamp(40px,6vw,90px)] 
                 h-[clamp(50px,6vw,58px)] 
@@ -178,6 +181,7 @@ export default function Contact() {
   );
 }
 
+/* INPUT */
 function Field({ placeholder }) {
   return (
     <input
@@ -190,20 +194,25 @@ function Field({ placeholder }) {
   );
 }
 
-function SocialIcon({ icon }) {
+/* SOCIAL (UPDATED) */
+function SocialIcon({ icon, href }) {
   return (
-    <button className="social-hover 
+    <a
+      href={href}
+      className="social-hover 
       w-[clamp(44px,5vw,58px)] 
       h-[clamp(44px,5vw,58px)] 
       rounded-full border border-white/45 
       flex items-center justify-center 
       text-white text-[clamp(16px,2vw,20px)] 
-      hover:bg-white hover:text-[#008CF4] transition-all">
+      hover:bg-white hover:text-[#008CF4] transition-all"
+    >
       {icon}
-    </button>
+    </a>
   );
 }
 
+/* INFO */
 function Info({ icon, title, text }) {
   return (
     <div className="flex items-start gap-[clamp(14px,2vw,18px)]">

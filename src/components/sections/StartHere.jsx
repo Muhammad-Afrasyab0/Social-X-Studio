@@ -12,21 +12,18 @@ export default function StartHere() {
   const items = [
     {
       title: "Who We Are & What We Do",
-      text: `Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-      sed do eiusmod tempor incididunt ut labore et
-      dolore magna aliqua.`,
+      text: `We are a digital agency from Pakistan delivering modern web, branding, and UI/UX solutions for clients in UAE, UK, and USA. We help businesses grow with powerful digital experiences.`,
+      link: "/about", // 🔥 future me change karna
     },
     {
       title: "We’ll design your project",
-      text: `Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-      sed do eiusmod tempor incididunt ut labore et
-      dolore magna aliqua.`,
+      text: `Our team creates visually stunning and high-performing designs tailored to your business needs. From websites to complete brand systems, we focus on performance and user experience.`,
+      link: "/portfolio", // 🔥 future me change karna
     },
     {
       title: "Drop us your message!",
-      text: `Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-      sed do eiusmod tempor incididunt ut labore et
-      dolore magna aliqua.`,
+      text: `Have an idea or project in mind? Connect with us and let’s build something impactful together. We turn concepts into real digital products that drive results globally.`,
+      link: "/contact", // 🔥 future me change karna
     },
   ];
 
@@ -52,10 +49,24 @@ export default function StartHere() {
         .link-hover:hover .arrow-move{
           transform:translate(4px,-4px);
         }
+
+        .text-reveal span{
+          opacity:0;
+          transform:translateY(14px);
+          display:inline-block;
+          animation:textReveal .6s cubic-bezier(.22,1,.36,1) forwards;
+        }
+
+        @keyframes textReveal{
+          to{
+            opacity:1;
+            transform:translateY(0);
+          }
+        }
         `}
       </style>
 
-      <section className="bg-[#11141b] dark:bg-[#efefef] transition-all duration-500 py-[60px] sm:py-[75px] md:py-[80px] xl:py-[90px]">
+      <section className="bg-[#0c0c0c] dark:bg-[#0c0c0c] py-[60px] sm:py-[75px] md:py-[80px] xl:py-[90px]">
         
         <div className="w-full max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
           
@@ -72,17 +83,22 @@ export default function StartHere() {
                     transitionDelay: `${index * 120}ms`,
                   }}
                 >
-                  <h3 className="text-white dark:text-black text-[22px] sm:text-[22px] xl:text-[22px] font-semibold leading-tight transition-all duration-500">
+                  <h3 className="text-white text-[22px] font-semibold leading-tight">
                     {item.title}
                   </h3>
 
-                  <p className="mt-[18px] text-white/65 dark:text-black/65 text-[15px] sm:text-[16px] xl:text-[17px] leading-[1.8] max-w-[390px] transition-all duration-500">
-                    {item.text}
+                  <p className="mt-[18px] text-white/65 text-[15px] sm:text-[16px] xl:text-[17px] leading-[1.8] max-w-[390px] text-reveal">
+                    {item.text.split(" ").map((word, i) => (
+                      <span key={i} style={{ animationDelay: `${i * 0.03}s` }}>
+                        {word}&nbsp;
+                      </span>
+                    ))}
                   </p>
 
+                  {/* 🔥 DYNAMIC LINK */}
                   <a
-                    href="#"
-                    className="link-hover mt-[28px] inline-flex items-center gap-[10px] text-white dark:text-black text-[16px] xl:text-[17px] font-medium leading-none tracking-[-0.2px] transition-all duration-500 w-fit"
+                    href={item.link}
+                    className="link-hover mt-[28px] inline-flex items-center gap-[10px] text-white text-[16px] xl:text-[17px] font-medium leading-none tracking-[-0.2px] w-fit"
                   >
                     <span>Start Here</span>
 

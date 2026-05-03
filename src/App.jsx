@@ -1,5 +1,8 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { useEffect } from "react";
+
 import "./styles/animations.css";
+
 import Home from "./pages/Home";
 import About from "./pages/About";
 import ServicesPage from "./pages/Services";
@@ -8,64 +11,45 @@ import UiUxDesign from "./pages/UiUxDesign";
 import Portfolio from "./pages/Portfolio";
 import BrandIdentity from "./pages/BrandIdentity";
 import Blog from "./pages/Blog";
+import VideoProduction from "./pages/Videoproduction"; // ✅ FIXED
 import BlogDetails from "./pages/BlogDetails";
 import Contact from "./pages/Contact";
+
+/* 🔥 SCROLL RESET */
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 export default function App() {
   return (
     <BrowserRouter>
+
+      <ScrollToTop />
+
       <Routes>
 
-        {/* HOME */}
         <Route path="/" element={<Home />} />
-
-        {/* ABOUT */}
         <Route path="/about" element={<About />} />
-
-        {/* SERVICES */}
         <Route path="/services" element={<ServicesPage />} />
+        <Route path="/web-development" element={<WebDevelopment />} />
+        <Route path="/ui-ux-design" element={<UiUxDesign />} />
+        <Route path="/brand-identity" element={<BrandIdentity />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog-details" element={<BlogDetails />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/portfolio" element={<Portfolio />} />
 
-        {/* WEB DEVELOPMENT */}
-        <Route
-          path="/web-development"
-          element={<WebDevelopment />}
-        />
+        {/* ✅ FIXED ROUTE */}
+        <Route path="/video-production" element={<VideoProduction />} />
 
-        {/* UI/UX DESIGN */}
-        <Route
-          path="/ui-ux-design"
-          element={<UiUxDesign />}
-        />
-
-        {/* BRAND IDENTITY */}
-        <Route
-          path="/brand-identity"
-          element={<BrandIdentity />}
-        />
-
-        {/* BLOG */}
-        <Route
-          path="/blog"
-          element={<Blog />}
-        />
-
-        {/* BLOG DETAILS */}
-        <Route
-          path="/blog-details"
-          element={<BlogDetails />}
-        />
-
-        {/* CONTACT */}
-        <Route
-          path="/contact"
-          element={<Contact />}
-        />
-
-        {/* PORTFOLIO */}
-        <Route
-          path="/portfolio"
-          element={<Portfolio />}
-        />
+        {/* 404 */}
+        <Route path="*" element={<h1>404 - Page Not Found</h1>} />
 
       </Routes>
     </BrowserRouter>

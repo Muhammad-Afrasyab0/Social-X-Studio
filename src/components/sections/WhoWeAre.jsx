@@ -8,9 +8,11 @@ export default function WhoWeAre() {
 
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
+        entries.forEach((entry, i) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("show");
+            setTimeout(() => {
+              entry.target.classList.add("show");
+            }, i * 80); // smoother stagger
           }
         });
       },
@@ -29,7 +31,7 @@ export default function WhoWeAre() {
     <>
       <style>
         {`
-        /* LINE REVEAL */
+        /* LINE REVEAL (PREMIUM SMOOTH) */
         .line-mask{
           display:block;
           overflow:hidden;
@@ -39,7 +41,8 @@ export default function WhoWeAre() {
           display:block;
           transform:translateY(120%);
           opacity:0;
-          transition:all .8s cubic-bezier(.22,1,.36,1);
+          transition:all .9s cubic-bezier(.22,1,.36,1);
+          will-change: transform, opacity;
         }
 
         .line.show{
@@ -47,22 +50,32 @@ export default function WhoWeAre() {
           opacity:1;
         }
 
-        /* IMAGE EFFECTS */
+        /* IMAGE HOVER */
         .img-hover img{
-          transition:transform .7s ease;
+          transition:transform .7s cubic-bezier(.22,1,.36,1);
         }
 
         .img-hover:hover img{
-          transform:scale(1.03);
+          transform:scale(1.04);
         }
 
+        /* FLOAT LOGO */
         .float-logo{
           animation:floatLogo 6s ease-in-out infinite;
         }
 
         @keyframes floatLogo{
           0%,100%{transform:translateY(0);}
-          50%{transform:translateY(-7px);}
+          50%{transform:translateY(-8px);}
+        }
+
+        /* LIQUID RESPONSIVE (NO LAYOUT CHANGE) */
+        .fluid-text{
+          font-size:clamp(34px,5vw,58px);
+        }
+
+        .fluid-p{
+          font-size:clamp(15px,1.5vw,18px);
         }
         `}
       </style>
@@ -80,34 +93,48 @@ export default function WhoWeAre() {
                 Who We Are
               </p>
 
-              <h2 className="text-black dark:text-white text-[34px] sm:text-[48px] lg:text-[58px] leading-[1.06] font-semibold tracking-[-1.8px] max-w-[620px]">
+              {/* ✅ SEO HEADING */}
+              <h2 className="text-black dark:text-white fluid-text leading-[1.06] font-semibold tracking-[-1.8px] max-w-[620px]">
 
                 <span className="line-mask">
-                  <span className="line">We create strategic designs</span>
+                  <span className="line">
+                    Digital agency delivering web development,
+                  </span>
                 </span>
 
                 <span className="line-mask">
-                  <span className="line">and innovative solutions</span>
+                  <span className="line">
+                    eCommerce, marketing & creative solutions
+                  </span>
                 </span>
 
                 <span className="line-mask">
-                  <span className="line">that help brands stand out.</span>
+                  <span className="line">
+                    for global brands.
+                  </span>
                 </span>
 
               </h2>
 
-              <p className="mt-[26px] text-black/75 dark:text-white/70 text-[15px] sm:text-[17px] lg:text-[18px] leading-[1.85] max-w-[620px]">
+              {/* ✅ SEO PARAGRAPH */}
+              <p className="mt-[26px] text-black/75 dark:text-white/70 fluid-p leading-[1.85] max-w-[620px]">
 
                 <span className="line-mask">
-                  <span className="line">We are a forward-thinking digital agency focused</span>
+                  <span className="line">
+                    We are a team of experienced professionals specializing in web development,
+                  </span>
                 </span>
 
                 <span className="line-mask">
-                  <span className="line">on delivering strategic design, innovative solutions,</span>
+                  <span className="line">
+                    Shopify, eCommerce, social media marketing, paid ads, and video production.
+                  </span>
                 </span>
 
                 <span className="line-mask">
-                  <span className="line">and measurable results.</span>
+                  <span className="line">
+                    Delivering premium quality solutions for clients in UAE, UK, USA & Pakistan.
+                  </span>
                 </span>
 
               </p>
@@ -120,15 +147,17 @@ export default function WhoWeAre() {
               <div className="absolute z-20 left-[-18px] top-[-34px] sm:left-[-28px] sm:top-[-38px]">
                 <img
                   src={logo}
-                  alt="Logo"
+                  alt="Digital Agency Logo"
                   className="float-logo w-[95px] sm:w-[120px] lg:w-[150px] object-contain"
+                  loading="lazy"
                 />
               </div>
 
               <div className="img-hover rounded-[18px] overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&q=80"
-                  alt="Marketing Building"
+                  src="../../assets/whoweare"
+                  alt="Web development and digital marketing agency workspace"
+                  loading="lazy"
                   className="w-full h-[260px] sm:h-[360px] lg:h-[430px] object-cover"
                 />
               </div>
@@ -137,29 +166,29 @@ export default function WhoWeAre() {
 
           </div>
 
-          {/* BOTTOM */}
+          {/* BOTTOM (SEO IMPROVED) */}
           <div className="mt-[44px] sm:mt-[58px] lg:mt-[70px] space-y-[26px] sm:space-y-[34px]">
 
-            <p className="text-black/70 dark:text-white/70 text-[15px] sm:text-[17px] lg:text-[18px] leading-[1.9]">
+            <p className="text-black/70 dark:text-white/70 fluid-p leading-[1.9]">
               <span className="line-mask">
                 <span className="line">
-                  We are a forward-thinking digital agency focused on delivering strategic design,
+                  Our mission is to provide high-quality digital services at reasonable pricing.
                 </span>
               </span>
             </p>
 
-            <p className="text-black/70 dark:text-white/70 text-[15px] sm:text-[17px] lg:text-[18px] leading-[1.9]">
+            <p className="text-black/70 dark:text-white/70 fluid-p leading-[1.9]">
               <span className="line-mask">
                 <span className="line">
-                  innovative solutions, and measurable results. Our team blends creativity with technology.
+                  Helping startups and businesses grow through scalable web solutions and branding.
                 </span>
               </span>
             </p>
 
-            <p className="text-black/70 dark:text-white/70 text-[15px] sm:text-[17px] lg:text-[18px] leading-[1.9]">
+            <p className="text-black/70 dark:text-white/70 fluid-p leading-[1.9]">
               <span className="line-mask">
                 <span className="line">
-                  to build brands that stand out in a competitive world.
+                  We combine strategy, design, and technology to deliver real business results globally.
                 </span>
               </span>
             </p>

@@ -11,31 +11,35 @@ import image4 from "../../assets/image4.png";
 const projects = [
   {
     id: "01",
-    title: "Brand Identity Lorem Ipsum Dollar",
+    title: "Brand Identity & Digital Branding Strategy",
     desc:
-      "Transforming ideas into powerful brand identities, engaging websites, and meaningful digital interactions.",
+      "We craft powerful brand identities with strategic positioning, modern visual systems, and high-converting digital experiences that help businesses stand out globally.",
     image: image1,
+    link: "https://www.instagram.com/safar.p.k/",
   },
   {
     id: "02",
-    title: "Web Development UI UX Design",
+    title: "Custom Web Development & UI/UX Design",
     desc:
-      "Transforming ideas into powerful brand identities, engaging websites, and meaningful digital interactions.",
+      "High-performance websites built with modern technologies, user-focused design, and optimized experiences to improve engagement, conversions, and scalability.",
     image: image2,
+    link: "https://carescan.net/",
   },
   {
     id: "03",
-    title: "Creative Marketing",
+    title: "Creative Marketing & Growth Strategy",
     desc:
-      "Transforming ideas into powerful brand identities, engaging websites, and meaningful digital interactions.",
+      "Data-driven marketing campaigns, creative content, and performance-focused strategies designed to scale brands across Pakistan, UAE, UK, and USA markets.",
     image: image3,
+    link: "/about",
   },
   {
     id: "04",
-    title: "Digital Ad Campaign for FlexWear",
+    title: "Digital Advertising & Conversion Campaigns",
     desc:
-      "Transforming ideas into powerful brand identities, engaging websites, and meaningful digital interactions.",
+      "ROI-focused ad campaigns with precise targeting, creative optimization, and performance tracking to maximize leads, sales, and business growth.",
     image: image4,
+    link: "/about",
   },
 ];
 
@@ -151,33 +155,32 @@ export default function SelectedWork() {
                   style={{ transitionDelay: `${index * 100 + 120}ms` }}
                 >
 
-                  {/* COUNT NUMBER */}
                   <Reveal delay={index * 0.2}>
                     <h3 className="text-[48px] sm:text-[68px] md:text-[86px] font-semibold text-black/10 dark:text-white/10 leading-none">
-                      <CountUp end={parseInt(item.id)} />,
+                      <CountUp end={parseInt(item.id)} />
                     </h3>
                   </Reveal>
 
-                  {/* TITLE */}
                   <Reveal delay={index * 0.2 + 0.1}>
                     <h4 className="mt-[10px] text-[26px] sm:text-[34px] md:text-[42px] leading-[1.08] font-medium max-w-[620px] tracking-[-1px] text-black dark:text-white">
                       {item.title}
                     </h4>
                   </Reveal>
 
-                  {/* DESC */}
                   <Reveal delay={index * 0.2 + 0.2}>
                     <p className="mt-[16px] sm:mt-[18px] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.8] text-black/60 dark:text-white/70 max-w-[470px]">
                       {item.desc}
                     </p>
                   </Reveal>
 
-                  {/* BUTTON */}
                   <Reveal delay={index * 0.2 + 0.3}>
-                    <button className="btn-hover mt-[24px] sm:mt-[28px] h-[48px] px-[28px] rounded-full bg-black text-white dark:bg-white dark:text-black text-[15px] font-medium inline-flex items-center gap-3">
+                    <a
+                      href={item.link}
+                      className="h-[48px] px-[30px] rounded-full text-[15px] font-medium inline-flex items-center justify-center gap-3 bg-black text-white dark:bg-white dark:text-black mt-[24px] sm:mt-[28px]"
+                    >
                       View Full Project
-                      <span className="btn-arrow text-[18px]">↗</span>
-                    </button>
+                      <span className="text-[18px] leading-none font-normal">↗</span>
+                    </a>
                   </Reveal>
 
                 </div>
@@ -189,13 +192,11 @@ export default function SelectedWork() {
                   className="grid grid-cols-1 lg:grid-cols-2 gap-[26px] sm:gap-[36px] md:gap-[50px] xl:gap-[70px] items-center"
                 >
 
-                  {/* MOBILE */}
                   <div className="lg:hidden space-y-6">
                     {imageBlock}
                     {textBlock}
                   </div>
 
-                  {/* DESKTOP */}
                   <div className="hidden lg:contents">
                     {reverse ? (
                       <>

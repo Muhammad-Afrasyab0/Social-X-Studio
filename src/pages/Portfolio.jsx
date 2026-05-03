@@ -1,7 +1,7 @@
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 
-import PortfolioSection from "../components/sections/PortfolioSection";
+import SelectedWork from "../components/sections/selectedwork.jsx";
 
 export default function Portfolio() {
   return (
@@ -52,7 +52,7 @@ export default function Portfolio() {
       </section>
 
       {/* PORTFOLIO SECTION */}
-      <PortfolioSection />
+      <SelectedWork />
 
       <Footer />
     </>

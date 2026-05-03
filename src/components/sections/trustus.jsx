@@ -14,42 +14,50 @@ export default function TrustUs() {
     {
       src: logo1,
       alt: "Company Logo 1",
-      imgClass: "w-[138px] scale-[2.08] translate-y-[0px]",
+      imgClass: "w-[138px] scale-[2.08]",
+      gap: "mx-[18px]",
     },
     {
       src: logo2,
       alt: "Company Logo 2",
-      imgClass: "w-[138px] scale-[2.10] translate-y-[0px]",
+      imgClass: "w-[138px] scale-[3.50]",
+      gap: "mx-[34px]",   // 🔥 big logo → more space
     },
     {
       src: logo3,
       alt: "Company Logo 3",
-      imgClass: "w-[138px] scale-[2.16] translate-y-[8px]",
+      imgClass: "w-[138px] scale-[3.56] translate-y-[10px]",
+      gap: "mx-[40px]",
     },
     {
       src: logo4,
       alt: "Company Logo 4",
-      imgClass: "w-[126px] scale-[2.02] translate-y-[7px]",
+      imgClass: "w-[126px] scale-[1.5] translate-y-[7px]",
+      gap: "mx-[10px]",
     },
     {
       src: logo5,
       alt: "Company Logo 5",
-      imgClass: "w-[126px] scale-[1.96] translate-y-[12px]",
+      imgClass: "w-[126px] scale-[1.5] translate-y-[12px]",
+      gap: "mx-[10px]",
     },
     {
       src: logo6,
       alt: "Company Logo 6",
-      imgClass: "w-[134px] scale-[1.18] translate-y-[2px]",
+      imgClass: "w-[134px] scale-[2.18]",
+      gap: "mx-[20px]",
     },
     {
       src: logo7,
       alt: "Company Logo 7",
-      imgClass: "w-[128px] scale-[1.26] translate-y-[0px]",
+      imgClass: "w-[134px] scale-[3.16]",
+      gap: "mx-[30px]",
     },
     {
       src: logo8,
       alt: "Company Logo 8",
-      imgClass: "w-[140px] scale-[1.74] translate-y-[1px]",
+      imgClass: "w-[140px] scale-[3.10]",
+      gap: "mx-[30px]",
     },
   ];
 
@@ -57,10 +65,12 @@ export default function TrustUs() {
 
   return (
     <section className="w-full bg-[#efefef] dark:bg-[#111111] overflow-hidden py-[90px] transition-all duration-500">
+
       <div className="max-w-[1900px] mx-auto px-[42px]">
+
         {/* Heading */}
         <div className="text-center">
-          <h2 className="text-black dark:text-white text-[42px] font-semibold tracking-[-1px] leading-tight">
+          <h2 className="text-black dark:text-white text-[42px] font-semibold tracking-[-1px]">
             World’s Most Popular Companies Trust Us
           </h2>
 
@@ -71,17 +81,16 @@ export default function TrustUs() {
 
         {/* Logos */}
         <div className="mt-[50px] overflow-hidden relative">
-          {/* Left Fade */}
-          <div className="absolute left-0 top-0 z-10 h-full w-[120px] bg-gradient-to-r from-[#efefef] dark:from-[#111111] to-transparent pointer-events-none"></div>
 
-          {/* Right Fade */}
+          <div className="absolute left-0 top-0 z-10 h-full w-[120px] bg-gradient-to-r from-[#efefef] dark:from-[#111111] to-transparent pointer-events-none"></div>
           <div className="absolute right-0 top-0 z-10 h-full w-[120px] bg-gradient-to-l from-[#efefef] dark:from-[#111111] to-transparent pointer-events-none"></div>
 
-          <div className="flex w-max items-center gap-[6px] animate-marquee">
+          <div className="flex w-max items-center animate-marquee">
+
             {marquee.map((item, index) => (
               <div
                 key={index}
-                className="group shrink-0 w-[170px] h-[95px] flex items-center justify-center"
+                className={`group shrink-0 w-[170px] h-[95px] flex items-center justify-center ${item.gap}`}
               >
                 <img
                   src={item.src}
@@ -90,10 +99,8 @@ export default function TrustUs() {
                     h-auto
                     max-h-[58px]
                     object-contain
-                    grayscale
-                    opacity-60
-                    transition-all
-                    duration-500
+                    grayscale opacity-60
+                    transition-all duration-500
                     group-hover:grayscale-0
                     group-hover:opacity-100
                     ${item.imgClass}
@@ -101,17 +108,16 @@ export default function TrustUs() {
                 />
               </div>
             ))}
+
           </div>
         </div>
 
-        {/* Border */}
         <div className="mt-[46px] border-t border-black/10 dark:border-white/10"></div>
       </div>
 
       <style>{`
         .animate-marquee {
           animation: marquee 24s linear infinite;
-          will-change: transform;
         }
 
         .animate-marquee:hover {
@@ -119,13 +125,8 @@ export default function TrustUs() {
         }
 
         @keyframes marquee {
-          0% {
-            transform: translateX(0);
-          }
-
-          100% {
-            transform: translateX(-50%);
-          }
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
         }
       `}</style>
     </section>

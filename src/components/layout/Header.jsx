@@ -16,6 +16,7 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
   const [serviceDrop, setServiceDrop] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const location = useLocation();
 
@@ -31,6 +32,15 @@ export default function Header() {
     }
   }, [darkMode]);
 
+  // ✅ Sticky scroll detection
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const isServicePage =
     location.pathname === "/services" ||
     location.pathname === "/web-development" ||
@@ -44,13 +54,17 @@ export default function Header() {
       : "text-black hover:text-[#0a8fff]";
 
   return (
-    <header className="absolute top-0 left-0 w-full z-50">
-
-      {/* WRAPPER */}
+    <header
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+        scrolled
+          ? "backdrop-blur-md bg-white/70 dark:bg-[#111]/70"
+          : "bg-transparent"
+      }`}
+    >
       <div className="max-w-[1900px] mx-auto px-[3px]">
 
-        {/* MAIN BAR */}
-        <div className="h-[92px] px-4 sm:px-6 md:px-8 lg:px-[42px] border border-white/20 flex items-center justify-between backdrop-blur-md transition-all duration-500">
+        {/* ✅ LINE REMOVED (border-transparent) */}
+        <div className="h-[92px] px-4 sm:px-6 md:px-8 lg:px-[42px] border border-transparent flex items-center justify-between transition-all duration-500">
 
           {/* LOGO */}
           <Link to="/" className="translate-y-[22px] shrink-0">
@@ -61,24 +75,22 @@ export default function Header() {
             />
           </Link>
 
-          {/* DESKTOP NAV (UNCHANGED DESIGN) */}
+          {/* NAV */}
           <nav className="hidden lg:flex items-center gap-[42px] text-[14px] font-medium translate-y-[24px]">
 
-            <Link to="/" className={navLink("/")}>
-              Home
-            </Link>
+            <Link to="/" className={navLink("/")}>Home</Link>
+            <Link to="/about" className={navLink("/about")}>About Us</Link>
 
-            <Link to="/about" className={navLink("/about")}>
-              About Us
-            </Link>
-
-            {/* SERVICES DROPDOWN */}
+            {/* ✅ FIXED DROPDOWN */}
             <div
               className="relative"
               onMouseEnter={() => setServiceDrop(true)}
-              onMouseLeave={() => setServiceDrop(false)}
+              onMouseLeave={() => {
+                setTimeout(() => setServiceDrop(false), 120);
+              }}
             >
               <button
+                onClick={() => setServiceDrop((prev) => !prev)}
                 className={`inline-flex items-center gap-[6px] ${
                   isServicePage
                     ? "text-[#0a8fff]"
@@ -93,13 +105,11 @@ export default function Header() {
 
               {serviceDrop && (
                 <div className="absolute top-[28px] left-0 w-[250px] bg-white dark:bg-[#1a1a1a] rounded-[12px] shadow-2xl py-[12px] z-50">
-
                   <DropLink to="/services" text="All Services" />
                   <DropLink to="/web-development" text="Web Development" />
                   <DropLink to="/brand-identity" text="Brand Identity" />
                   <DropLink to="/blog-details" text="Blog Details" />
                   <DropLink to="/contact" text="Contact Page" />
-
                 </div>
               )}
             </div>
@@ -118,26 +128,23 @@ export default function Header() {
 
           </nav>
 
-          {/* RIGHT SIDE (UNCHANGED DESIGN) */}
+          {/* RIGHT SIDE */}
           <div className="hidden lg:flex flex-col items-end gap-[11px]">
 
             <div className="flex items-center gap-[18px]">
 
-              {/* TOGGLE */}
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 className="flex items-center gap-[9px]"
               >
                 <div className="w-[28px] h-[15px] bg-black dark:bg-white rounded-full relative">
-
                   <span
                     className={`absolute top-[2px] w-[11px] h-[11px] rounded-full duration-300 ${
                       darkMode
                         ? "left-[2px] bg-black"
                         : "left-[15px] bg-white"
                     }`}
-                  ></span>
-
+                  />
                 </div>
 
                 <span className={darkMode ? "text-white" : "text-black"}>
@@ -145,7 +152,6 @@ export default function Header() {
                 </span>
               </button>
 
-              {/* LANGUAGE */}
               <button
                 className={`inline-flex items-center gap-[5px] ${
                   darkMode ? "text-white" : "text-black"
@@ -155,7 +161,6 @@ export default function Header() {
                 <FaChevronDown className="text-[10px]" />
               </button>
 
-              {/* SOCIAL */}
               <div
                 className={`flex items-center gap-[16px] ${
                   darkMode ? "text-white" : "text-black"
@@ -168,9 +173,8 @@ export default function Header() {
 
             </div>
 
-            {/* CTA (UNCHANGED) */}
             <a
-              href="#"
+              href="/contact"
               className={`h-[48px] px-[30px] rounded-full text-[15px] font-medium inline-flex items-center justify-center gap-3 ${
                 darkMode
                   ? "bg-white text-black"
@@ -178,10 +182,7 @@ export default function Header() {
               }`}
             >
               Lets Connect
-
-              <span className="text-[18px] leading-none font-normal">
-                ↗
-              </span>
+              <span className="text-[18px] leading-none font-normal">↗</span>
             </a>
 
           </div>
@@ -201,76 +202,71 @@ export default function Header() {
 
       {/* MOBILE MENU */}
       {open && (
-  <div className="fixed inset-0 bg-black/60 z-50 lg:hidden">
+        <div className="fixed inset-0 bg-black/60 z-50 lg:hidden">
 
-    <div className={`w-[86%] max-w-[340px] h-full ml-auto p-6 ${darkMode ? "bg-[#111]" : "bg-white"}`}>
+          <div className={`w-[86%] max-w-[340px] h-full ml-auto p-6 ${darkMode ? "bg-[#111]" : "bg-white"}`}>
 
-      {/* TOP BAR */}
-      <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center justify-between mb-8">
 
-        {/* LOGO (ADDED) */}
-        <img
-          src={darkMode ? darkLogo : logo}
-          alt="logo"
-          className="w-[120px] object-contain animate-[logoFloat_4s_ease-in-out_infinite]"
-        />
+              <img
+                src={darkMode ? darkLogo : logo}
+                alt="logo"
+                className="w-[120px] object-contain"
+              />
 
-        {/* CLOSE */}
-        <button
-          onClick={() => setOpen(false)}
-          className={darkMode ? "text-white" : "text-black"}
-        >
-          <FaTimes size={24} />
-        </button>
-      </div>
+              <button
+                onClick={() => setOpen(false)}
+                className={darkMode ? "text-white" : "text-black"}
+              >
+                <FaTimes size={24} />
+              </button>
 
-      {/* DARK MODE TOGGLE (SAME AS DESKTOP) */}
-      <div className="flex items-center justify-between mb-8">
+            </div>
 
-        <span className={darkMode ? "text-white" : "text-black"}>
-          Theme Mode
-        </span>
+            <div className="flex items-center justify-between mb-8">
 
-        <button
-          onClick={() => setDarkMode(!darkMode)}
-          className="flex items-center gap-[9px]"
-        >
-          <div className="w-[28px] h-[15px] bg-black dark:bg-white rounded-full relative">
+              <span className={darkMode ? "text-white" : "text-black"}>
+                Theme Mode
+              </span>
 
-            <span
-              className={`absolute top-[2px] w-[11px] h-[11px] rounded-full duration-300 ${
-                darkMode
-                  ? "left-[2px] bg-black"
-                  : "left-[15px] bg-white"
-              }`}
-            />
+              <button
+                onClick={() => setDarkMode(!darkMode)}
+                className="flex items-center gap-[9px]"
+              >
+                <div className="w-[28px] h-[15px] bg-black dark:bg-white rounded-full relative">
+                  <span
+                    className={`absolute top-[2px] w-[11px] h-[11px] rounded-full duration-300 ${
+                      darkMode
+                        ? "left-[2px] bg-black"
+                        : "left-[15px] bg-white"
+                    }`}
+                  />
+                </div>
+
+                <span className={darkMode ? "text-white" : "text-black"}>
+                  {darkMode ? "Dark" : "Light"}
+                </span>
+              </button>
+
+            </div>
+
+            <div className={`flex flex-col gap-6 text-[17px] font-medium ${darkMode ? "text-white" : "text-black"}`}>
+
+              <MobileLink to="/" close={setOpen}>Home</MobileLink>
+              <MobileLink to="/about" close={setOpen}>About</MobileLink>
+              <MobileLink to="/services" close={setOpen}>Services</MobileLink>
+              <MobileLink to="/web-development" close={setOpen}>Web Development</MobileLink>
+              <MobileLink to="/brand-identity" close={setOpen}>Brand Identity</MobileLink>
+              <MobileLink to="/portfolio" close={setOpen}>Portfolio</MobileLink>
+              <MobileLink to="/blog" close={setOpen}>Blogs</MobileLink>
+              <MobileLink to="/blog-details" close={setOpen}>Blog Details</MobileLink>
+              <MobileLink to="/contact" close={setOpen}>Contact</MobileLink>
+
+            </div>
 
           </div>
-
-          <span className={darkMode ? "text-white" : "text-black"}>
-            {darkMode ? "Dark" : "Light"}
-          </span>
-        </button>
-      </div>
-
-      {/* LINKS (UNCHANGED) */}
-      <div className={`flex flex-col gap-6 text-[17px] font-medium ${darkMode ? "text-white" : "text-black"}`}>
-
-        <MobileLink to="/" close={setOpen}>Home</MobileLink>
-        <MobileLink to="/about" close={setOpen}>About</MobileLink>
-        <MobileLink to="/services" close={setOpen}>Services</MobileLink>
-        <MobileLink to="/web-development" close={setOpen}>Web Development</MobileLink>
-        <MobileLink to="/brand-identity" close={setOpen}>Brand Identity</MobileLink>
-        <MobileLink to="/portfolio" close={setOpen}>Portfolio</MobileLink>
-        <MobileLink to="/blog" close={setOpen}>Blogs</MobileLink>
-        <MobileLink to="/blog-details" close={setOpen}>Blog Details</MobileLink>
-        <MobileLink to="/contact" close={setOpen}>Contact</MobileLink>
-
-      </div>
-
-    </div>
-  </div>
-)}
+        </div>
+      )}
     </header>
   );
 }
