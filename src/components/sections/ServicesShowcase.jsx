@@ -24,10 +24,15 @@ export default function ServicesShowcase() {
 
         .img-card{
           overflow:hidden;
-          transition:all .45s ease;
+          border-radius:14px;
+          background:black;
         }
 
         .img-card img{
+          width:100%;
+          height:100%;
+          object-fit:cover;
+          object-position:center;
           transition:transform .7s ease;
         }
 
@@ -53,46 +58,43 @@ export default function ServicesShowcase() {
         `}
       </style>
 
-      <section className="w-full bg-[#efefef] dark:bg-[#111111] py-[clamp(54px,8vw,90px)] transition-all duration-500">
-        {/* Header aligned */}
+      <section className="w-full bg-[#efefef] dark:bg-[#111111] py-[clamp(54px,8vw,90px)]">
+        
         <div className="max-w-[1900px] mx-auto px-[clamp(16px,4vw,42px)]">
 
-          {/* layout */}
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-[clamp(34px,5vw,48px)] items-center">
 
-            {/* ======================================== */}
             {/* IMAGES */}
-            {/* ======================================== */}
             <div className="fade-up order-2 xl:order-1">
 
-              {/* mobile/tablet fluid layout */}
-              <div className="grid grid-cols-2 gap-[clamp(12px,2vw,24px)]">
+              {/* FIXED HEIGHT CONTAINER */}
+              <div className="grid grid-cols-2 gap-[clamp(12px,2vw,24px)] h-[clamp(360px,60vw,620px)]">
 
-                {/* tall left */}
-                <div className="img-card h-[clamp(280px,58vw,560px)] rounded-[14px] bg-black">
+                {/* LEFT FULL HEIGHT */}
+                <div className="img-card h-full">
                   <img
                     src={img1}
-                    alt="Service"
-                    className="w-full h-full object-cover"
+                    alt="UI UX design and digital branding services"
+                    loading="lazy"
                   />
                 </div>
 
-                {/* right stack */}
-                <div className="flex flex-col gap-[clamp(12px,2vw,24px)]">
+                {/* RIGHT STACK */}
+                <div className="flex flex-col gap-[clamp(12px,2vw,24px)] h-full">
 
-                  <div className="img-card h-[calc(clamp(280px,58vw,560px)/2-6px)] sm:h-[calc(clamp(320px,58vw,560px)/2-8px)] rounded-[14px] bg-black">
+                  <div className="img-card flex-1">
                     <img
                       src={img2}
-                      alt="Service"
-                      className="w-full h-full object-cover"
+                      alt="Web development and responsive website solutions"
+                      loading="lazy"
                     />
                   </div>
 
-                  <div className="img-card h-[calc(clamp(280px,58vw,560px)/2-6px)] sm:h-[calc(clamp(320px,58vw,560px)/2-8px)] rounded-[14px] bg-black">
+                  <div className="img-card flex-1">
                     <img
                       src={img3}
-                      alt="Service"
-                      className="w-full h-full object-cover"
+                      alt="Creative marketing and video production services"
+                      loading="lazy"
                     />
                   </div>
 
@@ -102,30 +104,28 @@ export default function ServicesShowcase() {
 
             </div>
 
-            {/* ======================================== */}
-            {/* CONTENT */}
-            {/* ======================================== */}
+            {/* CONTENT (UNCHANGED) */}
             <div className="fade-up order-1 xl:order-2 max-w-[720px] xl:ml-auto">
               
-              <p className="text-black dark:text-white text-[clamp(15px,2vw,18px)] font-medium transition-all duration-500">
-                How We Help
+              <p className="text-black dark:text-white text-[clamp(15px,2vw,18px)] font-medium">
+                Digital Services & Solutions
               </p>
 
-              <h2 className="mt-[10px] text-black dark:text-white text-[clamp(34px,7vw,74px)] leading-[0.96] font-semibold tracking-[-0.04em] transition-all duration-500">
+              <h2 className="mt-[10px] text-black dark:text-white text-[clamp(34px,7vw,74px)] leading-[0.96] font-semibold tracking-[-0.04em]">
                 Empowering businesses
                 <br className="hidden sm:block" />
-                with modern design
+                with modern digital solutions
               </h2>
 
-              <p className="mt-[clamp(18px,3vw,28px)] text-black/65 dark:text-white/70 text-[clamp(15px,2.4vw,22px)] leading-[1.8] max-w-[660px] transition-all duration-500">
-                Lorem Ipsum is simply dummy text of the printing and
-                typesetting industry. Lorem Ipsum has been the industry's
-                standard dummy text ever since the 1500s, when.
+              <p className="mt-[clamp(18px,3vw,28px)] text-black/65 dark:text-white/70 text-[clamp(15px,2.4vw,22px)] leading-[1.8] max-w-[660px]">
+                We help businesses grow through strategic UI/UX design, high-performance web development, and result-driven digital marketing. Our solutions are built to enhance user experience, increase engagement, and drive measurable business growth.
               </p>
 
-              <button className="btn-hover mt-[clamp(24px,4vw,36px)] h-[clamp(48px,6vw,58px)] px-[clamp(24px,4vw,34px)] rounded-full border border-black/35 dark:border-white/25 text-black dark:text-white text-[clamp(14px,2vw,17px)] font-medium inline-flex items-center gap-3 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black duration-300">
-                Book A Call - It's Free
-
+              <button
+                onClick={() => (window.location.href = "/contact")}
+                className="btn-hover mt-[clamp(24px,4vw,36px)] h-[clamp(48px,6vw,58px)] px-[clamp(24px,4vw,34px)] rounded-full border border-black/35 dark:border-white/25 text-black dark:text-white text-[clamp(14px,2vw,17px)] font-medium inline-flex items-center gap-3 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black duration-300"
+              >
+                Book A Free Consultation Call
                 <span className="arrow-move text-[clamp(17px,2vw,20px)] leading-none">
                   ↗
                 </span>

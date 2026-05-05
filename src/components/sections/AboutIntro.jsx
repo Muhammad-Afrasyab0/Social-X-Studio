@@ -88,17 +88,12 @@ export default function WhoWeAre() {
           <div className="mt-[44px] sm:mt-[58px] lg:mt-[70px] space-y-[26px] sm:space-y-[34px]">
 
             <p className="fade-up text-black/70 dark:text-white/70 text-[15px] sm:text-[17px] lg:text-[18px] leading-[1.9]" style={{ animationDelay: "220ms" }}>
+             
               We help startups and established businesses grow with modern web development, branding, and digital marketing strategies tailored for global markets.
-            </p>
-
-            <p className="fade-up text-black/70 dark:text-white/70 text-[15px] sm:text-[17px] lg:text-[18px] leading-[1.9]" style={{ animationDelay: "300ms" }}>
               Our expert team delivers scalable solutions across e-commerce, UI/UX, and performance-driven digital products with a strong focus on user experience.
-            </p>
-
-            <p className="fade-up text-black/70 dark:text-white/70 text-[15px] sm:text-[17px] lg:text-[18px] leading-[1.9]" style={{ animationDelay: "380ms" }}>
               We work with clients in Pakistan, UAE, UK, and USA, providing premium-quality services at competitive pricing to help businesses scale faster.
-            </p>
 
+            </p>
           </div>
 
         </div>

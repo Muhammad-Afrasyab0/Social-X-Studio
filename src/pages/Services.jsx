@@ -1,4 +1,5 @@
 import Header from "../components/layout/Header";
+import { Link } from "react-router-dom";
 import Footer from "../components/layout/Footer";
 
 import ServicesSection from "../components/sections/ServicesSection";
@@ -29,9 +30,12 @@ export default function ServicesPage() {
             <div className="lg:pb-[10px] lg:pr-[24px] justify-self-start lg:justify-self-end">
               <div className="flex flex-wrap items-center gap-x-2 gap-y-2 text-[clamp(14px,1.4vw,18px)]">
 
-                <span className="text-black/45 dark:text-white/45">
+                <Link
+                  to="/"
+                  className="text-black/45 dark:text-white/45"
+                >
                   Home
-                </span>
+                </Link>
 
                 <span className="text-black dark:text-white">
                   /
@@ -50,11 +54,11 @@ export default function ServicesPage() {
 
       </section>
 
-      {/* 10PX GAP */}
-      <div className="h-[10px] bg-[#efefef] dark:bg-[#111111]" />
+      {/* GAP FIX */}
+      <div className="mt-[40px]">
+        <ServicesSection />
+      </div>
 
-      {/* Sections */}
-      <ServicesSection />
       <ServicesShowcase />
 
       <Footer />

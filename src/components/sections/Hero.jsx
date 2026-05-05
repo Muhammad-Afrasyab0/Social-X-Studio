@@ -236,7 +236,7 @@ export default function Hero() {
                       </defs>
                       <text fill="currentColor" className="text-black dark:text-white" fontSize="14" fontWeight="700" letterSpacing="1.5">
                         <textPath href="#circleTextPath">
-                          SOCIAL X STUDIO ✦ CREATIVE ✦ DIGITAL ✦ SOCIAL X STUDIO
+                          SOCIAL X STUDIO ✦ CREATIVE ✦ DIGITAL ✦ SOCIAL X STUDIO ✦
                         </textPath>
                       </text>
                     </svg>

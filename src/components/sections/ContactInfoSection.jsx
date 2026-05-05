@@ -14,16 +14,16 @@ export default function ContactInfoSection() {
     {
       icon: <FaEnvelope />,
       label: "Email:",
-      value: "info@domain.com",
+      value: "info@socialxstudio.com",
     },
     {
       icon: <FaMapMarkerAlt />,
       label: "Address:",
       value: (
         <>
-          Address Line Dummy Here
+          Plot 94, Sector I-10/3, Islamabad 44800, Pakistan
           <br />
-          Lorem Ipsum dollar
+          
         </>
       ),
     },

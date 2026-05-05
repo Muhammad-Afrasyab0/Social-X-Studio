@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import {
   FaFacebookF,
   FaInstagram,
@@ -18,20 +18,39 @@ export default function Header() {
   const [serviceDrop, setServiceDrop] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
+  const dropdownRef = useRef();
   const location = useLocation();
 
+  // 🔥 ADD (INITIAL LOAD SYNC)
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "dark") {
+      setDarkMode(true);
+      document.documentElement.classList.add("dark");
+      document.body.style.background = "#111111";
+      document.body.style.color = "#ffffff";
+    }
+  }, []);
+
+  // DARK MODE (UPDATED WITH SAVE)
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add("dark");
       document.body.style.background = "#111111";
       document.body.style.color = "#ffffff";
+
+      localStorage.setItem("theme", "dark");   // ✅ ADD
     } else {
       document.documentElement.classList.remove("dark");
       document.body.style.background = "";
       document.body.style.color = "";
+
+      localStorage.setItem("theme", "light");  // ✅ ADD
     }
   }, [darkMode]);
 
+  // SCROLL EFFECT
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
@@ -40,10 +59,25 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // MOBILE SCROLL LOCK
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+  }, [open]);
+
+  // CLICK OUTSIDE DROPDOWN
+  useEffect(() => {
+    const handleClick = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setServiceDrop(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+
   const isServicePage =
     location.pathname === "/services" ||
     location.pathname === "/web-development" ||
-    location.pathname === "/brand-identity" ||
     location.pathname === "/social-marketing" ||
     location.pathname === "/video-production" ||
     location.pathname === "/ui-ux-design";
@@ -64,14 +98,14 @@ export default function Header() {
       }`}
     >
       <div className="max-w-[1900px] mx-auto px-[3px]">
-        <div className="h-[92px] px-4 sm:px-6 md:px-8 lg:px-[42px] border border-transparent flex items-center justify-between transition-all duration-500">
+        <div className="h-[92px] px-4 sm:px-6 md:px-8 lg:px-[42px] flex items-center justify-between">
 
           {/* LOGO */}
-          <Link to="/" className="translate-y-[22px] shrink-0">
+          <Link to="/" className="translate-y-[22px]">
             <img
               src={darkMode ? darkLogo : logo}
-              alt="Social X Studio"
-              className="w-[145px] sm:w-[165px] lg:w-[205px] object-contain"
+              alt="logo"
+              className="w-[145px] sm:w-[165px] lg:w-[205px]"
             />
           </Link>
 
@@ -79,18 +113,19 @@ export default function Header() {
           <nav className="hidden lg:flex items-center gap-[42px] text-[14px] font-medium translate-y-[24px]">
 
             <Link to="/" className={navLink("/")}>Home</Link>
-            <Link to="/about" className={navLink("/about")}>About Us</Link>
+            <Link to="/about" className={navLink("/about")}>About</Link>
 
-            {/* SERVICES DROPDOWN */}
             <div
+              ref={dropdownRef}
               className="relative"
               onMouseEnter={() => setServiceDrop(true)}
-              onMouseLeave={() => {
-                setTimeout(() => setServiceDrop(false), 120);
-              }}
+              onMouseLeave={() => setServiceDrop(false)}
             >
               <button
-                onClick={() => (window.location.href = "/services")}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setServiceDrop((prev) => !prev);
+                }}
                 className={`inline-flex items-center gap-[6px] ${
                   isServicePage
                     ? "text-[#0a8fff]"
@@ -99,7 +134,7 @@ export default function Header() {
                     : "text-black"
                 }`}
               >
-                <span>Services</span>
+                Services
                 <FaChevronDown className="text-[10px]" />
               </button>
 
@@ -107,23 +142,15 @@ export default function Header() {
                 <div className="absolute top-[28px] left-0 w-[250px] bg-white dark:bg-[#1a1a1a] rounded-[12px] shadow-2xl py-[12px] z-50">
                   <DropLink to="/social-marketing" text="Social Marketing" />
                   <DropLink to="/web-development" text="Web Development" />
-                  <DropLink to="/ui-ux-design" text="UI-UX Solution" />
+                  <DropLink to="/ui-ux-design" text="UI/UX Solution" />
                   <DropLink to="/video-production" text="Video Production" />
                 </div>
               )}
             </div>
 
-            <Link to="/portfolio" className={navLink("/portfolio")}>
-              Our Portfolio
-            </Link>
-
-            <Link to="/blog" className={navLink("/blog")}>
-              Blogs
-            </Link>
-
-            <Link to="/contact" className={navLink("/contact")}>
-              Contact
-            </Link>
+            <Link to="/portfolio" className={navLink("/portfolio")}>Portfolio</Link>
+            <Link to="/blog" className={navLink("/blog")}>Blogs</Link>
+            <Link to="/contact" className={navLink("/contact")}>Contact</Link>
 
           </nav>
 
@@ -132,6 +159,7 @@ export default function Header() {
 
             <div className="flex items-center gap-[18px]">
 
+              {/* TOGGLE */}
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 className="flex items-center gap-[9px]"
@@ -146,29 +174,21 @@ export default function Header() {
                   />
                 </div>
 
-                <span className={darkMode ? "text-white" : "text-black"}>
-                  {darkMode ? "Dark" : "Light"}
+                <span className={`${darkMode ? "text-white" : "text-black"} text-[13px]`}>
+                  {darkMode ? "Light" : "Dark"}
                 </span>
               </button>
 
-              <div className={`flex items-center gap-[16px] ${darkMode ? "text-white" : "text-black"}`}>
-                <FaFacebookF />
-                <FaInstagram />
-                <FaLinkedinIn />
-              </div>
+              <div className={`flex gap-[16px] ${darkMode ? "text-white" : "text-black"}`}>
+     <a href="https://facebook.com" target="_blank"><FaFacebookF /></a>
+              <a href="https://www.instagram.com/socialxstudio.pk/" target="_blank"><FaInstagram /></a>
+              <a href="https://www.linkedin.com/company/social-x-studio/?originalSubdomain=pk" target="_blank"><FaLinkedinIn /></a>
+</div>
 
             </div>
 
-            <a
-              href="/contact"
-              className={`h-[48px] px-[30px] rounded-full text-[15px] font-medium inline-flex items-center justify-center gap-3 ${
-                darkMode
-                  ? "bg-white text-black"
-                  : "bg-black text-white"
-              }`}
-            >
-              Lets Connect
-              <span className="text-[18px] leading-none font-normal">↗</span>
+            <a href="/contact" className="bg-black text-white px-6 py-2 rounded-full">
+              Lets Connect ↗
             </a>
 
           </div>
@@ -187,106 +207,71 @@ export default function Header() {
       </div>
 
       {/* MOBILE MENU */}
-    {open && (
-  <div className="fixed inset-0 bg-black/60 z-50 lg:hidden">
+      {open && (
+        <div className="fixed inset-0 bg-black/60 z-[999] lg:hidden">
 
-    <div
-      className={`w-[86%] max-w-[340px] h-full ml-auto p-6 ${
-        darkMode ? "bg-[#111]" : "bg-white"
-      }`}
-    >
+          <div className={`w-[86%] max-w-[340px] h-full ml-auto p-6 ${darkMode ? "bg-[#111]" : "bg-white"}`}>
 
-      {/* TOP BAR */}
-      <div className="flex items-center justify-between gap-4 mb-8">
+            <div className="flex items-center justify-between mb-8">
 
-        {/* LOGO */}
-        <img
-          src={darkMode ? darkLogo : logo}
-          alt="logo"
-          className="w-[120px] object-contain"
-        />
+              <img src={darkMode ? darkLogo : logo} className="w-[120px]" />
 
-        {/* THEME TOGGLE */}
-        <button
-          onClick={() => setDarkMode(!darkMode)}
-          className="flex items-center gap-[6px]"
-        >
-          <div className="w-[28px] h-[15px] bg-black dark:bg-white rounded-full relative">
-            <span
-              className={`absolute top-[2px] w-[11px] h-[11px] rounded-full duration-300 ${
-                darkMode
-                  ? "left-[2px] bg-black"
-                  : "left-[15px] bg-white"
-              }`}
-            />
+              <button
+                onClick={() => setDarkMode(!darkMode)}
+                className="flex items-center gap-[6px]"
+              >
+                <div className="w-[28px] h-[15px] bg-black dark:bg-white rounded-full relative">
+                  <span
+                    className={`absolute top-[2px] w-[11px] h-[11px] rounded-full duration-300 ${
+                      darkMode
+                        ? "left-[2px] bg-black"
+                        : "left-[15px] bg-white"
+                    }`}
+                  />
+                </div>
+
+                <span className={`${darkMode ? "text-white" : "text-black"} text-[13px]`}>
+                  {darkMode ? "Light" : "Dark"}
+                </span>
+              </button>
+
+              <button onClick={() => setOpen(false)}>
+                <FaTimes size={24} />
+              </button>
+
+            </div>
+
+            <div className="flex flex-col gap-6 text-[17px]">
+
+              <MobileLink to="/" close={setOpen}>Home</MobileLink>
+              <MobileLink to="/about" close={setOpen}>About</MobileLink>
+              <MobileLink to="/services" close={setOpen}>Services</MobileLink>
+              <MobileLink to="/social-marketing" close={setOpen}>Social Marketing</MobileLink>
+              <MobileLink to="/web-development" close={setOpen}>Web Development</MobileLink>
+              <MobileLink to="/ui-ux-design" close={setOpen}>UI/UX</MobileLink>
+              <MobileLink to="/video-production" close={setOpen}>Video Production</MobileLink>
+              <MobileLink to="/portfolio" close={setOpen}>Portfolio</MobileLink>
+              <MobileLink to="/blog" close={setOpen}>Blogs</MobileLink>
+              <MobileLink to="/contact" close={setOpen}>Contact</MobileLink>
+
+            </div>
+
+            <div className="mt-10 pt-6 border-t border-black/10 dark:border-white/10 flex items-center justify-center gap-6 text-[18px] opacity-80">
+              <a href="https://facebook.com" target="_blank"><FaFacebookF /></a>
+              <a href="https://www.instagram.com/socialxstudio.pk/" target="_blank"><FaInstagram /></a>
+              <a href="https://www.linkedin.com/company/social-x-studio/?originalSubdomain=pk" target="_blank"><FaLinkedinIn /></a>
+            </div>
+
           </div>
-        </button>
-
-        {/* CLOSE BTN */}
-        <button
-          onClick={() => setOpen(false)}
-          className={darkMode ? "text-white" : "text-black"}
-        >
-          <FaTimes size={24} />
-        </button>
-
-      </div>
-
-      {/* NAV LINKS */}
-      <div
-        className={`flex flex-col gap-6 text-[17px] font-medium ${
-          darkMode ? "text-white" : "text-black"
-        }`}
-      >
-
-        <MobileLink to="/" close={setOpen}>Home</MobileLink>
-        <MobileLink to="/about" close={setOpen}>About</MobileLink>
-        <MobileLink to="/services" close={setOpen}>Services</MobileLink>
-
-        {/* SERVICES */}
-        <MobileLink to="/social-marketing" close={setOpen}>
-          Social Marketing
-        </MobileLink>
-
-        <MobileLink to="/web-development" close={setOpen}>
-          Web Development
-        </MobileLink>
-
-        <MobileLink to="/ui-ux-design" close={setOpen}>
-          UI/UX
-        </MobileLink>
-
-        <MobileLink to="/video-production" close={setOpen}>
-          Video Production
-        </MobileLink>
-
-        <MobileLink to="/portfolio" close={setOpen}>
-          Portfolio
-        </MobileLink>
-
-        <MobileLink to="/blog" close={setOpen}>
-          Blogs
-        </MobileLink>
-
-        <MobileLink to="/contact" close={setOpen}>
-          Contact
-        </MobileLink>
-
-      </div>
-
-    </div>
-  </div>
-)}
+        </div>
+      )}
     </header>
   );
 }
 
 function DropLink({ to, text }) {
   return (
-    <Link
-      to={to}
-      className="block px-[18px] py-[10px] hover:bg-black/5 dark:hover:bg-white/5"
-    >
+    <Link to={to} className="block px-[18px] py-[10px] hover:bg-black/5 dark:hover:bg-white/5">
       {text}
     </Link>
   );

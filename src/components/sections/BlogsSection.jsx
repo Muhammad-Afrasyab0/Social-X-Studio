@@ -5,30 +5,36 @@ export default function BlogsSection() {
   const blogs = [
     {
       id: 1,
-      date: "4 Day Ago",
+      date: "4 Days Ago",
+      isoDate: "2026-01-10",
       title: "The Power of Strong Branding Strategy",
       desc:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.",
+        "Discover how a strong branding strategy builds trust, improves recognition, and drives long-term business growth.",
       image:
         "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80",
+      slug: "power-of-strong-branding-strategy",
     },
     {
       id: 2,
-      date: "7 Day Ago",
+      date: "7 Days Ago",
+      isoDate: "2026-01-07",
       title: "Content That Connects With Audience",
       desc:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.",
+        "Learn how to create engaging content that resonates with your audience and boosts conversions.",
       image:
         "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80",
+      slug: "content-that-connects-with-audience",
     },
     {
       id: 3,
-      date: "9 Day Ago",
+      date: "9 Days Ago",
+      isoDate: "2026-01-05",
       title: "Marketing Trends That Scale Fast",
       desc:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.",
+        "Explore the latest digital marketing trends that help businesses scale faster.",
       image:
         "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=80",
+      slug: "marketing-trends-that-scale-fast",
     },
   ];
 
@@ -106,29 +112,29 @@ export default function BlogsSection() {
       </style>
 
       <section className="w-full bg-[#f3f3f3] dark:bg-[#111111] py-[60px] sm:py-[75px] md:py-[90px] transition-all duration-500 overflow-hidden">
-        {/* same alignment as header */}
+        
         <div className="w-full max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 grid grid-cols-1 lg:grid-cols-[420px_1fr] gap-[42px] lg:gap-[60px]">
           
           {/* LEFT */}
           <div className="pt-[6px] fade-up">
-            <p className="text-[15px] sm:text-[16px] text-black dark:text-white mb-[14px] font-medium transition-all duration-500">
+            <p className="text-[15px] sm:text-[16px] text-black dark:text-white mb-[14px] font-medium">
               Blogs
             </p>
 
-            <h2 className="text-[34px] sm:text-[46px] md:text-[58px] leading-[1.02] font-semibold tracking-[-1.8px] text-black dark:text-white mb-[32px] md:mb-[42px] transition-all duration-500">
+            <h2 className="text-[34px] sm:text-[46px] md:text-[58px] leading-[1.02] font-semibold tracking-[-1.8px] text-black dark:text-white mb-[32px] md:mb-[42px]">
               Insights That Drive Growth
             </h2>
 
-            <a
-              href="#"
+            {/* BUTTON 1 */}
+            <button
+              onClick={() => (window.location.href = "/blog")}
               className="btn-hover h-[48px] px-[28px] md:px-[30px] rounded-full bg-black text-white dark:bg-white dark:text-black text-[15px] font-medium inline-flex items-center justify-center gap-3 transition-all duration-500"
             >
               View All Blogs
-
               <span className="btn-arrow text-[18px] leading-none font-normal">
                 ↗
               </span>
-            </a>
+            </button>
 
             <div className="mt-[42px] md:mt-[90px] flex gap-[14px]">
               <button
@@ -159,33 +165,34 @@ export default function BlogsSection() {
                   <img
                     src={item.image}
                     alt={item.title}
+                    loading="lazy"
                     className="w-full h-[230px] sm:h-[280px] md:h-[300px] object-cover"
                   />
                 </div>
 
-                <div className="mt-[16px] flex items-center gap-[10px] text-[15px] sm:text-[16px] text-black dark:text-white transition-all duration-500">
-                  <span className="w-[8px] h-[8px] bg-black dark:bg-white rounded-full transition-all duration-500"></span>
-                  <span>{item.date}</span>
+                <div className="mt-[16px] flex items-center gap-[10px] text-[15px] sm:text-[16px] text-black dark:text-white">
+                  <span className="w-[8px] h-[8px] bg-black dark:bg-white rounded-full"></span>
+                  <time dateTime={item.isoDate}>{item.date}</time>
                 </div>
 
-                <h3 className="title-hover mt-[14px] text-[22px] sm:text-[24px] md:text-[26px] leading-[1.2] font-semibold tracking-[-0.5px] text-black dark:text-white transition-all duration-500">
+                <h3 className="title-hover mt-[14px] text-[22px] sm:text-[24px] md:text-[26px] leading-[1.2] font-semibold tracking-[-0.5px] text-black dark:text-white">
                   {item.title}
                 </h3>
 
-                <p className="mt-[14px] md:mt-[16px] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.7] text-black/70 dark:text-white/70 transition-all duration-500">
+                <p className="mt-[14px] md:mt-[16px] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.7] text-black/70 dark:text-white/70">
                   {item.desc}
                 </p>
 
-                <a
-                  href="#"
+                {/* BUTTON 2 & 3 (dynamic links) */}
+                <button
+                  onClick={() => (window.location.href = `/blog/${item.slug}`)}
                   className="btn-hover mt-[20px] md:mt-[22px] h-[48px] px-[28px] md:px-[30px] rounded-full bg-black text-white dark:bg-white dark:text-black text-[15px] font-medium inline-flex items-center justify-center gap-3 transition-all duration-500"
                 >
                   Read More
-
                   <span className="btn-arrow text-[18px] leading-none font-normal">
                     ↗
                   </span>
-                </a>
+                </button>
               </div>
             ))}
           </div>

@@ -29,9 +29,9 @@ export default function WhoWeAreSection() {
 
             <div className="lg:col-span-4">
               <Reveal>
-                <p className="text-[16px] font-medium text-black dark:text-white">
-                  Who We Are
-                </p>
+                 <h2 className="text-[34px] sm:text-[46px] md:text-[58px] font-semibold leading-none tracking-[-1.8px] text-black dark:text-white">
+                  Who we are
+                </h2>
               </Reveal>
             </div>
 

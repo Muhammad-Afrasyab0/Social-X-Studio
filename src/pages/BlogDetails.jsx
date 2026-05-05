@@ -1,4 +1,5 @@
 import Header from "../components/layout/Header";
+import { Link } from "react-router-dom";
 import Footer from "../components/layout/Footer";
 
 import BlogDetailsHero from "../components/sections/BlogDetailsHero";
@@ -30,17 +31,12 @@ export default function BlogDetails() {
 
               <div className="flex flex-wrap items-center gap-x-2 gap-y-2 text-[clamp(14px,1.4vw,18px)]">
 
-                <span className="text-black/45 dark:text-white/45">
-                  Home
-                </span>
-
-                <span className="text-black dark:text-white">
-                  /
-                </span>
-
-                <span className="text-black/45 dark:text-white/45">
-                  Services
-                </span>
+                <Link
+  to="/"
+  className="text-black/45 dark:text-white/45"
+>
+  Home
+</Link>
 
                 <span className="text-black dark:text-white">
                   /

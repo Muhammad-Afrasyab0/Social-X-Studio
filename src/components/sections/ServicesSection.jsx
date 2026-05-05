@@ -10,16 +10,34 @@ export default function Services() {
   const [active, setActive] = useState(0);
 
   const services = [
-    { no: "01", title: "Social Marketing", image: creativeDesigns, link: "/social-marketing" },
+    { no: "01", title: "Digital Marketing", image: creativeDesigns, link: "/social-marketing" },
     { no: "02", title: "Web Development", image: development, link: "/web-development" },
     { no: "03", title: "UI-UX Solution", image: uiUxSolution, link: "/ui-ux-design" },
     { no: "04", title: "Video Production", image: videoproduction, link: "/video-production" },
+    { no: "05", title: "Marketing Strategy", image: creativeDesigns, link: "/marketing-strategy" },
+    { no: "06", title: "Creative Design", image: uiUxSolution, link: "/creative-design" },
+    { no: "07", title: "Photography", image: videoproduction, link: "/photography" },
   ];
 
   return (
     <>
       <style>
         {`
+        /* ✅ Aeonik font load */
+        @font-face {
+          font-family: "AeonikLocal";
+          src: url("/fonts/Aeonik-Light.ttf") format("truetype");
+          font-weight: 300;
+          font-style: normal;
+        }
+
+        /* ✅ apply only here */
+        .aeonik-title{
+          font-family: "AeonikLocal", sans-serif;
+          font-weight: 300;
+          font-synthesis: none;
+        }
+
         .service-row{
           transition:all .4s cubic-bezier(.22,1,.36,1);
           position:relative;
@@ -36,6 +54,8 @@ export default function Services() {
         .service-btn{
           transition:all .35s cubic-bezier(.22,1,.36,1);
           backdrop-filter:blur(8px);
+          position:relative;
+          z-index:5;
         }
 
         .service-btn:hover{
@@ -79,7 +99,6 @@ export default function Services() {
 
         <div className="w-full max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 pt-[58px] sm:pt-[68px] xl:pt-[72px] pb-[38px] sm:pb-[40px]">
 
-          {/* TOP */}
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
 
             <div>
@@ -90,8 +109,8 @@ export default function Services() {
               </Reveal>
 
               <Reveal delay={0.1}>
-                <h2 className="mt-[6px] text-white text-[34px] sm:text-[46px] md:text-[56px] font-medium leading-none tracking-[-1px]">
-                  What We Do Best
+                <h2 className="mt-[6px] text-white text-[34px] sm:text-[40px] md:text-[50px] font-medium leading-none tracking-[-1px]">
+                  What We Do?
                 </h2>
               </Reveal>
             </div>
@@ -108,7 +127,6 @@ export default function Services() {
 
           </div>
 
-          {/* LIST */}
           <div className="mt-[28px] border-t border-white/10">
 
             {services.map((item, index) => {
@@ -134,7 +152,7 @@ export default function Services() {
                     <div className="flex flex-col gap-[8px]">
 
                       <Reveal delay={index * 0.15}>
-                        <h3 className={`text-[56px] xl:text-[66px] leading-[0.95] font-light tracking-[-1.5px] ${
+                        <h3 className={`aeonik-title text-[56px] xl:text-[66px] leading-[1] tracking-[-1.5px] ${
                           isActive ? "text-white" : "text-[#5e636b]"
                         }`}>
                           {item.title}
@@ -144,7 +162,7 @@ export default function Services() {
                       <a
                         href={item.link}
                         onClick={(e) => e.stopPropagation()}
-                        className={`service-btn inline-flex items-center gap-2 text-[13px] px-[14px] py-[6px] rounded-full border border-white/40 w-fit ${
+                        className={`service-btn mt-[12px] inline-flex items-center gap-2 text-[13px] px-[14px] py-[6px] rounded-full border border-white/40 w-fit ${
                           isActive ? "text-white" : "text-[#7a7f86]"
                         }`}
                       >
@@ -188,7 +206,7 @@ export default function Services() {
                         <div className="flex items-center justify-between gap-4">
 
                           <Reveal delay={index * 0.15}>
-                            <h3 className={`text-[28px] sm:text-[42px] leading-[0.95] font-light tracking-[-1px] ${
+                            <h3 className={`aeonik-title text-[28px] sm:text-[42px] leading-[1] tracking-[-1px] ${
                               isActive ? "text-white" : "text-[#5e636b]"
                             }`}>
                               {item.title}
@@ -210,7 +228,7 @@ export default function Services() {
                         <a
                           href={item.link}
                           onClick={(e) => e.stopPropagation()}
-                          className={`service-btn inline-flex items-center gap-2 text-[12px] px-[12px] py-[5px] rounded-full border border-white/40 w-fit ${
+                          className={`service-btn mt-[12px] inline-flex items-center gap-2 text-[13px] px-[14px] py-[6px] rounded-full border border-white/40 w-fit ${
                             isActive ? "text-white" : "text-[#7a7f86]"
                           }`}
                         >

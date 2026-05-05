@@ -2,10 +2,10 @@ import image1 from "../../assets/brandimage.png";
 
 export default function BrandIdentityOverview() {
   const items = [
-    { title: "Client", value: "Company Name" },
-    { title: "Project", value: "Website Redesign" },
+    { title: "Client", value: "Carescan" },
+    { title: "Project", value: "Website Redesign & Social Media" },
     { title: "Duration", value: "Mar 15-Feb 20, 2026" },
-    { title: "Company Size", value: "50+ Employees" },
+    { title: "Company Size", value: "10+ Employees" },
   ];
 
   return (

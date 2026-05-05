@@ -1,7 +1,10 @@
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import "./styles/animations.css";
+
+/* ✅ IMPORT LOADER */
+import Loader from "./components/Loader/Loader";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -12,7 +15,7 @@ import Portfolio from "./pages/Portfolio";
 import BrandIdentity from "./pages/BrandIdentity";
 import Blog from "./pages/Blog";
 import VideoProduction from "./pages/Videoproduction";
-import SocialMarketing from "./pages/SocialMarketing"; // ✅ ADDED
+import SocialMarketing from "./pages/SocialMarketing";
 import BlogDetails from "./pages/BlogDetails";
 import Contact from "./pages/Contact";
 
@@ -27,14 +30,15 @@ function ScrollToTop() {
   return null;
 }
 
-export default function App() {
-  return (
-    <BrowserRouter>
+/* 🔥 APP CONTENT */
+function AppContent() {
+  const location = useLocation();
 
+  return (
+    <>
       <ScrollToTop />
 
-      <Routes>
-
+      <Routes location={location}>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<ServicesPage />} />
@@ -45,17 +49,34 @@ export default function App() {
         <Route path="/blog-details" element={<BlogDetails />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/portfolio" element={<Portfolio />} />
-
-        {/* EXISTING */}
         <Route path="/video-production" element={<VideoProduction />} />
-
-        {/* ✅ NEW SOCIAL MARKETING ROUTE */}
         <Route path="/social-marketing" element={<SocialMarketing />} />
-
-        {/* 404 */}
         <Route path="*" element={<h1>404 - Page Not Found</h1>} />
-
       </Routes>
+    </>
+  );
+}
+
+/* 🔥 MAIN APP (WITH LOADER) */
+export default function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1000); // ⏱ loader duration
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  /* 👉 SHOW LOADER FIRST */
+  if (loading) {
+    return <Loader />;
+  }
+
+  return (
+    <BrowserRouter>
+      <AppContent />
     </BrowserRouter>
   );
 }

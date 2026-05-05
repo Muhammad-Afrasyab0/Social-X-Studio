@@ -94,7 +94,7 @@ export default function BlogListingSection() {
         `}
       </style>
 
-      <section className="bg-[#efefef] py-[clamp(45px,7vw,80px)]">
+      <section className="bg-[#efefef] dark:bg-[#0f0f0f] py-[clamp(45px,7vw,80px)]">
         <div className="max-w-[1880px] mx-auto px-[clamp(18px,4vw,42px)]">
 
           <div className="grid grid-cols-1 xl:grid-cols-[1fr_420px] gap-[clamp(26px,4vw,42px)]">
@@ -113,16 +113,16 @@ export default function BlogListingSection() {
                     />
                   </div>
 
-                  <div className="mt-[18px] flex items-center gap-[10px] text-[14px] text-black">
-                    <span className="w-[7px] h-[7px] rounded-full bg-black"></span>
+                  <div className="mt-[18px] flex items-center gap-[10px] text-[14px] text-black dark:text-white">
+                    <span className="w-[7px] h-[7px] rounded-full bg-black dark:bg-white"></span>
                     <span>{item.date}</span>
                   </div>
 
-                  <h3 className="mt-[14px] text-[24px] font-medium text-black">
+                  <h3 className="mt-[14px] text-[24px] font-medium text-black dark:text-white">
                     {item.title}
                   </h3>
 
-                  <button className="mt-[20px] h-[50px] px-[24px] rounded-full bg-black text-white">
+                  <button className="mt-[20px] h-[50px] px-[24px] rounded-full bg-black text-white dark:bg-white dark:text-black">
                     Read More ↗
                   </button>
 
@@ -135,21 +135,21 @@ export default function BlogListingSection() {
             <aside className="space-y-[24px]">
 
               {/* SEARCH */}
-              <div className="bg-[#e7e7e7] rounded-[18px] p-[28px]">
-                <h4 className="text-[28px] font-medium">Search</h4>
+              <div className="bg-[#e7e7e7] dark:bg-[#1a1a1a] rounded-[18px] p-[28px]">
+                <h4 className="text-[28px] font-medium text-black dark:text-white">Search</h4>
 
                 <input
                   type="text"
                   placeholder="Search..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  className="mt-[20px] w-full h-[58px] rounded-[14px] border border-black/10 px-[18px] outline-none"
+                  className="mt-[20px] w-full h-[58px] rounded-[14px] border border-black/10 dark:border-white/20 bg-white dark:bg-[#111] text-black dark:text-white px-[18px] outline-none"
                 />
               </div>
 
               {/* CATEGORIES */}
-              <div className="bg-[#e7e7e7] rounded-[18px] p-[28px]">
-                <h4 className="text-[28px] font-medium">Categories</h4>
+              <div className="bg-[#e7e7e7] dark:bg-[#1a1a1a] rounded-[18px] p-[28px]">
+                <h4 className="text-[28px] font-medium text-black dark:text-white">Categories</h4>
 
                 <div className="mt-[20px] space-y-[10px]">
                   {["All","Branding","Marketing","Startup","SEO","UI / UX"].map((cat) => (
@@ -158,7 +158,7 @@ export default function BlogListingSection() {
                       onClick={() => setActiveCategory(cat)}
                       className={`cursor-pointer ${
                         activeCategory === cat ? "font-bold" : "opacity-60"
-                      }`}
+                      } text-black dark:text-white`}
                     >
                       • {cat}
                     </p>
@@ -167,8 +167,8 @@ export default function BlogListingSection() {
               </div>
 
               {/* TAGS */}
-              <div className="bg-[#e7e7e7] rounded-[18px] p-[28px]">
-                <h4 className="text-[28px] font-medium">Tags</h4>
+              <div className="bg-[#e7e7e7] dark:bg-[#1a1a1a] rounded-[18px] p-[28px]">
+                <h4 className="text-[28px] font-medium text-black dark:text-white">Tags</h4>
 
                 <div className="flex flex-wrap gap-[12px] mt-[20px]">
                   {tags.map((tag) => (
@@ -177,8 +177,8 @@ export default function BlogListingSection() {
                       onClick={() => setActiveTag(tag)}
                       className={`px-[14px] py-[6px] rounded-full border cursor-pointer ${
                         activeTag === tag
-                          ? "bg-black text-white"
-                          : "text-black/70"
+                          ? "bg-black text-white dark:bg-white dark:text-black"
+                          : "text-black/70 dark:text-white/70"
                       }`}
                     >
                       {tag}

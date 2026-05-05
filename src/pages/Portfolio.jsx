@@ -1,4 +1,5 @@
 import Header from "../components/layout/Header";
+import { Link } from "react-router-dom";
 import Footer from "../components/layout/Footer";
 
 import SelectedWork from "../components/sections/selectedwork.jsx";
@@ -29,9 +30,12 @@ export default function Portfolio() {
 
               <div className="flex flex-wrap items-center gap-x-2 gap-y-2 text-[clamp(14px,1.4vw,18px)]">
 
-                <span className="text-black/45 dark:text-white/45">
-                  Home
-                </span>
+               <Link
+  to="/"
+  className="text-black/45 dark:text-white/45"
+>
+  Home
+</Link>
 
                 <span className="text-black dark:text-white">
                   /

@@ -13,6 +13,9 @@ import Contact from "../components/sections/ContactUs";
 import BlogsSection from "../components/sections/BlogsSection";
 import Footer from "../components/layout/Footer";
 
+/* 👇 ADD THIS LINE */
+import Location from "../components/Location/Location";
+
 export default function Home() {
   return (
     <>
@@ -29,6 +32,9 @@ export default function Home() {
         <WhyUs />
         <Contact />
         <BlogsSection />
+
+        {/* 👇 LOCATION SECTION (Footer se pehle) */}
+        <Location />
       </main>
 
       <Footer />

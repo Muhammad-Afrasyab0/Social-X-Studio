@@ -11,19 +11,19 @@ export default function StartHere() {
 
   const items = [
     {
-      title: "Who We Are & What We Do",
+      title: "Who We Are ?",
       text: `We are a digital agency from Pakistan delivering modern web, branding, and UI/UX solutions for clients in UAE, UK, and USA. We help businesses grow with powerful digital experiences.`,
-      link: "/about", // 🔥 future me change karna
+      link: "/about", 
     },
     {
-      title: "We’ll design your project",
+      title: "What We Do ?",
       text: `Our team creates visually stunning and high-performing designs tailored to your business needs. From websites to complete brand systems, we focus on performance and user experience.`,
-      link: "/portfolio", // 🔥 future me change karna
+      link: "/portfolio", 
     },
     {
       title: "Drop us your message!",
       text: `Have an idea or project in mind? Connect with us and let’s build something impactful together. We turn concepts into real digital products that drive results globally.`,
-      link: "/contact", // 🔥 future me change karna
+      link: "/contact", 
     },
   ];
 

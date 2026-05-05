@@ -103,7 +103,7 @@ export default function Contact() {
               <Info icon={<Phone size={26} strokeWidth={2.2} />} title="Call Now:" text="0123 456 7890" />
               <Info icon={<Mail size={26} strokeWidth={2.2} />} title="Email:" text="info@socialxstudio.com" />
               <Info icon={<MapPin size={26} strokeWidth={2.2} />} title="Address:" text={
-                <>Plot No, 94 Street 7, I-10/3 I 10/3 sector,<br /> Islamabad, 44800, Pakistan</>
+                <>Plot 94, Sector I-10/3, ,<br /> Islamabad 44800, Pakistan</>
               } />
             </div>
 

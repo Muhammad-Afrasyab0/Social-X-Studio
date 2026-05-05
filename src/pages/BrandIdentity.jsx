@@ -24,7 +24,7 @@ export default function BrandIdentity() {
             {/* LEFT TITLE */}
             <div>
               <h1 className="text-black dark:text-white font-semibold leading-[0.95] tracking-[-0.04em] text-[clamp(34px,7vw,72px)]">
-                Brand Identity
+                Health & Medical
               </h1>
             </div>
 
@@ -42,7 +42,7 @@ export default function BrandIdentity() {
                 </span>
 
                 <span className="text-black dark:text-white underline underline-offset-4">
-                  Brand Identity
+                  Health & Medical
                 </span>
 
               </div>
