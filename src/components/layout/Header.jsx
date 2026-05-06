@@ -21,7 +21,6 @@ export default function Header() {
   const dropdownRef = useRef();
   const location = useLocation();
 
-  // 🔥 ADD (INITIAL LOAD SYNC)
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
 
@@ -33,24 +32,20 @@ export default function Header() {
     }
   }, []);
 
-  // DARK MODE (UPDATED WITH SAVE)
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add("dark");
       document.body.style.background = "#111111";
       document.body.style.color = "#ffffff";
-
-      localStorage.setItem("theme", "dark");   // ✅ ADD
+      localStorage.setItem("theme", "dark");
     } else {
       document.documentElement.classList.remove("dark");
       document.body.style.background = "";
       document.body.style.color = "";
-
-      localStorage.setItem("theme", "light");  // ✅ ADD
+      localStorage.setItem("theme", "light");
     }
   }, [darkMode]);
 
-  // SCROLL EFFECT
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
@@ -59,12 +54,10 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // MOBILE SCROLL LOCK
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
   }, [open]);
 
-  // CLICK OUTSIDE DROPDOWN
   useEffect(() => {
     const handleClick = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
@@ -115,18 +108,17 @@ export default function Header() {
             <Link to="/" className={navLink("/")}>Home</Link>
             <Link to="/about" className={navLink("/about")}>About</Link>
 
+            {/* ✅ FIXED SERVICES */}
             <div
               ref={dropdownRef}
-              className="relative"
+              className="relative flex items-center gap-[6px]"
               onMouseEnter={() => setServiceDrop(true)}
               onMouseLeave={() => setServiceDrop(false)}
             >
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setServiceDrop((prev) => !prev);
-                }}
-                className={`inline-flex items-center gap-[6px] ${
+
+              <Link
+                to="/services"
+                className={`${
                   isServicePage
                     ? "text-[#0a8fff]"
                     : darkMode
@@ -135,6 +127,14 @@ export default function Header() {
                 }`}
               >
                 Services
+              </Link>
+
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setServiceDrop((prev) => !prev);
+                }}
+              >
                 <FaChevronDown className="text-[10px]" />
               </button>
 
@@ -159,7 +159,6 @@ export default function Header() {
 
             <div className="flex items-center gap-[18px]">
 
-              {/* TOGGLE */}
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 className="flex items-center gap-[9px]"
@@ -180,10 +179,10 @@ export default function Header() {
               </button>
 
               <div className={`flex gap-[16px] ${darkMode ? "text-white" : "text-black"}`}>
-     <a href="https://facebook.com" target="_blank"><FaFacebookF /></a>
-              <a href="https://www.instagram.com/socialxstudio.pk/" target="_blank"><FaInstagram /></a>
-              <a href="https://www.linkedin.com/company/social-x-studio/?originalSubdomain=pk" target="_blank"><FaLinkedinIn /></a>
-</div>
+                <a href="https://facebook.com" target="_blank"><FaFacebookF /></a>
+                <a href="https://www.instagram.com/socialxstudio.pk/" target="_blank"><FaInstagram /></a>
+                <a href="https://www.linkedin.com/company/social-x-studio/?originalSubdomain=pk" target="_blank"><FaLinkedinIn /></a>
+              </div>
 
             </div>
 
@@ -193,7 +192,6 @@ export default function Header() {
 
           </div>
 
-          {/* MOBILE BTN */}
           <button
             onClick={() => setOpen(true)}
             className={`lg:hidden text-[24px] ${
@@ -206,43 +204,17 @@ export default function Header() {
         </div>
       </div>
 
-      {/* MOBILE MENU */}
       {open && (
         <div className="fixed inset-0 bg-black/60 z-[999] lg:hidden">
-
           <div className={`w-[86%] max-w-[340px] h-full ml-auto p-6 ${darkMode ? "bg-[#111]" : "bg-white"}`}>
-
             <div className="flex items-center justify-between mb-8">
-
               <img src={darkMode ? darkLogo : logo} className="w-[120px]" />
-
-              <button
-                onClick={() => setDarkMode(!darkMode)}
-                className="flex items-center gap-[6px]"
-              >
-                <div className="w-[28px] h-[15px] bg-black dark:bg-white rounded-full relative">
-                  <span
-                    className={`absolute top-[2px] w-[11px] h-[11px] rounded-full duration-300 ${
-                      darkMode
-                        ? "left-[2px] bg-black"
-                        : "left-[15px] bg-white"
-                    }`}
-                  />
-                </div>
-
-                <span className={`${darkMode ? "text-white" : "text-black"} text-[13px]`}>
-                  {darkMode ? "Light" : "Dark"}
-                </span>
-              </button>
-
               <button onClick={() => setOpen(false)}>
                 <FaTimes size={24} />
               </button>
-
             </div>
 
             <div className="flex flex-col gap-6 text-[17px]">
-
               <MobileLink to="/" close={setOpen}>Home</MobileLink>
               <MobileLink to="/about" close={setOpen}>About</MobileLink>
               <MobileLink to="/services" close={setOpen}>Services</MobileLink>
@@ -253,15 +225,19 @@ export default function Header() {
               <MobileLink to="/portfolio" close={setOpen}>Portfolio</MobileLink>
               <MobileLink to="/blog" close={setOpen}>Blogs</MobileLink>
               <MobileLink to="/contact" close={setOpen}>Contact</MobileLink>
-
             </div>
-
-            <div className="mt-10 pt-6 border-t border-black/10 dark:border-white/10 flex items-center justify-center gap-6 text-[18px] opacity-80">
-              <a href="https://facebook.com" target="_blank"><FaFacebookF /></a>
-              <a href="https://www.instagram.com/socialxstudio.pk/" target="_blank"><FaInstagram /></a>
-              <a href="https://www.linkedin.com/company/social-x-studio/?originalSubdomain=pk" target="_blank"><FaLinkedinIn /></a>
-            </div>
-
+            {/* SOCIAL ICONS */}
+<div className="mt-8 flex items-center justify-center gap-6 text-[18px]">
+  <a href="https://facebook.com" target="_blank">
+    <FaFacebookF />
+  </a>
+  <a href="https://www.instagram.com/socialxstudio.pk/" target="_blank">
+    <FaInstagram />
+  </a>
+  <a href="https://www.linkedin.com/company/social-x-studio/?originalSubdomain=pk" target="_blank">
+    <FaLinkedinIn />
+  </a>
+</div>
           </div>
         </div>
       )}
